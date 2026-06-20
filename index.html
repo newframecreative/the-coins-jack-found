@@ -150,7 +150,7 @@
   <div class="tl-wrap">
     <div class="tl-controls">
       <button class="tl-btn" id="playBtn"><span id="playIcon">&#9658;</span> <span id="playLbl">Play</span></button>
-      <span class="tl-hint">drag / scroll sideways &nbsp;·&nbsp; <span class="dot-fnd" style="background:#b5703a"></span>Jack &nbsp;<span class="dot-fnd" style="background:#5b7a8c"></span>Chris &nbsp;<span class="dot-fnd" style="background:#6a7b4a"></span>Adam</span>
+      <span class="tl-hint">drag or scroll sideways, or press play</span>
     </div>
     <div class="tl-scroll" id="tlScroll">
       <div class="tl-track" id="tlTrack">
@@ -277,7 +277,7 @@ function openPlace(pk){
     const x=xOf(toMs(c.found));
     const el=document.createElement("div");el.className="tl-coin";el.style.left=x+"px";el.style.top="0px";
     el.innerHTML='<img class="cardimg" src="'+denImg(c)+'" alt=""/>'+
-      '<div class="meta"><b><span class="dot-fnd" style="background:'+finderColor(c)+'"></span>'+c.found.slice(0,4)+'</b>'+placeOf(c).name+(c.trip?'<span class="tag-trip">&#10022; '+c.trip+'</span>':'')+'</div>';
+      '<div class="meta"><b>'+c.found.slice(0,4)+'</b>'+placeOf(c).name+(c.trip?'<span class="tag-trip">&#10022; '+c.trip+'</span>':'')+'</div>';
     el.onclick=(function(id){return function(){openCoin(id)}})(c.id);
     el._x=x; track.appendChild(el); nodes.push(el);
   });
