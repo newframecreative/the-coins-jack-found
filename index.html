@@ -11,110 +11,114 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
 <style>
-  :root{
-    --ink:#2e2620; --ink-soft:#6b5f52; --paper:#efe6d2; --paper-2:#e7dcc2;
-    --accent:#874f2c; --rule:rgba(60,45,30,.18); --gone:#8a6a4a;
-  }
+  :root{ --ink:#2e2620; --ink-soft:#6b5f52; --paper:#efe6d2; --accent:#874f2c; --rule:rgba(60,45,30,.18); --gone:#8a6a4a; }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
-  body{
-    font-family:'Spectral',Georgia,serif; color:var(--ink);
-    background:
-      radial-gradient(120% 90% at 50% -10%, #f3ecdb 0%, #e9ddc6 55%, #e0d3b7 100%);
-    background-attachment:fixed; min-height:100vh;
-  }
-  body::before{
-    content:""; position:fixed; inset:0; pointer-events:none; opacity:.5; z-index:0;
-    background-image:
-      radial-gradient(rgba(120,90,55,.05) 1px, transparent 1.4px),
-      radial-gradient(rgba(120,90,55,.04) 1px, transparent 1.4px);
-    background-size:7px 7px, 11px 11px; background-position:0 0, 3px 4px;
-  }
+  body{font-family:'Spectral',Georgia,serif; color:var(--ink);
+    background:radial-gradient(120% 80% at 50% -10%, #f3ecdb 0%, #e9ddc6 55%, #e0d3b7 100%);
+    background-attachment:fixed; min-height:100vh;}
   .wrap{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 22px 80px}
-  header.hero{text-align:center; padding:64px 12px 26px}
-  .kicker{font-family:'Caveat',cursive; font-size:30px; color:var(--accent); margin:0 0 2px; transform:rotate(-2deg)}
-  h1{font-family:'Spectral',serif; font-weight:600; font-size:clamp(34px,6vw,62px); letter-spacing:.5px; margin:.1em 0 .18em}
-  .lede{font-size:clamp(16px,2.2vw,20px); color:var(--ink-soft); max-width:680px; margin:0 auto; line-height:1.6}
-  .stats{display:flex; gap:26px; justify-content:center; flex-wrap:wrap; margin:26px 0 6px}
-  .stat b{display:block; font-size:26px; font-weight:600; font-family:'Spectral'}
-  .stat span{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
-  .rule{height:1px; background:linear-gradient(90deg,transparent,var(--rule),transparent); margin:30px 0 8px}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  /* hero */
+  header.hero{text-align:center; padding:38px 12px 6px}
+  h1{font-family:'Spectral'; font-weight:600; font-size:clamp(30px,5vw,50px); margin:.1em 0 .15em}
+  .lede{font-size:16px; color:var(--ink-soft); margin:0 auto 14px}
+  .stats{display:flex; gap:22px; justify-content:center; flex-wrap:wrap; margin:14px 0 2px}
+  .stat b{display:block; font-size:23px; font-weight:600} .stat span{font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
+  .section-h{font-family:'Spectral'; font-weight:600; font-size:25px; text-align:center; margin:50px 0 2px}
+  .section-sub{text-align:center; color:var(--ink-soft); margin:0 auto 16px; max-width:600px; font-size:15px}
+  .rule{height:1px; background:linear-gradient(90deg,transparent,var(--rule),transparent); margin:24px 0 0}
 
-  .controls{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:center; padding:6px 0 30px; font-family:'Spectral'}
-  .controls .grp{display:flex; gap:6px; align-items:center}
-  .controls label{font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em}
-  .chip{border:1px solid var(--rule); background:rgba(255,255,255,.35); color:var(--ink);
-    font-family:inherit; font-size:14px; padding:6px 13px; border-radius:999px; cursor:pointer; transition:.18s}
-  .chip:hover{background:rgba(255,255,255,.7)}
-  .chip.on{background:var(--ink); color:var(--paper); border-color:var(--ink)}
-
-  .wall{display:flex; flex-wrap:wrap; gap:34px 30px; justify-content:center; align-items:flex-start; padding:8px 0 10px}
-  .card{width:300px; cursor:pointer; transition:transform .22s ease, filter .22s ease; will-change:transform;
-    filter:drop-shadow(0 10px 14px rgba(50,35,20,.28)); border-radius:2px}
-  .card img{width:100%; height:auto; display:block}
-  .card .cap{font-family:'Caveat',cursive; text-align:center; font-size:19px; color:var(--ink-soft); margin-top:7px; transition:.2s}
-  .card:hover{transform:rotate(0deg) scale(1.045) translateY(-4px); filter:drop-shadow(0 18px 22px rgba(50,35,20,.34))}
-  .card:hover .cap{color:var(--accent)}
-
-  .section-h{font-family:'Spectral'; font-weight:600; font-size:28px; text-align:center; margin:54px 0 6px}
-  .section-sub{text-align:center; color:var(--ink-soft); margin:0 auto 22px; max-width:620px; font-size:16px}
-  #map{height:460px; border-radius:10px; border:1px solid var(--rule); box-shadow:0 10px 26px rgba(50,35,20,.16)}
-  .leaflet-popup-content{font-family:'Spectral'; margin:10px 12px}
-  .pop b{font-size:15px}
-  .pop small{color:#6b5f52}
-
-  /* modal */
-  .scrim{position:fixed; inset:0; background:rgba(38,28,18,.62); backdrop-filter:blur(2px); display:none;
-    z-index:50; align-items:flex-start; justify-content:center; overflow:auto; padding:40px 16px}
-  .scrim.show{display:flex}
-  .modal{background:linear-gradient(180deg,#fbf5e8,#f3ead6); width:min(760px,100%); border-radius:12px;
-    box-shadow:0 30px 70px rgba(0,0,0,.5); overflow:hidden; position:relative; border:1px solid #d9c9a8}
-  .modal .x{position:absolute; top:12px; right:14px; z-index:2; border:none; background:rgba(0,0,0,.06);
-    width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:18px; color:#5a4a36}
-  .modal .x:hover{background:rgba(0,0,0,.12)}
-  .m-photo{padding:26px 26px 8px; text-align:center}
-  .m-photo img{max-width:100%; max-height:300px; filter:drop-shadow(0 12px 16px rgba(50,35,20,.3))}
-  .m-body{padding:6px 30px 30px}
-  .m-card-says{font-family:'Caveat',cursive; font-size:24px; color:var(--accent); text-align:center;
-    line-height:1.25; margin:6px auto 18px; max-width:560px}
-  .m-title{font-family:'Spectral'; font-weight:600; font-size:24px; margin:0 0 2px}
-  .m-where{color:var(--ink-soft); margin:0 0 16px; font-size:16px}
-  .facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; margin:14px 0 18px}
-  .fact{background:rgba(255,255,255,.5); border:1px solid var(--rule); border-radius:8px; padding:9px 12px}
-  .fact span{display:block; font-size:11px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft)}
-  .fact b{font-weight:600; font-size:16px}
-  .block{border-left:3px solid var(--accent); padding:6px 0 6px 15px; margin:16px 0}
-  .block.event{border-color:#9a5b2e}
-  .block.gone{border-color:var(--gone)}
-  .block.family{border-color:#6a7b4a}
-  .block h4{margin:0 0 4px; font-size:13px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft)}
-  .block .score{font-size:22px; font-weight:600; font-family:'Spectral'}
-  .block p{margin:4px 0 0; line-height:1.62}
-  .tag{display:inline-block; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
-    background:rgba(138,106,74,.15); color:var(--gone); padding:3px 9px; border-radius:999px; margin-left:8px; vertical-align:middle}
-  .m-place-photo{float:right; width:170px; margin:0 0 12px 16px}
-  .m-place-photo img{width:100%; border-radius:6px; display:block; filter:grayscale(.1)}
-  .m-place-photo small{display:block; font-size:10px; color:var(--ink-soft); margin-top:3px; text-align:center}
-  footer{text-align:center; color:var(--ink-soft); font-size:14px; margin-top:60px}
-  @media(max-width:520px){ .card{width:46vw} .m-place-photo{float:none; width:100%; margin:0 0 12px} }
+  /* landing */
   body.locked{overflow:hidden}
   .landing{position:fixed; inset:0; z-index:80; display:flex; align-items:center; justify-content:center; text-align:center;
     cursor:pointer; transition:transform .9s cubic-bezier(.7,0,.2,1), opacity .9s ease;
     background:radial-gradient(120% 90% at 50% 30%, #f4edda 0%, #e7dcc2 58%, #d6c6a6 100%)}
   .landing.lift{transform:translateY(-106%); opacity:0}
-  .landing .lid{max-width:none; width:100%; padding:30px 24px}
+  .lid{max-width:none; width:100%; padding:30px 24px}
   .lid-kick{font-family:'Caveat',cursive; font-size:27px; color:var(--accent); margin:0 0 4px; transform:rotate(-1.5deg)}
   .lid-title{font-family:'Spectral'; font-weight:600; font-size:min(8.5vw,80px); white-space:nowrap; margin:.04em 0 .18em; letter-spacing:.5px}
   .lid-rule{width:92px; height:2px; background:var(--accent); opacity:.5; margin:2px auto 26px}
-  .lid-line{font-size:clamp(18px,2.6vw,25px); font-style:italic; color:var(--ink); line-height:1.6; max-width:660px; margin:0 auto 34px}
-  .lid-open{font-family:'Spectral'; font-size:16px; letter-spacing:.04em; background:var(--ink); color:var(--paper); border:none;
-    border-radius:999px; padding:12px 28px; cursor:pointer; transition:.2s}
+  .lid-line{font-size:clamp(18px,2.6vw,25px); font-style:italic; line-height:1.6; max-width:660px; margin:0 auto 34px}
+  .lid-open{font-family:'Spectral'; font-size:16px; background:var(--ink); color:var(--paper); border:none; border-radius:999px; padding:12px 28px; cursor:pointer; transition:.2s}
   .lid-open span{display:inline-block; margin-left:7px; font-size:20px; line-height:1}
   .lid-open:hover{transform:translateY(-2px); box-shadow:0 10px 20px rgba(50,35,20,.3)}
-  .coin-pin .pin-dot{display:block; width:16px; height:16px; border-radius:50%; border:1.5px solid #3a2a18; box-shadow:0 1px 3px rgba(0,0,0,.45)}
+
+  /* timeline */
+  .tl-wrap{margin-top:8px; position:relative}
+  .tl-controls{display:flex; gap:12px; align-items:center; justify-content:center; margin-bottom:8px; flex-wrap:wrap}
+  .tl-btn{font-family:'Spectral'; font-size:15px; border:1px solid var(--rule); background:rgba(255,255,255,.45); color:var(--ink); border-radius:999px; padding:7px 16px; cursor:pointer; transition:.18s; display:inline-flex; align-items:center; gap:7px}
+  .tl-btn:hover{background:rgba(255,255,255,.8)}
+  .tl-hint{font-size:13px; color:var(--ink-soft)}
+  .tl-scroll{position:relative; overflow-x:auto; overflow-y:hidden; border-radius:12px; border:1px solid var(--rule);
+    background:linear-gradient(180deg, rgba(255,252,244,.5), rgba(244,236,220,.35)); box-shadow:inset 0 1px 0 rgba(255,255,255,.5);
+    scrollbar-width:thin; -webkit-overflow-scrolling:touch}
+  .tl-track{position:relative; height:560px}
+  .tl-ghost-year{position:sticky; left:50%; top:0; transform:translateX(-50%); width:0; height:0; z-index:0}
+  .tl-ghost-year b{position:absolute; left:50%; top:150px; transform:translateX(-50%); font-family:'Spectral'; font-weight:600;
+    font-size:200px; color:rgba(120,79,44,.07); pointer-events:none; white-space:nowrap}
+  .tl-axis{position:absolute; left:0; right:0; bottom:42px; height:2px; background:var(--rule)}
+  .tl-yr{position:absolute; bottom:0; transform:translateX(-50%); text-align:center; color:var(--ink-soft); pointer-events:none}
+  .tl-yr i{display:block; width:1px; height:14px; background:var(--rule); margin:0 auto 4px}
+  .tl-yr span{font-size:13px; font-family:'Spectral'}
+  .tl-coin{position:absolute; width:158px; transform:translateX(-50%); cursor:pointer; opacity:0; transition:opacity .5s ease, transform .5s ease; z-index:2}
+  .tl-coin.in{opacity:1}
+  .tl-coin .stem{position:absolute; left:50%; width:1px; background:var(--rule); z-index:1}
+  .tl-coin .cardimg{width:100%; filter:drop-shadow(0 8px 12px rgba(50,35,20,.26)); border-radius:2px; transition:transform .2s}
+  .tl-coin:hover .cardimg{transform:scale(1.05) translateY(-3px)}
+  .tl-coin .meta{text-align:center; margin-top:5px; font-family:'Caveat',cursive; font-size:16px; color:var(--ink-soft); line-height:1.15}
+  .tl-coin .meta b{display:block; font-family:'Spectral'; font-weight:500; font-size:12px; letter-spacing:.04em; color:var(--accent)}
+  .tag-trip{display:inline-block; font-family:'Spectral'; font-size:10px; letter-spacing:.05em; text-transform:uppercase; background:rgba(135,79,44,.14); color:var(--accent); padding:1px 7px; border-radius:999px; margin-top:3px}
+  .dot-fnd{display:inline-block; width:7px; height:7px; border-radius:50%; vertical-align:middle; margin-right:4px}
+
+  /* map */
+  #map{height:460px; border-radius:10px; border:1px solid var(--rule); box-shadow:0 10px 26px rgba(50,35,20,.16)}
+  .leaflet-popup-content{font-family:'Spectral'; margin:10px 12px} .pop b{font-size:15px} .pop small{color:#6b5f52}
+  .coin-pin .pin-dot{display:block; width:16px; height:16px; border-radius:50%; border:1.5px solid #3a2a18; box-shadow:0 1px 3px rgba(0,0,0,.45); position:relative}
+  .pin-dot .pc{position:absolute; top:-9px; right:-9px; background:var(--accent); color:#f4ead3; font-family:'Spectral'; font-size:11px; min-width:17px; height:17px; line-height:17px; text-align:center; border-radius:50%; border:1.5px solid #f4ead3}
   .cl-wrap{background:none; border:none}
-  .cl-dot{width:44px; height:44px; border-radius:50%; background:rgba(135,79,44,.93); color:#f4ead3; display:flex; align-items:center;
-    justify-content:center; font-family:'Spectral'; font-weight:600; font-size:17px; border:2px solid #f4ead3; box-shadow:0 2px 8px rgba(50,35,20,.4)}
+  .cl-dot{width:44px; height:44px; border-radius:50%; background:rgba(135,79,44,.93); color:#f4ead3; display:flex; align-items:center; justify-content:center; font-family:'Spectral'; font-weight:600; font-size:17px; border:2px solid #f4ead3; box-shadow:0 2px 8px rgba(50,35,20,.4)}
+
+  /* grid */
+  .controls{display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:center; padding:4px 0 22px}
+  .controls label{font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em; margin-right:2px}
+  .chip{border:1px solid var(--rule); background:rgba(255,255,255,.35); color:var(--ink); font-family:'Spectral'; font-size:14px; padding:6px 13px; border-radius:999px; cursor:pointer; transition:.18s}
+  .chip:hover{background:rgba(255,255,255,.7)} .chip.on{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  .grid{display:flex; flex-wrap:wrap; gap:30px 26px; justify-content:center; align-items:flex-start}
+  .pcard{width:240px; cursor:pointer; transition:transform .2s}
+  .pcard:hover{transform:translateY(-4px)}
+  .pcard .stack{position:relative}
+  .pcard .stack img{width:100%; display:block; filter:drop-shadow(0 9px 13px rgba(50,35,20,.28)); border-radius:2px}
+  .pcard .stack .under{position:absolute; top:0; left:0; width:100%}
+  .pcard .count{position:absolute; top:-8px; right:-8px; z-index:5; background:var(--accent); color:#f4ead3; font-family:'Spectral'; font-weight:600; font-size:14px; min-width:26px; height:26px; line-height:26px; text-align:center; border-radius:50%; border:2px solid #f4ead3; box-shadow:0 2px 6px rgba(50,35,20,.35)}
+  .pcard .pcap{text-align:center; margin-top:10px; font-family:'Spectral'} .pcard .pcap b{display:block; font-weight:500; font-size:15px} .pcard .pcap span{font-size:13px; color:var(--ink-soft)}
+  .pcard.gone .pcap b::after{content:" ·"} .pcard .pcap em{font-style:normal; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--gone)}
+
+  /* modal */
+  .scrim{position:fixed; inset:0; background:rgba(38,28,18,.62); backdrop-filter:blur(2px); display:none; z-index:90; align-items:flex-start; justify-content:center; overflow:auto; padding:40px 16px}
+  .scrim.show{display:flex}
+  .modal{background:linear-gradient(180deg,#fbf5e8,#f3ead6); width:min(760px,100%); border-radius:12px; box-shadow:0 30px 70px rgba(0,0,0,.5); overflow:hidden; position:relative; border:1px solid #d9c9a8}
+  .modal .x{position:absolute; top:12px; right:14px; z-index:2; border:none; background:rgba(0,0,0,.06); width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:18px; color:#5a4a36}
+  .modal .x:hover{background:rgba(0,0,0,.12)}
+  .m-photo{padding:24px 26px 6px; text-align:center} .m-photo img{max-width:100%; max-height:280px; filter:drop-shadow(0 12px 16px rgba(50,35,20,.3))}
+  .m-body{padding:6px 30px 30px}
+  .m-says{font-family:'Caveat',cursive; font-size:23px; color:var(--accent); text-align:center; line-height:1.25; margin:6px auto 16px; max-width:560px}
+  .m-title{font-family:'Spectral'; font-weight:600; font-size:23px; margin:0 0 2px} .m-where{color:var(--ink-soft); margin:0 0 14px; font-size:15px}
+  .facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(125px,1fr)); gap:11px; margin:12px 0 16px}
+  .fact{background:rgba(255,255,255,.5); border:1px solid var(--rule); border-radius:8px; padding:8px 11px}
+  .fact span{display:block; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)} .fact b{font-weight:600; font-size:15px}
+  .block{border-left:3px solid var(--accent); padding:6px 0 6px 15px; margin:15px 0}
+  .block.event{border-color:#9a5b2e} .block.gone{border-color:var(--gone)} .block.family{border-color:#6a7b4a}
+  .block h4{margin:0 0 4px; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)} .block .score{font-size:21px; font-weight:600} .block p{margin:4px 0 0; line-height:1.6}
+  .tag{display:inline-block; font-size:11px; letter-spacing:.05em; text-transform:uppercase; background:rgba(138,106,74,.15); color:var(--gone); padding:3px 9px; border-radius:999px; margin-left:8px; vertical-align:middle}
+  .m-place-photo{float:right; width:180px; margin:0 0 12px 16px} .m-place-photo img{width:100%; border-radius:6px; display:block} .m-place-photo small{display:block; font-size:10px; color:var(--ink-soft); margin-top:3px; text-align:center}
+  .plist{margin-top:6px}
+  .prow{display:flex; align-items:center; gap:14px; padding:10px 0; border-top:1px solid var(--rule); cursor:pointer}
+  .prow:hover{background:rgba(255,255,255,.35)}
+  .prow img{width:120px; flex:none; filter:drop-shadow(0 4px 7px rgba(50,35,20,.25)); border-radius:2px}
+  .prow .pd b{font-family:'Spectral'; font-weight:500; font-size:15px} .prow .pd span{display:block; font-size:13px; color:var(--ink-soft)}
+  footer{text-align:center; color:var(--ink-soft); font-size:14px; margin-top:54px}
+  @media(max-width:600px){ .tl-track{height:460px} .tl-coin{width:120px} .tl-ghost-year b{font-size:120px} .pcard{width:44vw} .m-place-photo{float:none;width:100%;margin:0 0 12px} .prow img{width:84px} }
 </style>
 </head>
 <body class="locked">
@@ -127,256 +131,236 @@
     <button class="lid-open">Open the box <span>&#8964;</span></button>
   </div>
 </div>
+
 <div class="wrap">
   <header class="hero">
     <h1>The Coins Jack Found</h1>
     <p class="lede">A diary of a life, told in pocket change.</p>
     <div class="stats">
-      <div class="stat"><b id="st-coins">10</b><span>coins</span></div>
-      <div class="stat"><b id="st-value">52¢</b><span>in all</span></div>
-      <div class="stat"><b id="st-range">1972&ndash;1999</b><span id="st-years">27 years</span></div>
-      <div class="stat"><b id="st-states">4</b><span>states</span></div>
+      <div class="stat"><b id="st-coins">—</b><span>finds</span></div>
+      <div class="stat"><b id="st-value">—</b><span>in all</span></div>
+      <div class="stat"><b id="st-range">—</b><span id="st-years">—</span></div>
+      <div class="stat"><b id="st-states">—</b><span>states</span></div>
     </div>
     <div class="rule"></div>
   </header>
 
-  <div class="controls">
-    <div class="grp"><label>Coin</label>
-      <button class="chip on" data-den="all">All</button>
-      <button class="chip" data-den="penny">Pennies</button>
-      <button class="chip" data-den="nickel">Nickels</button>
-      <button class="chip" data-den="dime">Dimes</button>
-      <button class="chip" data-den="quarter">Quarter</button>
+  <h2 class="section-h">Through the years</h2>
+  <p class="section-sub">Every coin at the moment he found it, oldest to newest — scroll across, or press play and watch his life scroll by. Tap any one for its story.</p>
+  <div class="tl-wrap">
+    <div class="tl-controls">
+      <button class="tl-btn" id="playBtn"><span id="playIcon">&#9658;</span> <span id="playLbl">Play</span></button>
+      <span class="tl-hint">drag / scroll sideways &nbsp;·&nbsp; <span class="dot-fnd" style="background:#b5703a"></span>Jack &nbsp;<span class="dot-fnd" style="background:#5b7a8c"></span>Chris &nbsp;<span class="dot-fnd" style="background:#6a7b4a"></span>Adam</span>
     </div>
-    <div class="grp"><label>Sort</label>
-      <button class="chip on" data-sort="found">By date found</button>
-      <button class="chip" data-sort="mint">By coin's year</button>
-      <button class="chip" data-sort="age">By time in circulation</button>
+    <div class="tl-scroll" id="tlScroll">
+      <div class="tl-track" id="tlTrack">
+        <div class="tl-ghost-year"><b id="ghostYear"></b></div>
+        <div class="tl-axis"></div>
+      </div>
     </div>
   </div>
 
-  <div class="wall" id="wall"></div>
-
-  <h2 class="section-h">Where Jack found them</h2>
-  <p class="section-sub">From his own neighborhood on Clinton Highway to Birmingham, Maui, and the Las Vegas Strip. Click a pin to open the coin.</p>
+  <h2 class="section-h">Where they were found</h2>
+  <p class="section-sub">By place this time — from his own house on Paula Drive to Maui, Las Vegas, and a rest stop on I-85. A number means more than one coin came from that spot. Tap a pin.</p>
   <div id="map"></div>
 
-  <footer>A pilot of Jack&rsquo;s collection · built for the family · <span id="gone-note"></span></footer>
+  <h2 class="section-h">Every place, every coin</h2>
+  <p class="section-sub">Browse the whole collection by location. Stacks hold more than one find — tap to see them all.</p>
+  <div class="controls">
+    <label>Coin</label>
+    <button class="chip on" data-den="all">All</button>
+    <button class="chip" data-den="penny">Pennies</button>
+    <button class="chip" data-den="nickel">Nickels</button>
+    <button class="chip" data-den="dime">Dimes</button>
+    <button class="chip" data-den="quarter">Quarters</button>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <footer>A family archive of the coins Jack found &amp; saved · <span id="gone-note"></span></footer>
 </div>
 
-<div class="scrim" id="scrim">
-  <div class="modal" id="modal">
-    <button class="x" id="closeX" aria-label="Close">&times;</button>
-    <div id="modalContent"></div>
-  </div>
-</div>
+<div class="scrim" id="scrim"><div class="modal" id="modal"><button class="x" id="closeX" aria-label="Close">&times;</button><div id="modalContent"></div></div></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="coins-data.js"></script>
 <script>
-const COINS = [
-  {id:"coin-001",img:"photos/cutouts/coin-001.png",den:"penny",mint:1994,found:"1999-11-22",raw:"11/22/99",dow:"Monday",finders:["Jack"],
-   says:"J — found outside Walgreen's",loc:"Walgreen's · 2400 N Broadway, Knoxville",city:"Knoxville",state:"TN",lat:36.0065,lng:-83.9210,conf:"best guess",yic:5,
-   ctx:"A Monday — three days before Thanksgiving."},
-  {id:"coin-002",img:"photos/cutouts/coin-002.png",den:"penny",mint:1981,found:"1983-10-15",raw:"10/15/83",dow:"Saturday",finders:["Jack"],
-   says:"Legion Field · 10/15/83 · Birmingham · T 41 – A 34",loc:"Legion Field, Birmingham",city:"Birmingham",state:"AL",lat:33.4717,lng:-86.8481,conf:"confirmed",yic:2,
-   event:{name:"Tennessee at Alabama",score:"Tennessee 41, Alabama 34",detail:"An upset of 14-point-favorite Alabama, won late on Johnnie Jones' 66-yard touchdown run."},
-   family:"Greg was at this game with Jack."},
-  {id:"coin-003",img:"photos/cutouts/coin-003.png",den:"penny",mint:1974,found:"1986-09-13",raw:"9/13/86",dow:"Saturday",finders:["Jack","Adam"],
-   says:"Jack — found UT Stadium · 9/13/86 · UT / Miss St football game · Jack & Adam",loc:"Neyland Stadium, Knoxville",city:"Knoxville",state:"TN",lat:35.9551,lng:-83.9250,conf:"confirmed",yic:12,
-   event:{name:"Tennessee vs Mississippi State",score:"Mississippi State 27, Tennessee 23",detail:"Mississippi State upset No. 8 Tennessee at Neyland in front of 89,897."},
-   place:{name:"Neyland Stadium",where:"On the Tennessee River, Knoxville",status:"standing",
-     story:"Neyland Stadium has stood on the bank of the Tennessee River since 1921, growing into one of the largest stadiums in America — a sea of orange that holds well over 100,000 on game day. Jack found coins here more than once."},
-   family:"Adam — Jack's grandson and Greg's brother — was at this game with Jack."},
-  {id:"coin-004",img:"photos/cutouts/coin-004.png",den:"penny",mint:1969,found:"1972-10-27",raw:"10/27/72",dow:"Friday",finders:["Jack"],
-   says:"10/27/72 · J · White Store · Clinton Highway",loc:"White Store · 5400 Clinton Hwy, Knoxville",city:"Knoxville",state:"TN",lat:36.0430,lng:-83.9870,conf:"confirmed",yic:3,
-   place:{name:"White Store",where:"5400 Clinton Highway, North Knoxville",status:"gone",photo:"photos/white-stores.jpg",credit:"Knoxville, TN History & Memories",
-     story:"White Stores was East Tennessee's biggest homegrown grocery chain — founded in 1922, sold to Food City's parent in 1989. The store at 5400 Clinton Highway was Jack's neighborhood grocery, a short drive from the house. It's gone now."}},
-  {id:"coin-005",img:"photos/cutouts/coin-005.png",den:"dime",mint:1995,found:"1998-01-23",raw:"1/23/98",dow:"Friday",finders:["Jack"],
-   says:"J — found Nixon Deli · 1/23/98",loc:"Nixon's Deli · 508 Merchants Dr, Knoxville",city:"Knoxville",state:"TN",lat:36.0185,lng:-83.9585,conf:"inferred",yic:3,
-   ctx:"A Friday lunch, minutes from home."},
-  {id:"coin-006",img:"photos/cutouts/coin-006.png",den:"dime",mint:1975,found:"1985-03-10",raw:"March 10, 1985",dow:"Sunday",finders:["Jack"],
-   says:"March 10, 1985 · Lahaina, Maui · Pioneer Inn · J",loc:"Pioneer Inn, Lahaina, Maui",city:"Lahaina",state:"HI",lat:20.8725,lng:-156.6777,conf:"confirmed",yic:10,
-   place:{name:"The Pioneer Inn",where:"Lahaina waterfront, Maui",status:"gone",photo:"photos/pioneer-inn.jpg",credit:"Historic American Buildings Survey, Library of Congress",
-     story:"The Pioneer Inn opened in 1901 on the Lahaina waterfront — the oldest hotel on Maui and the longest continuously operating hotel in Hawaii. When Jack found this dime out front in March 1985, it had already stood for 84 years. On August 8, 2023, the Lahaina wildfire burned it to the ground. The coin outlasted the building."}},
-  {id:"coin-007",img:"photos/cutouts/coin-007.png",den:"penny",mint:1987,found:"1991-11-02",raw:"11/2/91",dow:"Saturday",finders:["Jack"],
-   says:"J. found — 11/2/91 · UT / Mem. St game · outside stadium",loc:"Neyland Stadium, Knoxville",city:"Knoxville",state:"TN",lat:35.9557,lng:-83.9244,conf:"confirmed",yic:4,
-   event:{name:"Tennessee vs Memphis State",score:"Tennessee 52, Memphis State 24",detail:"Tennessee routed Memphis State at Neyland; 96,664 in attendance."},
-   place:{name:"Neyland Stadium",where:"On the Tennessee River, Knoxville",status:"standing",
-     story:"Neyland Stadium has anchored the Knoxville riverbank since 1921. Jack found coins here more than once — this one, and the 1986 Mississippi State game with Adam."}},
-  {id:"coin-008",img:"photos/cutouts/coin-008.png",den:"penny",mint:1984,found:"1985-10-15",raw:"10/15/85",dow:"Tuesday",finders:["Jack"],
-   says:"10/15/85 · Jack · found lot · Super X · Clinton Highway",loc:"Super X · Clinton Hwy, Knoxville",city:"Knoxville",state:"TN",lat:36.0405,lng:-83.9840,conf:"inferred",yic:1,
-   place:{name:"Super X (SupeRx)",where:"Clinton Highway, North Knoxville",status:"gone",
-     story:"Super X — properly SupeRx — was the Kroger company's drugstore chain. When Jack found this penny in its Clinton Highway parking lot in 1985, the chain was in its last years: Kroger sold it off in 1986, and the name was gone by 1994. Like the White Store down the road, it has vanished."}},
-  {id:"coin-009",img:"photos/cutouts/coin-009.png",den:"penny",mint:1985,found:"1986-05-24",raw:"5/24/86",dow:"Saturday",finders:["Jack"],
-   says:"5/24/86 · parking lot · K-Mart · Clinton Hwy",loc:"Kmart · 5094 Clinton Hwy, Knoxville",city:"Knoxville",state:"TN",lat:36.0390,lng:-83.9820,conf:"confirmed",yic:1,
-   ctx:"The Saturday of Memorial Day weekend.",
-   place:{name:"Kmart (Clinton Plaza)",where:"5094 Clinton Highway, North Knoxville",status:"gone",photo:"photos/kmart-clinton.jpg",credit:"Michael James · Knoxville, TN History & Memories",
-     story:"The Clinton Highway Kmart opened in 1973 at Clinton Plaza and ran for three decades before closing in 2003 — the everything-store for a North Knoxville family. Jack found this penny in its parking lot the Saturday of Memorial Day weekend, 1986."}},
-  {id:"coin-010",img:"photos/cutouts/coin-010.png",den:"quarter",mint:1985,found:"1988-09-20",raw:"9/20/88",dow:"Tuesday",finders:["Jack"],
-   says:"9/20/88 · Jack · found Las Vegas · casino floor",loc:"The Las Vegas Strip",city:"Las Vegas",state:"NV",lat:36.1147,lng:-115.1728,conf:"approximate",yic:3,
-   place:{name:"The Las Vegas Strip",where:"Las Vegas, Nevada",status:"standing",
-     story:"Somewhere on the Strip, on a casino floor, Jack spotted a quarter on the carpet. There's no telling which casino, so this pin sits in the middle of the Strip. September 1988 caught Las Vegas at the tail end of its old self — The Mirage would open a year later and remake the Strip for good."}},
-  {id:"coin-011",img:"photos/cutouts/coin-011.png",den:"penny",mint:1986,found:"1992-10-02",raw:"10/2/92",dow:"Friday",finders:["Chris"],
-   says:"10/2/92 · Chris · found Shoney's lot · Nashville",loc:"Shoney's, Nashville",city:"Nashville",state:"TN",lat:36.1627,lng:-86.7816,conf:"approximate",yic:6,
-   ctx:"Jack's wife",
-   place:{name:"Shoney's",where:"Nashville, Tennessee",status:"standing",
-     story:"Chris — Jack's wife — found this penny in the parking lot of a Shoney's in Nashville. Shoney's, the Southern family restaurant chain headquartered right there in Nashville, was a road-trip and Sunday-lunch fixture across the South for decades. There's no telling which of the city's Shoney's this was, so the pin sits in Nashville itself."}},
-  {id:"coin-012",img:"photos/cutouts/coin-012.png",den:"penny",mint:1969,found:"1970-09-27",raw:"9/27/70",dow:"Sunday",finders:["Jack"],
-   says:"9/27/70 · J · McDonald's lot · Broadway",loc:"McDonald's, Broadway",city:"Knoxville",state:"TN",lat:36.0045,lng:-83.9215,conf:"inferred",yic:1,
-   ctx:"In the McDonald's lot on Broadway — the oldest find in the collection."},
-  {id:"coin-013",img:"photos/cutouts/coin-013.png",den:"penny",mint:1998,found:"1999-01-29",raw:"1/29/99",dow:"Friday",finders:["Chris"],
-   says:"1/29/99 · Chris · found front McDonald's · Valdosta, GA",loc:"McDonald's, Valdosta",city:"Valdosta",state:"GA",lat:30.8327,lng:-83.2785,conf:"approximate",yic:1,
-   ctx:"Jack's wife — out front of the McDonald's."},
-  {id:"coin-014",img:"photos/cutouts/coin-014.png",den:"nickel",mint:1964,found:"1973-07-06",raw:"7/6/73",dow:"Friday",finders:["Jack"],
-   says:"7/6/73 · J · Mail Box · Paula Dr",loc:"Home — Paula Drive",city:"Knoxville",state:"TN",lat:36.0397,lng:-83.9606,conf:"confirmed",yic:9,
-   ctx:"At his own mailbox.",
-   place:{name:"Home — Paula Drive",where:"Inskip, North Knoxville",status:"standing",
-     story:"Jack's own house on Paula Drive, in the Inskip neighborhood of North Knoxville. Over the years he found coins all over his own place — at the mailbox, in the driveway, around the yard — and saved each one. Those home finds all stack onto this single pin: the spot he was rooted."}},
-  {id:"coin-015",img:"photos/cutouts/coin-015.png",den:"penny",mint:1996,found:"2000-05-31",raw:"5/31/00",dow:"Wednesday",finders:["Jack"],
-   says:"J · found Proffitt's, Bra Dept. · 5/31/00",loc:"Proffitt's, West Town Mall",city:"Knoxville",state:"TN",lat:35.9206,lng:-84.0928,conf:"inferred",yic:4,
-   ctx:"In the bra department. Yes, really.",
-   place:{name:"Proffitt's",where:"West Town Mall, Knoxville",status:"gone",
-     story:"Jack found this penny in — of all places — the bra department at Proffitt's. Proffitt's was a Knoxville institution: a department store grown from a small-town Tennessee shop into a regional chain and an anchor at West Town Mall. The Proffitt's name is gone now, folded into Belk in the mid-2000s. The bra-department detail, though, is forever."}},
-  {id:"coin-016",img:"photos/cutouts/coin-016.png",den:"penny",mint:1987,found:"1987-10-20",raw:"10/20/87",dow:"Tuesday",finders:["Chris"],
-   says:"10/20/87 · Chris found · Viet Nam Memorial · Washington, DC",loc:"Vietnam Veterans Memorial, Washington, DC",city:"Washington",state:"DC",lat:38.8911,lng:-77.0476,conf:"confirmed",yic:0,
-   place:{name:"Vietnam Veterans Memorial",where:"National Mall, Washington, D.C.",status:"standing",
-     story:"This 1987 penny — brand new that year — came home from the Vietnam Veterans Memorial in Washington, D.C. Maya Lin's black granite wall, dedicated in 1982, carries the names of more than 58,000 Americans lost in the war, and visitors have always left things along it — flowers, letters, coins pressed into the seams. Chris brought one back."}},
-  {id:"coin-017",img:"photos/cutouts/coin-017.png",den:"penny",mint:1974,coins:[{den:"penny",mint:1974},{den:"nickel",mint:1981}],found:"1985-11-04",raw:"11/4/85",dow:"Monday",finders:["Chris"],
-   says:"11/4/85 · Chris found · McDonald's · Trenton, GA",loc:"McDonald's, Trenton",city:"Trenton",state:"GA",lat:34.8723,lng:-85.5161,conf:"approximate",yic:11,
-   ctx:"Two at once — a penny and a nickel."},
-  {id:"coin-018",img:"photos/cutouts/coin-018.png",den:"dime",mint:1982,found:"1987-06-11",raw:"6/11/87",dow:"Thursday",finders:["Chris"],
-   says:"6/11/87 · Chris found · in room · Bavarian Haus Motel · Frankenmuth, MI",loc:"Bavarian Haus Motel, Frankenmuth",city:"Frankenmuth",state:"MI",lat:43.3317,lng:-83.7380,conf:"approximate",yic:5,
-   ctx:"In the room.",
-   place:{name:"Bavarian Haus Motel",where:"Frankenmuth, Michigan",status:"standing",photo:"photos/bavarian-haus.jpg",credit:"Vintage Frankenmuth postcard",
-     story:"Chris found this dime right in the room at the Bavarian Haus Motel in Frankenmuth — Michigan's 'Little Bavaria,' a whole town done up in Alpine timber and gingerbread trim for the tourists who came for chicken dinners and Christmas shops. The motel was one of many that put them up, and it still turns up on Frankenmuth postcards from the 1970s."}},
-  {id:"coin-019",img:"photos/cutouts/coin-019.png",den:"penny",mint:1996,found:"1996-08-21",raw:"8/21/96",dow:"Wednesday",finders:["Jack"],
-   says:"Jack · found 8/21/96 · parking lot of Office Depot",loc:"Office Depot · 7111 Kingston Pike, Knoxville",city:"Knoxville",state:"TN",lat:35.9176,lng:-84.0010,conf:"confirmed",yic:0,
-   ctx:"In the Office Depot parking lot."},
-];
-
 const DEN_LABEL={penny:"Penny",nickel:"Nickel",dime:"Dime",quarter:"Quarter"};
-const DEN_COLOR={penny:"#b5703a",nickel:"#9a9a93",dime:"#9a9a93",quarter:"#8f8f88"};
-const VAL={penny:1,nickel:5,dime:10,quarter:25};
-function coinList(c){return c.coins?c.coins:[{den:c.den,mint:c.mint}];}
-function denList(c){return coinList(c).map(x=>x.den);}
-function centsOf(c){return coinList(c).reduce((s,x)=>s+(VAL[x.den]||0),0);}
-function sortMint(c){return Math.min(...coinList(c).map(x=>x.mint));}
-function coinLabel(c){return coinList(c).map(x=>`${x.mint} ${DEN_LABEL[x.den]}`).join(" + ");}
-function circLabel(c){const y=+c.found.slice(0,4);return coinList(c).map(x=>{const n=y-x.mint;return n+(n===1?' yr':' yrs');}).join(' / ');}
-function markerColor(c){return DEN_COLOR[denList(c)[0]]||"#b5703a";}
+const DEN_VAL={penny:1,nickel:5,dime:10,quarter:25};
+const FIND_COLOR={Jack:"#b5703a",Chris:"#5b7a8c",Adam:"#6a7b4a"};
 const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
-function prettyDate(iso){const[y,m,d]=iso.split("-").map(Number);return `${MONTHS[m-1]} ${d}, ${y}`;}
-function tilt(i){const a=[-3,2,-1.5,2.5,-2,1.5,-2.5,1,3,-1];return a[i%a.length];}
+function placeOf(c){return PLACES[c.place]||{name:c.place,where:"",status:"standing"}}
+function coinList(c){return c.coins?c.coins:[{den:c.den,mint:c.mint}]}
+function denList(c){return coinList(c).map(x=>x.den)}
+function centsOf(c){return coinList(c).reduce((s,x)=>s+(DEN_VAL[x.den]||0),0)}
+function sortMint(c){return Math.min.apply(null,coinList(c).map(x=>x.mint))}
+function coinLabel(c){return coinList(c).map(x=>x.mint+" "+DEN_LABEL[x.den]).join(" + ")}
+function circLabel(c){const y=+c.found.slice(0,4);return coinList(c).map(x=>{const n=y-x.mint;return n+(n===1?" yr":" yrs")}).join(" / ")}
+function finderColor(c){return FIND_COLOR[c.finders[0]]||"#b5703a"}
+function prettyDate(iso){const p=iso.split("-").map(Number);return MONTHS[p[1]-1]+" "+p[2]+", "+p[0]}
+function denImg(c){return c.img}
+const byDate=(a,b)=>a.found.localeCompare(b.found);
 
-let denFilter="all", sortMode="found";
-const wall=document.getElementById("wall");
+/* ---- landing + stats ---- */
+(function(){
+  const yrsArr=COINS.map(c=>+c.found.slice(0,4));
+  const yrs=Math.max.apply(null,yrsArr)-Math.min.apply(null,yrsArr);
+  const cents=COINS.reduce((s,c)=>s+centsOf(c),0);
+  const val=cents>=100?"$"+(cents/100).toFixed(2):cents+"¢";
+  const places=new Set(COINS.map(c=>c.place)).size;
+  const states=new Set(COINS.map(c=>c.state)).size;
+  document.getElementById("bigline").textContent="Over "+yrs+" years, Jack saved "+COINS.length+" coins — "+val+" in all — at "+places+" places across "+states+" states. He wrote down every one.";
+  document.getElementById("st-coins").textContent=COINS.length;
+  document.getElementById("st-value").textContent=val;
+  document.getElementById("st-range").textContent=Math.min.apply(null,yrsArr)+"–"+Math.max.apply(null,yrsArr);
+  document.getElementById("st-years").textContent=yrs+" years";
+  document.getElementById("st-states").textContent=states;
+})();
+const landing=document.getElementById("landing");
+function enterBox(){landing.classList.add("lift");document.body.classList.remove("locked");setTimeout(function(){landing.style.display="none";if(window._map)window._map.invalidateSize()},900)}
+landing.addEventListener("click",enterBox);
 
-function visibleCoins(){
-  let arr=COINS.filter(c=>denFilter==="all"||denList(c).includes(denFilter));
-  if(sortMode==="found") arr.sort((a,b)=>a.found.localeCompare(b.found));
-  if(sortMode==="mint") arr.sort((a,b)=>sortMint(a)-sortMint(b));
-  if(sortMode==="age") arr.sort((a,b)=>b.yic-a.yic);
-  return arr;
+/* ---- modal ---- */
+const scrim=document.getElementById("scrim"),mc=document.getElementById("modalContent");
+function show(){scrim.classList.add("show")}
+function closeM(){scrim.classList.remove("show")}
+document.getElementById("closeX").onclick=closeM;
+scrim.onclick=function(e){if(e.target.id==="scrim")closeM()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeM()});
+
+function openCoin(id){
+  const c=COINS.find(x=>x.id===id);const pl=placeOf(c);
+  let event=c.event?'<div class="block event"><h4>'+c.event.name+'</h4><div class="score">'+c.event.score+'</div><p>'+c.event.detail+'</p></div>':"";
+  let placeBlock="";
+  if(pl.story||pl.photo){
+    let ph=pl.photo?'<div class="m-place-photo"><img src="'+pl.photo+'" alt="'+pl.name+'"/><small>'+(pl.credit||"")+'</small></div>':"";
+    let tag=pl.status==="gone"?'<span class="tag">No longer standing</span>':"";
+    let others=coinsAt(c.place).length>1?'<p style="margin-top:8px"><a href="#" onclick="openPlace(\''+c.place+'\');return false" style="color:var(--accent)">See all '+coinsAt(c.place).length+' coins found here →</a></p>':"";
+    placeBlock='<div class="block '+(pl.status==="gone"?"gone":"")+'">'+ph+'<h4>The place '+tag+'</h4><p style="font-weight:600;margin-bottom:2px">'+pl.name+'</p>'+(pl.story?'<p>'+pl.story+'</p>':'')+others+'</div>';
+  }
+  let family=c.family?'<div class="block family"><h4>From the family</h4><p>'+c.family+'</p></div>':"";
+  let trip=c.trip?'<span class="tag" style="background:rgba(135,79,44,.14);color:var(--accent)">'+c.trip+'</span>':"";
+  mc.innerHTML='<div class="m-photo"><img src="'+denImg(c)+'" alt="'+pl.name+'"/></div><div class="m-body">'+
+    '<p class="m-says">“'+c.say+'”</p>'+
+    '<h3 class="m-title">'+pl.name+'</h3>'+
+    '<p class="m-where">'+c.dow+', '+prettyDate(c.found)+' · found by '+c.finders.join(" &amp; ")+(c.spot?' · '+c.spot:'')+' '+trip+'</p>'+
+    '<div class="facts"><div class="fact"><span>'+(c.coins?"The coins":"The coin")+'</span><b>'+coinLabel(c)+'</b></div>'+
+    '<div class="fact"><span>Found</span><b>'+prettyDate(c.found)+'</b></div>'+
+    '<div class="fact"><span>In circulation</span><b>'+circLabel(c)+'</b></div>'+
+    '<div class="fact"><span>Where</span><b>'+(pl.where||(c.city+", "+c.state))+'</b></div></div>'+
+    event+placeBlock+family+'</div>';
+  show();
 }
-function renderWall(){
-  wall.innerHTML="";
-  visibleCoins().forEach((c,i)=>{
-    const el=document.createElement("div");
-    el.className="card";
-    el.style.transform=`rotate(${tilt(i)}deg)`;
-    el.innerHTML=`<img src="${c.img}" alt="${c.loc}" loading="lazy"/>
-      <div class="cap">${c.city}, ${c.state} · ${c.found.slice(0,4)}</div>`;
-    el.onclick=()=>openDetail(c.id);
-    wall.appendChild(el);
+function coinsAt(pk){return COINS.filter(c=>c.place===pk).sort(byDate)}
+function openPlace(pk){
+  const pl=PLACES[pk]||{name:pk,where:""};const list=coinsAt(pk);
+  let ph=pl.photo?'<div class="m-place-photo"><img src="'+pl.photo+'" alt="'+pl.name+'"/><small>'+(pl.credit||"")+'</small></div>':"";
+  let tag=pl.status==="gone"?'<span class="tag">No longer standing</span>':"";
+  let rows=list.map(function(c){return '<div class="prow" onclick="openCoin(\''+c.id+'\')"><img src="'+denImg(c)+'"/><div class="pd"><b>'+prettyDate(c.found)+'</b><span>'+coinLabel(c)+' · found by '+c.finders.join(" & ")+(c.spot?' · '+c.spot:'')+'</span></div></div>'}).join("");
+  mc.innerHTML='<div class="m-body" style="padding-top:30px">'+ph+'<h3 class="m-title">'+pl.name+' '+tag+'</h3><p class="m-where">'+(pl.where||"")+' · '+list.length+(list.length===1?' coin':' coins')+'</p>'+
+    (pl.story?'<p style="line-height:1.6">'+pl.story+'</p>':'')+'<div class="plist">'+rows+'</div></div>';
+  show();
+}
+
+/* ---- TIMELINE ---- */
+(function(){
+  const scroll=document.getElementById("tlScroll"),track=document.getElementById("tlTrack");
+  const sorted=COINS.slice().sort(byDate);
+  const toMs=function(iso){return new Date(iso+"T00:00:00").getTime()};
+  const minMs=toMs(sorted[0].found), maxMs=toMs(sorted[sorted.length-1].found);
+  const y0=new Date(minMs).getFullYear(), y1=new Date(maxMs).getFullYear();
+  const PXY=300, pad=130;
+  const span=(y1+1)-y0;
+  const W=span*PXY+pad*2;
+  track.style.width=W+"px";
+  const xOf=function(ms){const d=new Date(ms);const yr=d.getFullYear();const start=new Date(yr,0,1).getTime();const end=new Date(yr+1,0,1).getTime();return pad+((yr-y0)+(ms-start)/(end-start))*PXY};
+  // year ticks
+  for(let y=y0;y<=y1+1;y++){const el=document.createElement("div");el.className="tl-yr";el.style.left=(pad+(y-y0)*PXY)+"px";el.innerHTML='<i></i><span>'+y+'</span>';track.appendChild(el)}
+  // lanes
+  const axisTop=560-42, laneH=150, topPad=18, lanes=[];
+  sorted.forEach(function(c){
+    const x=xOf(toMs(c.found));
+    let lane=0; for(;lane<lanes.length;lane++){if(x-lanes[lane]>168)break}
+    if(lane===lanes.length)lanes.push(0); lanes[lane]=x;
+    const top=topPad+lane*112;
+    const el=document.createElement("div");el.className="tl-coin";el.style.left=x+"px";el.style.top=top+"px";
+    const stemH=axisTop-top-118;
+    const yr=c.found.slice(0,4);
+    el.innerHTML='<img class="cardimg" src="'+denImg(c)+'" loading="lazy" alt=""/>'+
+      '<div class="meta"><b><span class="dot-fnd" style="background:'+finderColor(c)+'"></span>'+yr+'</b>'+placeOf(c).name+(c.trip?'<br><span class="tag-trip">'+c.trip+'</span>':'')+'</div>'+
+      '<div class="stem" style="top:112px;height:'+Math.max(0,stemH)+'px"></div>';
+    el.onclick=function(){openCoin(c.id)};
+    el.dataset.x=x;
+    track.appendChild(el);
+  });
+  // reveal
+  const io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");e.target.style.transform="translateX(-50%)"}})},{root:scroll,threshold:0.05});
+  document.querySelectorAll(".tl-coin").forEach(function(el){el.style.transform="translateX(-50%) translateY(14px)";io.observe(el)});
+  // ambient year
+  const ghost=document.getElementById("ghostYear");
+  function frac(px){return (px-pad)/(W-pad*2)}
+  function update(){const center=scroll.scrollLeft+scroll.clientWidth/2;const ms=minMs+(maxMs-minMs)*Math.max(0,Math.min(1,(center-pad)/(W-pad*2)));ghost.textContent=new Date(ms).getFullYear()}
+  scroll.addEventListener("scroll",update); setTimeout(update,60);
+  // play
+  let playing=false,raf=null;
+  const btn=document.getElementById("playBtn"),icon=document.getElementById("playIcon"),lbl=document.getElementById("playLbl");
+  function stop(){playing=false;icon.innerHTML="&#9658;";lbl.textContent="Play";if(raf)cancelAnimationFrame(raf)}
+  function play(){
+    playing=true;icon.innerHTML="&#10073;&#10073;";lbl.textContent="Pause";
+    const max=scroll.scrollWidth-scroll.clientWidth;
+    if(scroll.scrollLeft>=max-4)scroll.scrollLeft=0;
+    const speed=max/42000; let last=null;
+    function step(t){if(!playing)return;if(last===null)last=t;const dt=t-last;last=t;scroll.scrollLeft+=dt*speed;update();if(scroll.scrollLeft>=max-2){stop();return}raf=requestAnimationFrame(step)}
+    raf=requestAnimationFrame(step);
+  }
+  btn.onclick=function(){playing?stop():play()};
+  let userScrollT;scroll.addEventListener("wheel",function(){if(playing)stop()});
+  scroll.addEventListener("touchstart",function(){if(playing)stop()});
+})();
+
+/* ---- MAP ---- */
+(function(){
+  const map=L.map("map",{scrollWheelZoom:false}).setView([34.5,-90],4);window._map=map;
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap"}).addTo(map);
+  const cluster=L.markerClusterGroup({maxClusterRadius:46,showCoverageOnHover:false,spiderfyOnMaxZoom:true,
+    iconCreateFunction:function(cl){let n=0;cl.getAllChildMarkers().forEach(function(m){n+=m.options.coinCount||1});return L.divIcon({html:'<div class="cl-dot"><span>'+n+'</span></div>',className:"cl-wrap",iconSize:[44,44]})}});
+  const seen={},bounds=[];
+  COINS.forEach(function(c){if(seen[c.place])return;seen[c.place]=1;const pl=PLACES[c.place];if(!pl||pl.lat==null)return;
+    const n=coinsAt(c.place).length;const col=pl.status==="gone"?"#8a6a4a":"#b5703a";
+    const icon=L.divIcon({className:"coin-pin",html:'<span class="pin-dot" style="background:'+col+'">'+(n>1?'<span class="pc">'+n+'</span>':'')+'</span>',iconSize:[18,18]});
+    const m=L.marker([pl.lat,pl.lng],{icon:icon,coinCount:n});
+    m.bindPopup('<div class="pop"><b>'+pl.name+'</b><br><small>'+(pl.where||"")+' · '+n+(n===1?' coin':' coins')+'</small></div>');
+    m.on("click",function(){openPlace(c.place)});
+    cluster.addLayer(m);bounds.push([pl.lat,pl.lng]);
+  });
+  map.addLayer(cluster);map.fitBounds(bounds,{padding:[50,50]});
+})();
+
+/* ---- GRID (by place) ---- */
+const grid=document.getElementById("grid");
+let denFilter="all";
+function places(){const ks=[];const seen={};COINS.slice().sort(byDate).forEach(function(c){if(!seen[c.place]){seen[c.place]=1;ks.push(c.place)}});return ks}
+function renderGrid(){
+  grid.innerHTML="";
+  places().forEach(function(pk){
+    const list=coinsAt(pk);
+    if(denFilter!=="all" && !list.some(c=>denList(c).includes(denFilter)))return;
+    const pl=PLACES[pk]||{name:pk,where:""};
+    const n=list.length;
+    const el=document.createElement("div");el.className="pcard"+(pl.status==="gone"?" gone":"");
+    let stack='<div class="stack">';
+    if(n>1){stack+='<img class="under" style="transform:rotate(-5deg) translate(-7px,5px)" src="'+denImg(list[1])+'"/>';if(n>2)stack+='<img class="under" style="transform:rotate(4deg) translate(6px,3px)" src="'+denImg(list[2])+'"/>';}
+    stack+='<img style="position:relative;transform:rotate(-1.5deg)" src="'+denImg(list[0])+'"/>';
+    if(n>1)stack+='<span class="count">'+n+'</span>';
+    stack+='</div>';
+    el.innerHTML=stack+'<div class="pcap"><b>'+pl.name+'</b><span>'+(pl.where||(list[0].city+", "+list[0].state))+(pl.status==="gone"?' · <em>gone</em>':'')+'</span></div>';
+    el.onclick=function(){openPlace(pk)};
+    grid.appendChild(el);
   });
 }
-
-function openDetail(id){
-  const c=COINS.find(x=>x.id===id);
-  const mc=document.getElementById("modalContent");
-  let placePhoto="";
-  if(c.place&&c.place.photo){
-    placePhoto=`<div class="m-place-photo"><img src="${c.place.photo}" alt="${c.place.name}"/><small>${c.place.credit||""}</small></div>`;
-  }
-  let event="";
-  if(c.event){event=`<div class="block event"><h4>${c.event.name}</h4><div class="score">${c.event.score}</div><p>${c.event.detail}</p></div>`;}
-  let place="";
-  if(c.place){
-    const tag=c.place.status==="gone"?'<span class="tag">No longer standing</span>':"";
-    place=`<div class="block ${c.place.status==='gone'?'gone':''}">${placePhoto}<h4>The place ${tag}</h4>
-      <p style="font-weight:600;margin-bottom:2px">${c.place.name}</p><p>${c.place.story}</p></div>`;
-  }
-  let family="";
-  if(c.family){family=`<div class="block family"><h4>From the family</h4><p>${c.family}</p></div>`;}
-  const finders=c.finders.join(" &amp; ");
-  mc.innerHTML=`
-    <div class="m-photo"><img src="${c.img}" alt="${c.loc}"/></div>
-    <div class="m-body">
-      <p class="m-card-says">“${c.says}”</p>
-      <h3 class="m-title">${c.loc.split(' · ')[0].split(',')[0]}</h3>
-      <p class="m-where">${c.dow}, ${prettyDate(c.found)} · found by ${finders}${c.ctx?` · ${c.ctx}`:""}</p>
-      <div class="facts">
-        <div class="fact"><span>${c.coins?'The coins':'The coin'}</span><b>${coinLabel(c)}</b></div>
-        <div class="fact"><span>Found</span><b>${prettyDate(c.found)}</b></div>
-        <div class="fact"><span>In circulation</span><b>${circLabel(c)}</b></div>
-        <div class="fact"><span>Where</span><b>${c.city}, ${c.state}</b></div>
-      </div>
-      ${event}${place}${family}
-    </div>`;
-  document.getElementById("scrim").classList.add("show");
-}
-function closeDetail(){document.getElementById("scrim").classList.remove("show");}
-document.getElementById("closeX").onclick=closeDetail;
-document.getElementById("scrim").onclick=e=>{if(e.target.id==="scrim")closeDetail();};
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDetail();});
-
-document.querySelectorAll('[data-den]').forEach(b=>b.onclick=()=>{
-  denFilter=b.dataset.den; document.querySelectorAll('[data-den]').forEach(x=>x.classList.toggle('on',x===b)); renderWall();
-});
-document.querySelectorAll('[data-sort]').forEach(b=>b.onclick=()=>{
-  sortMode=b.dataset.sort; document.querySelectorAll('[data-sort]').forEach(x=>x.classList.toggle('on',x===b)); renderWall();
-});
-
-renderWall();
-document.getElementById("gone-note").textContent = COINS.filter(c=>c.place&&c.place.status==="gone").length + " of these places no longer exist.";
-
-// landing sentence (auto-computed) + lid lift
-(function(){
-  const yrs=Math.max(...COINS.map(c=>+c.found.slice(0,4)))-Math.min(...COINS.map(c=>+c.found.slice(0,4)));
-  const cents=COINS.reduce((s,c)=>s+centsOf(c),0);
-  const val=cents>=100?'$'+(cents/100).toFixed(2):cents+'¢';
-  const places=new Set(COINS.map(c=>c.loc.split(' · ')[0].split(',')[0])).size;
-  const states=new Set(COINS.map(c=>c.state)).size;
-  document.getElementById('bigline').textContent=
-    `Over ${yrs} years, Jack found ${COINS.length} coins — ${val} in all — at ${places} places across ${states} states. He wrote down every one.`;
-  const yrsArr=COINS.map(c=>+c.found.slice(0,4));
-  document.getElementById('st-coins').textContent=COINS.length;
-  document.getElementById('st-value').textContent=val;
-  document.getElementById('st-range').textContent=Math.min(...yrsArr)+'–'+Math.max(...yrsArr);
-  document.getElementById('st-years').textContent=yrs+' years';
-  document.getElementById('st-states').textContent=states;
-})();
-const landing=document.getElementById('landing');
-function enterBox(){landing.classList.add('lift'); document.body.classList.remove('locked'); setTimeout(()=>{landing.style.display='none'; map.invalidateSize();},900);}
-landing.addEventListener('click',enterBox);
-
-// map with clustering (counts per area)
-const map=L.map('map',{scrollWheelZoom:false}).setView([34.5,-95],4);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
-const cluster=L.markerClusterGroup({
-  maxClusterRadius:48, showCoverageOnHover:false, spiderfyOnMaxZoom:true,
-  iconCreateFunction:cl=>L.divIcon({html:`<div class="cl-dot"><span>${cl.getChildCount()}</span></div>`,className:'cl-wrap',iconSize:[44,44]})
-});
-COINS.forEach(c=>{
-  const icon=L.divIcon({className:'coin-pin',html:`<span class="pin-dot" style="background:${markerColor(c)}"></span>`,iconSize:[18,18]});
-  const m=L.marker([c.lat,c.lng],{icon});
-  m.bindPopup(`<div class="pop"><b>${c.loc.split(' · ')[0].split(',')[0]}</b><br><small>${prettyDate(c.found)} · ${c.mint} ${DEN_LABEL[c.den].toLowerCase()}</small></div>`);
-  m.on('click',()=>openDetail(c.id));
-  cluster.addLayer(m);
-});
-map.addLayer(cluster);
-map.fitBounds(cluster.getBounds(),{padding:[50,50]});
+document.querySelectorAll("[data-den]").forEach(function(b){b.onclick=function(){denFilter=b.dataset.den;document.querySelectorAll("[data-den]").forEach(function(x){x.classList.toggle("on",x===b)});renderGrid()}});
+renderGrid();
+document.getElementById("gone-note").textContent=places().filter(function(pk){return (PLACES[pk]||{}).status==="gone"}).length+" of these places no longer exist.";
 </script>
 </body>
 </html>
