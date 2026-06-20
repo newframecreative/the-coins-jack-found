@@ -16,7 +16,9 @@
       "dateFound": "1999-11-22",
       "dateFoundRaw": "11/22/99",
       "dayOfWeek": "Monday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "J found outside Walgreen's",
       "locationRaw": "outside Walgreen's",
       "locationResolved": "Walgreens, 2400 N Broadway St, Knoxville, TN 37917",
@@ -38,7 +40,9 @@
       "dateFound": "1983-10-15",
       "dateFoundRaw": "10/15/83",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "Legion Field J 10/15/83 Birmingham T-41 - A-34",
       "locationRaw": "Legion Field, Birmingham",
       "locationResolved": "Legion Field, Birmingham, AL",
@@ -64,7 +68,10 @@
       "dateFound": "1986-09-13",
       "dateFoundRaw": "9/13/86",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack", "Adam"],
+      "finders": [
+        "Jack",
+        "Adam"
+      ],
       "cardText": "Jack - found UT Stadium 9/13/86 - UT/Miss St football game. Jack & Adam",
       "locationRaw": "UT Stadium (Neyland Stadium)",
       "locationResolved": "Neyland Stadium, Knoxville, TN",
@@ -90,7 +97,9 @@
       "dateFound": "1972-10-27",
       "dateFoundRaw": "10/27/72",
       "dayOfWeek": "Friday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "10/27/72 J White Store Clinton Highway",
       "locationRaw": "White Store, Clinton Highway",
       "locationResolved": "White Stores, 5400 Clinton Hwy, Knoxville, TN",
@@ -112,7 +121,9 @@
       "dateFound": "1998-01-23",
       "dateFoundRaw": "1/23/98",
       "dayOfWeek": "Friday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "J - found Nixon Deli 1/23/98",
       "locationRaw": "Nixon's Deli",
       "locationResolved": "Nixon's Deli North, 508 Merchants Dr, Knoxville, TN 37912",
@@ -134,7 +145,9 @@
       "dateFound": "1985-03-10",
       "dateFoundRaw": "March 10, 1985",
       "dayOfWeek": "Sunday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "March 10, 1985 - Lahaina, Maui - Pioneer Inn. J",
       "locationRaw": "Pioneer Inn, Lahaina, Maui",
       "locationResolved": "Pioneer Inn, 658 Wharf St, Lahaina, Maui, HI 96761",
@@ -169,7 +182,9 @@
       "dateFound": "1991-11-02",
       "dateFoundRaw": "11/2/91",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "J. found - 11/2/91 UT/Mem. St game outside stadium",
       "locationRaw": "outside Neyland Stadium",
       "locationResolved": "Neyland Stadium, Knoxville, TN",
@@ -178,7 +193,9 @@
       "lat": null,
       "lng": null,
       "locationConfidence": "confirmed",
-      "sharesPlaceWith": ["coin-003"],
+      "sharesPlaceWith": [
+        "coin-003"
+      ],
       "place": {
         "name": "Neyland Stadium",
         "where": "Banks of the Tennessee River, University of Tennessee, Knoxville",
@@ -187,7 +204,9 @@
         "photo": null,
         "photoCredit": null,
         "photoNeeded": true,
-        "sources": ["https://en.wikipedia.org/wiki/Neyland_Stadium"]
+        "sources": [
+          "https://en.wikipedia.org/wiki/Neyland_Stadium"
+        ]
       },
       "event": {
         "name": "Tennessee vs Memphis State football",
@@ -205,7 +224,9 @@
       "dateFound": "1985-10-15",
       "dateFoundRaw": "10/15/85",
       "dayOfWeek": "Tuesday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "10/15/85 Jack found lot Super X Clinton Highway",
       "locationRaw": "Super X parking lot, Clinton Highway",
       "locationResolved": "SupeRx drugstore, Clinton Highway, Knoxville, TN (exact address not pinned)",
@@ -240,7 +261,9 @@
       "dateFound": "1986-05-24",
       "dateFoundRaw": "5/24/86",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "5/24/86 parking lot K-Mart - Clinton Hwy",
       "cardNote": "No finder initial written on this card; attributed to Jack (the collector) by default.",
       "locationRaw": "K-Mart parking lot, Clinton Highway",
@@ -259,7 +282,9 @@
         "photo": null,
         "photoCredit": null,
         "photoNeeded": true,
-        "sources": ["https://bluepages.miraheze.org/wiki/Kmart_3065"]
+        "sources": [
+          "https://bluepages.miraheze.org/wiki/Kmart_3065"
+        ]
       },
       "event": null,
       "familyMemory": null,
@@ -273,7 +298,9 @@
       "dateFound": "1988-09-20",
       "dateFoundRaw": "9/20/88",
       "dayOfWeek": "Tuesday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "9/20/88 Jack found Las Vegas casino floor",
       "locationRaw": "casino floor, Las Vegas",
       "locationResolved": "Las Vegas Strip (specific casino unknown)",
@@ -305,7 +332,9 @@
       "dateFound": "1992-10-02",
       "dateFoundRaw": "10/2/92",
       "dayOfWeek": "Friday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "10/2/92 Chris found Shoney's lot Nashville",
       "locationRaw": "Shoney's parking lot, Nashville",
       "locationResolved": "Shoney's, Nashville, TN (specific location unknown)",
@@ -337,7 +366,9 @@
       "dateFound": "1970-09-27",
       "dateFoundRaw": "9/27/70",
       "dayOfWeek": "Sunday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "9/27/70 J McDonald's lot Broadway",
       "locationRaw": "McDonald's parking lot, Broadway",
       "locationResolved": "McDonald's, Broadway, Knoxville, TN (specific location unknown)",
@@ -350,8 +381,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 1,
-      "pending": "queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 1
     },
     {
       "id": "coin-013",
@@ -361,7 +391,9 @@
       "dateFound": "1999-01-29",
       "dateFoundRaw": "1/29/99",
       "dayOfWeek": "Friday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "1/29/99 Chris found front McDonald's Valdosta, GA",
       "locationRaw": "front of McDonald's, Valdosta, GA",
       "locationResolved": "McDonald's, Valdosta, GA (pin on Valdosta per Greg)",
@@ -374,8 +406,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 1,
-      "pending": "queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 1
     },
     {
       "id": "coin-014",
@@ -385,7 +416,9 @@
       "dateFound": "1973-07-06",
       "dateFoundRaw": "7/6/73",
       "dayOfWeek": "Friday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "7/6/73 J Mail Box Paula Dr",
       "locationRaw": "mailbox, Paula Dr",
       "locationResolved": "Jack's home — the mailbox, Paula Drive, Fountain City, Knoxville, TN",
@@ -400,8 +433,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 9,
-      "pending": "queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 9
     },
     {
       "id": "coin-015",
@@ -411,7 +443,9 @@
       "dateFound": "2000-05-31",
       "dateFoundRaw": "5/31/00",
       "dayOfWeek": "Wednesday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "J found Proffitt's, Bra Dept. 5/31/00",
       "locationRaw": "Proffitt's, Bra Dept.",
       "locationResolved": "Proffitt's (Bra Department), West Town Mall, Knoxville, TN",
@@ -434,8 +468,7 @@
       },
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 4,
-      "pending": "queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 4
     },
     {
       "id": "coin-016",
@@ -445,7 +478,9 @@
       "dateFound": "1987-10-20",
       "dateFoundRaw": "10/20/87",
       "dayOfWeek": "Tuesday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "10/20/87 Chris found Viet Nam Memorial Washington, DC",
       "locationRaw": "Vietnam Memorial, Washington, DC",
       "locationResolved": "Vietnam Veterans Memorial, National Mall, Washington, DC",
@@ -467,8 +502,7 @@
       },
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 0,
-      "pending": "queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 0
     },
     {
       "id": "coin-017",
@@ -476,14 +510,22 @@
       "denomination": "penny + nickel",
       "multiCoin": true,
       "coins": [
-        {"denomination": "penny", "mintYear": 1974},
-        {"denomination": "nickel", "mintYear": 1981}
+        {
+          "denomination": "penny",
+          "mintYear": 1974
+        },
+        {
+          "denomination": "nickel",
+          "mintYear": 1981
+        }
       ],
       "mintYear": null,
       "dateFound": "1985-11-04",
       "dateFoundRaw": "11/4/85",
       "dayOfWeek": "Monday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "11/4/85 Chris found McDonald's Trenton, GA",
       "locationRaw": "McDonald's, Trenton, GA",
       "locationResolved": "McDonald's, Trenton, GA",
@@ -496,8 +538,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": null,
-      "pending": "queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": null
     },
     {
       "id": "coin-018",
@@ -507,14 +548,16 @@
       "dateFound": "1987-06-11",
       "dateFoundRaw": "6/11/87",
       "dayOfWeek": "Thursday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "6/11/87 Chris found in room Bavarian Haus Motel Frankenmuth, MI",
       "locationRaw": "Bavarian Haus Motel (in room), Frankenmuth, MI",
       "locationResolved": "Bavarian Haus Motel, Frankenmuth, MI",
       "city": "Frankenmuth",
       "state": "MI",
       "lat": 43.3317,
-      "lng": -83.7380,
+      "lng": -83.738,
       "locationConfidence": "approximate",
       "microSpot": "in the room",
       "locationNote": "Found by Chris IN THE ROOM at the Bavarian Haus Motel, Frankenmuth, MI ('Little Bavaria'). NEW STATE = Michigan. A real, distinct motel (NOT the big Bavarian Inn Lodge, which opened 1986); appears on vintage 1970s Frankenmuth postcards. Place photo TBD — vintage postcard sources noted.",
@@ -526,12 +569,14 @@
         "photo": null,
         "photoCredit": null,
         "photoNeeded": true,
-        "sources": ["https://www.ebay.com/itm/197705582546", "https://www.ebay.co.uk/itm/126266843500"]
+        "sources": [
+          "https://www.ebay.com/itm/197705582546",
+          "https://www.ebay.co.uk/itm/126266843500"
+        ]
       },
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 5,
-      "pending": "queued 2026-06-20 — needs rembg cutout + add to index.html on next batch; place photo TBD"
+      "yearsInCirculation": 5
     },
     {
       "id": "coin-019",
@@ -541,21 +586,22 @@
       "dateFound": "1996-08-21",
       "dateFoundRaw": "8/21/96",
       "dayOfWeek": "Wednesday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "Jack found 8/21/96 parking lot of Office Depot",
       "locationRaw": "parking lot of Office Depot",
       "locationResolved": "Office Depot, 7111 Kingston Pike, Knoxville, TN 37919",
       "city": "Knoxville",
       "state": "TN",
       "lat": 35.9176,
-      "lng": -84.0010,
+      "lng": -84.001,
       "locationConfidence": "confirmed",
       "locationNote": "Exact address given: Office Depot, 7111 Kingston Pike, Knoxville TN 37919 (West Knoxville / Bearden). Found in the parking lot. Brand-new 1996 penny found in 1996 (0 yrs circulating).",
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 0,
-      "pending": "queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 0
     },
     {
       "id": "coin-020",
@@ -565,7 +611,9 @@
       "dateFound": "1996-05-04",
       "dateFoundRaw": "5/4/96",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "5/4/96 Jack found Coke machine Best Western Charlotte, NC",
       "locationRaw": "Coke machine, Best Western, Charlotte, NC",
       "locationResolved": "Best Western (Coke machine), Charlotte, NC",
@@ -579,8 +627,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 2,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 2
     },
     {
       "id": "coin-021",
@@ -590,7 +637,9 @@
       "dateFound": "2000-12-10",
       "dateFoundRaw": "12/10/00",
       "dayOfWeek": "Sunday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "12/10/00 Chris found in couch front room",
       "locationRaw": "in the couch, front room (home)",
       "locationResolved": "Jack's home — in the couch, front room, Paula Drive, Fountain City, Knoxville, TN",
@@ -605,8 +654,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 20,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 20
     },
     {
       "id": "coin-022",
@@ -616,14 +664,16 @@
       "dateFound": "1996-12-06",
       "dateFoundRaw": "12/6/96",
       "dayOfWeek": "Friday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "12/6/96 J found parking lot K-Mart Clinton Hwy",
       "locationRaw": "K-Mart parking lot, Clinton Hwy",
       "locationResolved": "Kmart #3065, Clinton Plaza, 5094 Clinton Hwy, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0390,
-      "lng": -83.9820,
+      "lat": 36.039,
+      "lng": -83.982,
       "locationConfidence": "confirmed",
       "placeKey": "kmart-clinton",
       "microSpot": "the parking lot",
@@ -631,8 +681,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 17,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 17
     },
     {
       "id": "coin-023",
@@ -642,14 +691,16 @@
       "dateFound": "2003-01-31",
       "dateFoundRaw": "1/31/03",
       "dayOfWeek": "Friday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "1/31/03 C found at E. Towne Mall",
       "locationRaw": "East Towne Mall",
       "locationResolved": "East Towne Mall (Knoxville Center), 3001 Knoxville Center Drive, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
       "lat": 36.0274,
-      "lng": -83.8520,
+      "lng": -83.852,
       "locationConfidence": "confirmed",
       "placeKey": "east-towne-mall",
       "locationNote": "Signed 'C' = CHRIS (card-initial convention: J=Jack, C=Chris). East Towne Mall, East Knoxville (3001 Knoxville Center Drive, by I-640). Opened 1984; officially 'Knoxville Center' by 2003 but locals kept saying East Towne. CLOSED Jan 31, 2020 — exactly 17 yrs to the day after this find — demolished 2021 = GONE. NEWEST found-date so far (2003) -> range now 1970–2003.",
@@ -661,12 +712,13 @@
         "photo": null,
         "photoCredit": null,
         "photoNeeded": true,
-        "sources": ["https://en.wikipedia.org/wiki/Knoxville_Center_Mall"]
+        "sources": [
+          "https://en.wikipedia.org/wiki/Knoxville_Center_Mall"
+        ]
       },
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 5,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 5
     },
     {
       "id": "coin-024",
@@ -676,14 +728,16 @@
       "dateFound": "1996-07-31",
       "dateFoundRaw": "7/31/96",
       "dayOfWeek": "Wednesday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "7/31/96 Jack found at slot machine in Horseshoe Casino Tunica",
       "locationRaw": "slot machine, Horseshoe Casino, Tunica",
       "locationResolved": "Horseshoe Casino, Tunica, MS",
       "city": "Tunica",
       "state": "MS",
-      "lat": 34.7990,
-      "lng": -90.3530,
+      "lat": 34.799,
+      "lng": -90.353,
       "locationConfidence": "approximate",
       "placeKey": "horseshoe-tunica",
       "microSpot": "at a slot machine",
@@ -700,8 +754,7 @@
       },
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 5,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 5
     },
     {
       "id": "coin-025",
@@ -711,7 +764,9 @@
       "dateFound": "1976-03-13",
       "dateFoundRaw": "3/13/76",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "3/13/76 J Safe Deposit Vault B of K (Bank of Knoxville) Merchant Rd",
       "locationRaw": "safe deposit vault, Bank of Knoxville, Merchant Rd",
       "locationResolved": "Bank of Knoxville, Merchants Drive, Knoxville, TN",
@@ -726,8 +781,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 8,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 8
     },
     {
       "id": "coin-026",
@@ -737,14 +791,16 @@
       "dateFound": "1997-10-24",
       "dateFoundRaw": "10/24/97",
       "dayOfWeek": "Friday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "10/24/97 C found at Smithsonian History",
       "locationRaw": "Smithsonian (Museum of History)",
       "locationResolved": "Smithsonian National Museum of American History, Washington, DC",
       "city": "Washington",
       "state": "DC",
       "lat": 38.8913,
-      "lng": -77.0300,
+      "lng": -77.03,
       "locationConfidence": "confirmed",
       "placeKey": "smithsonian-amer-history",
       "locationNote": "Signed 'C' = Chris. Smithsonian National Museum of American History, National Mall, DC. Second DC find — Chris found both (also the Vietnam Memorial, coin-016). Penny 1987 found 1997 = 10 yrs.",
@@ -760,8 +816,7 @@
       },
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 10,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 10
     },
     {
       "id": "coin-027",
@@ -771,7 +826,9 @@
       "dateFound": "1996-02-23",
       "dateFoundRaw": "2/23/96",
       "dayOfWeek": "Friday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "J found 2/23/96 Best Western Jellico",
       "locationRaw": "Best Western, Jellico",
       "locationResolved": "Best Western, Jellico, TN",
@@ -785,8 +842,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 22,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 22
     },
     {
       "id": "coin-028",
@@ -796,7 +852,9 @@
       "dateFound": "1987-10-17",
       "dateFoundRaw": "10/17/87",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "10/17/87 Jack found Fredersburg, VA Hampton Motel lot",
       "cardNote": "Card spells it 'Fredersburg' — Jack's typo for Fredericksburg; display the correct spelling.",
       "locationRaw": "Hampton Motel lot, Fredericksburg ('Fredersburg'), VA",
@@ -812,8 +870,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 6,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 6
     },
     {
       "id": "coin-029",
@@ -823,14 +880,16 @@
       "dateFound": "2001-09-17",
       "dateFoundRaw": "9/17/01",
       "dayOfWeek": "Monday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "J found Office Depot lot 9/17/01",
       "locationRaw": "Office Depot lot",
       "locationResolved": "Office Depot, 7111 Kingston Pike, Knoxville, TN 37919",
       "city": "Knoxville",
       "state": "TN",
       "lat": 35.9176,
-      "lng": -84.0010,
+      "lng": -84.001,
       "locationConfidence": "confirmed",
       "placeKey": "office-depot-kingston",
       "microSpot": "the parking lot",
@@ -838,8 +897,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 1,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 1
     },
     {
       "id": "coin-030",
@@ -849,14 +907,16 @@
       "dateFound": "1997-03-21",
       "dateFoundRaw": "3/21/97",
       "dayOfWeek": "Friday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "3/21/97 J found front K-Mart (Broadway)",
       "locationRaw": "front of K-Mart (Broadway)",
       "locationResolved": "Kmart, 4434 N Broadway (Northgate Plaza), Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0270,
-      "lng": -83.9290,
+      "lat": 36.027,
+      "lng": -83.929,
       "locationConfidence": "confirmed",
       "placeKey": "kmart-broadway",
       "microSpot": "out front",
@@ -869,12 +929,13 @@
         "photo": null,
         "photoCredit": null,
         "photoNeeded": true,
-        "sources": ["https://jamieinwanderland.wordpress.com/2016/08/03/kmarts-final-days-on-broadway/"]
+        "sources": [
+          "https://jamieinwanderland.wordpress.com/2016/08/03/kmarts-final-days-on-broadway/"
+        ]
       },
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 4,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 4
     },
     {
       "id": "coin-031",
@@ -884,14 +945,16 @@
       "dateFound": "2000-02-26",
       "dateFoundRaw": "2/26/00",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "J found car wash 2/26/00 Cedar Lane",
       "locationRaw": "car wash, Cedar Lane",
       "locationResolved": "Car wash, Cedar Lane (near the railroad tracks / Merchants), Fountain City, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0290,
-      "lng": -83.9450,
+      "lat": 36.029,
+      "lng": -83.945,
       "locationConfidence": "inferred",
       "placeKey": "car-wash-cedar-lane",
       "microSpot": "at the car wash",
@@ -899,8 +962,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 4,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 4
     },
     {
       "id": "coin-032",
@@ -910,14 +972,16 @@
       "dateFound": "1996-05-04",
       "dateFoundRaw": "5/4/96",
       "dayOfWeek": "Saturday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "5/4/96 Chris found at rest stop I-85 South Carolina",
       "locationRaw": "rest stop, I-85, South Carolina",
       "locationResolved": "I-85 rest stop, South Carolina",
       "city": "I-85",
       "state": "SC",
-      "lat": 34.5100,
-      "lng": -83.1000,
+      "lat": 34.51,
+      "lng": -83.1,
       "locationConfidence": "approximate",
       "placeKey": "i85-sc-rest-stop",
       "microSpot": "a rest stop",
@@ -925,8 +989,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 3,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 3
     },
     {
       "id": "coin-033",
@@ -934,14 +997,22 @@
       "denomination": "penny + penny",
       "multiCoin": true,
       "coins": [
-        {"denomination": "penny", "mintYear": 1974},
-        {"denomination": "penny", "mintYear": 1976}
+        {
+          "denomination": "penny",
+          "mintYear": 1974
+        },
+        {
+          "denomination": "penny",
+          "mintYear": 1976
+        }
       ],
       "mintYear": null,
       "dateFound": "1992-09-30",
       "dateFoundRaw": "9/30/92",
       "dayOfWeek": "Wednesday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "9/30/92 Jack found Woodlands, Texas",
       "locationRaw": "Woodlands, Texas",
       "locationResolved": "The Woodlands, TX",
@@ -955,8 +1026,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 18,
-      "pending": "NEW (post-batch-1) queued 2026-06-20 — needs rembg cutout + add to index.html on next batch"
+      "yearsInCirculation": 18
     },
     {
       "id": "coin-034",
@@ -966,7 +1036,9 @@
       "dateFound": "1984-02-14",
       "dateFoundRaw": "2/14/84",
       "dayOfWeek": "Tuesday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "Found 2/14/84 J yard 5608 Paula",
       "say": "Found 2/14/84 · J · yard · 5608 Paula",
       "locationRaw": "yard, 5608 Paula",
@@ -983,8 +1055,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 13,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey home) on next publish"
+      "yearsInCirculation": 13
     },
     {
       "id": "coin-035",
@@ -994,15 +1065,17 @@
       "dateFound": "1990-05-24",
       "dateFoundRaw": "5/24/90",
       "dayOfWeek": "Thursday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "5/24/90 Jack found Ingles parking lot",
       "say": "5/24/90 · Jack found · Ingles parking lot",
       "locationRaw": "Ingles parking lot",
       "locationResolved": "Ingles, Cedar Lane, Fountain City, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0300,
-      "lng": -83.9440,
+      "lat": 36.03,
+      "lng": -83.944,
       "locationConfidence": "inferred",
       "placeKey": "ingles",
       "microSpot": "the parking lot",
@@ -1010,8 +1083,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 2,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey ingles) on next publish"
+      "yearsInCirculation": 2
     },
     {
       "id": "coin-036",
@@ -1021,15 +1093,17 @@
       "dateFound": "1997-09-02",
       "dateFoundRaw": "9/2/97",
       "dayOfWeek": "Tuesday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "J found Burger King 9/2/97 phone booth (Merchant Rd)",
       "say": "J · found Burger King · 9/2/97 · phone booth (Merchant Rd)",
       "locationRaw": "phone booth, Burger King, Merchant Rd",
       "locationResolved": "Burger King, Merchants Drive, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0180,
-      "lng": -83.9580,
+      "lat": 36.018,
+      "lng": -83.958,
       "locationConfidence": "inferred",
       "placeKey": "burger-king-merchants",
       "microSpot": "in a phone booth",
@@ -1037,8 +1111,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 8,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey burger-king-merchants) on next publish"
+      "yearsInCirculation": 8
     },
     {
       "id": "coin-037",
@@ -1048,15 +1121,17 @@
       "dateFound": "1992-08-01",
       "dateFoundRaw": "8/1/92",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "J found car wash 8/1/92",
       "say": "J · found car wash · 8/1/92",
       "locationRaw": "car wash, Cedar Lane",
       "locationResolved": "Car wash, Cedar Lane, Fountain City, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0290,
-      "lng": -83.9450,
+      "lat": 36.029,
+      "lng": -83.945,
       "locationConfidence": "inferred",
       "placeKey": "car-wash-cedar-lane",
       "microSpot": "at the car wash",
@@ -1064,8 +1139,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 14,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey car-wash-cedar-lane) on next publish"
+      "yearsInCirculation": 14
     },
     {
       "id": "coin-038",
@@ -1075,15 +1149,17 @@
       "dateFound": "1998-12-10",
       "dateFoundRaw": "12/10/98",
       "dayOfWeek": "Thursday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "12/10/98 J found Ingles lot Cedar Lane",
       "say": "12/10/98 · J · found Ingles lot · Cedar Lane",
       "locationRaw": "Ingles lot, Cedar Lane",
       "locationResolved": "Ingles, Cedar Lane, Fountain City, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0300,
-      "lng": -83.9440,
+      "lat": 36.03,
+      "lng": -83.944,
       "locationConfidence": "inferred",
       "placeKey": "ingles",
       "microSpot": "the parking lot",
@@ -1091,8 +1167,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 21,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey ingles) on next publish"
+      "yearsInCirculation": 21
     },
     {
       "id": "coin-039",
@@ -1100,31 +1175,41 @@
       "denomination": "penny ×3",
       "multiCoin": true,
       "coins": [
-        {"denomination": "penny", "mintYear": 1971},
-        {"denomination": "penny", "mintYear": 1971},
-        {"denomination": "penny", "mintYear": 1985}
+        {
+          "denomination": "penny",
+          "mintYear": 1971
+        },
+        {
+          "denomination": "penny",
+          "mintYear": 1971
+        },
+        {
+          "denomination": "penny",
+          "mintYear": 1985
+        }
       ],
       "mintYear": null,
       "dateFound": "1992-10-17",
       "dateFoundRaw": "10/17/92",
       "dayOfWeek": "Saturday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "Jack found Arby's J 10/17/92 Broadway",
       "say": "Jack found Arby's · J · 10/17/92 · Broadway",
       "locationRaw": "Arby's, Broadway",
       "locationResolved": "Arby's, Broadway, North Knoxville (Fountain City area)",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0270,
-      "lng": -83.9290,
+      "lat": 36.027,
+      "lng": -83.929,
       "locationConfidence": "approximate",
       "placeKey": "arbys-broadway",
       "locationNote": "FIRST three-coin card — Jack found 3 pennies (1971, 1971, 1985) at the Arby's on Broadway. Value 3¢; years circulating 21 / 21 / 7. placeKey arbys-broadway.",
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 21,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey arbys-broadway) on next publish"
+      "yearsInCirculation": 21
     },
     {
       "id": "coin-040",
@@ -1134,15 +1219,17 @@
       "dateFound": "1998-10-03",
       "dateFoundRaw": "10/3/98",
       "dayOfWeek": "Saturday",
-      "finders": ["Chris"],
+      "finders": [
+        "Chris"
+      ],
       "cardText": "10/3/98 Chris found in Gary's trash",
       "say": "10/3/98 · Chris found in Gary's trash",
       "locationRaw": "Gary's trash",
       "locationResolved": "Gary's house, 1704 Waterview Trail, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 35.9400,
-      "lng": -84.0500,
+      "lat": 35.94,
+      "lng": -84.05,
       "locationConfidence": "approximate",
       "placeKey": "gary-house",
       "microSpot": "in the trash",
@@ -1150,8 +1237,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 4,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (NEW placeKey gary-house; geocode 1704 Waterview Trail) on next publish"
+      "yearsInCirculation": 4
     },
     {
       "id": "coin-041",
@@ -1161,7 +1247,9 @@
       "dateFound": "1984-02-02",
       "dateFoundRaw": "2/2/84",
       "dayOfWeek": "Thursday",
-      "finders": ["Jack"],
+      "finders": [
+        "Jack"
+      ],
       "cardText": "2/2/84 J driveway 5608 Paula",
       "say": "2/2/84 · J · driveway · 5608 Paula",
       "locationRaw": "driveway, 5608 Paula",
@@ -1178,8 +1266,147 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 34,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey home) on next publish"
+      "yearsInCirculation": 34
+    },
+    {
+      "id": "coin-042",
+      "photo": "IMG_0169",
+      "denomination": "penny",
+      "mintYear": 1980,
+      "dateFound": "1986-02-18",
+      "dateFoundRaw": "2/18/86",
+      "dayOfWeek": "Tuesday",
+      "finders": [
+        "Chris"
+      ],
+      "cardText": "2-18-86 Chris Arby's - Broadway Rest Room",
+      "say": "2/18/86 · Chris · Arby's · Broadway · rest room",
+      "locationRaw": "Arby's - Broadway, rest room",
+      "locationResolved": "Arby's on Broadway, North Knoxville, TN — in the rest room",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.027,
+      "lng": -83.929,
+      "locationConfidence": "confirmed",
+      "placeKey": "arbys-broadway",
+      "microSpot": "in the rest room",
+      "locationNote": "SECOND Arby's-Broadway coin (with coin-039). Card-confirmed finder = CHRIS (not Jack). 1980 penny found 1986 = 6 yrs.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 6,
+      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey arbys-broadway) on next publish"
+    },
+    {
+      "id": "coin-043",
+      "photo": "IMG_0170",
+      "denomination": "quarter",
+      "mintYear": 1984,
+      "dateFound": "1988-09-19",
+      "dateFoundRaw": "9/19/88",
+      "dayOfWeek": "Monday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "9/19/88 Jack found Las Vegas at Slots",
+      "say": "9/19/88 · Jack · found Las Vegas · at the slots",
+      "locationRaw": "Las Vegas, at slots",
+      "locationResolved": "Las Vegas, NV — at the slot machines (exact casino unknown)",
+      "city": "Las Vegas",
+      "state": "NV",
+      "lat": 36.1147,
+      "lng": -115.1728,
+      "locationConfidence": "inferred",
+      "placeKey": "vegas-strip",
+      "microSpot": "at the slots",
+      "locationNote": "SECOND Vegas-Strip coin (with coin-010, 9/20/88) — this one a day EARLIER, 9/19/88, at the slots. 1984 quarter found 1988 = 4 yrs. Card middle digit a touch ambiguous (could read 9/9) but Greg confirms 9/19/88.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 4,
+      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey vegas-strip) on next publish"
+    },
+    {
+      "id": "coin-044",
+      "photo": "IMG_0171",
+      "denomination": "penny",
+      "mintYear": 1976,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": 1976
+        },
+        {
+          "den": "penny",
+          "mint": 1976
+        }
+      ],
+      "dateFound": "1980-07-12",
+      "dateFoundRaw": "7/12/80",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "7/12/80 J Winn Dixie Lot Clinton Highway",
+      "say": "7/12/80 · J · Winn-Dixie lot · Clinton Highway",
+      "locationRaw": "Winn-Dixie lot, Clinton Highway",
+      "locationResolved": "Winn-Dixie parking lot, Clinton Highway, North Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.0415,
+      "lng": -83.9855,
+      "locationConfidence": "inferred",
+      "placeKey": "winn-dixie-clinton",
+      "microSpot": "in the parking lot",
+      "locationNote": "TWO pennies, both 1976 (multi-coin card). NEW PLACE needed at publish: winn-dixie-clinton — Winn-Dixie on Clinton Highway, same North-Knoxville corridor as White Store / Super X / Kmart-Clinton. Winn-Dixie exited the Knoxville/TN market years ago, so this store is almost certainly GONE → status 'gone'. Pin ~36.0415/-83.9855, best-guess on Clinton Hwy (Greg can correct). Found 7/12/80 (4 yrs).",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 4,
+      "pending": "NEW queued — needs cutout + NEW PLACES entry (winn-dixie-clinton, status gone) + add to coins-data.js on next publish"
+    },
+    {
+      "id": "coin-045",
+      "photo": "IMG_0172",
+      "denomination": "penny",
+      "mintYear": 1989,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": 1979
+        },
+        {
+          "den": "penny",
+          "mint": 1986
+        },
+        {
+          "den": "penny",
+          "mint": 1989
+        }
+      ],
+      "dateFound": "1991-03-03",
+      "dateFoundRaw": "3/3/91",
+      "dayOfWeek": "Sunday",
+      "finders": [
+        "Chris"
+      ],
+      "cardText": "Chris found Gary driveway 3/3/91",
+      "say": "3/3/91 · Chris · found Gary's driveway",
+      "locationRaw": "Gary's driveway, 1704 Waterview",
+      "locationResolved": "Gary's house — in the driveway, 1704 Waterview Trail, West Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.865,
+      "lng": -84.105,
+      "locationConfidence": "confirmed",
+      "placeKey": "gary-house",
+      "microSpot": "in the driveway",
+      "locationNote": "SECOND gary-house coin (with coin-040, the trash penny). THREE pennies — 1979, 1986, 1989 — found by CHRIS in Gary's driveway, 3/3/91. (Gary = Greg's dad.) Multi-coin card.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": null,
+      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey gary-house, multi-coin) on next publish"
     }
   ]
 }
