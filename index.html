@@ -144,6 +144,7 @@
     <div class="grp"><label>Coin</label>
       <button class="chip on" data-den="all">All</button>
       <button class="chip" data-den="penny">Pennies</button>
+      <button class="chip" data-den="nickel">Nickels</button>
       <button class="chip" data-den="dime">Dimes</button>
       <button class="chip" data-den="quarter">Quarter</button>
     </div>
@@ -189,7 +190,7 @@ const COINS = [
    family:"Adam — Jack's grandson and Greg's brother — was at this game with Jack."},
   {id:"coin-004",img:"photos/cutouts/coin-004.png",den:"penny",mint:1969,found:"1972-10-27",raw:"10/27/72",dow:"Friday",finders:["Jack"],
    says:"10/27/72 · J · White Store · Clinton Highway",loc:"White Store · 5400 Clinton Hwy, Knoxville",city:"Knoxville",state:"TN",lat:36.0430,lng:-83.9870,conf:"confirmed",yic:3,
-   place:{name:"White Store",where:"5400 Clinton Highway, North Knoxville",status:"gone",
+   place:{name:"White Store",where:"5400 Clinton Highway, North Knoxville",status:"gone",photo:"photos/white-stores.jpg",credit:"Knoxville, TN History & Memories",
      story:"White Stores was East Tennessee's biggest homegrown grocery chain — founded in 1922, sold to Food City's parent in 1989. The store at 5400 Clinton Highway was Jack's neighborhood grocery, a short drive from the house. It's gone now."}},
   {id:"coin-005",img:"photos/cutouts/coin-005.png",den:"dime",mint:1995,found:"1998-01-23",raw:"1/23/98",dow:"Friday",finders:["Jack"],
    says:"J — found Nixon Deli · 1/23/98",loc:"Nixon's Deli · 508 Merchants Dr, Knoxville",city:"Knoxville",state:"TN",lat:36.0185,lng:-83.9585,conf:"inferred",yic:3,
@@ -210,7 +211,7 @@ const COINS = [
   {id:"coin-009",img:"photos/cutouts/coin-009.png",den:"penny",mint:1985,found:"1986-05-24",raw:"5/24/86",dow:"Saturday",finders:["Jack"],
    says:"5/24/86 · parking lot · K-Mart · Clinton Hwy",loc:"Kmart · 5094 Clinton Hwy, Knoxville",city:"Knoxville",state:"TN",lat:36.0390,lng:-83.9820,conf:"confirmed",yic:1,
    ctx:"The Saturday of Memorial Day weekend.",
-   place:{name:"Kmart (Clinton Plaza)",where:"5094 Clinton Highway, North Knoxville",status:"gone",
+   place:{name:"Kmart (Clinton Plaza)",where:"5094 Clinton Highway, North Knoxville",status:"gone",photo:"photos/kmart-clinton.jpg",credit:"Michael James · Knoxville, TN History & Memories",
      story:"The Clinton Highway Kmart opened in 1973 at Clinton Plaza and ran for three decades before closing in 2003 — the everything-store for a North Knoxville family. Jack found this penny in its parking lot the Saturday of Memorial Day weekend, 1986."}},
   {id:"coin-010",img:"photos/cutouts/coin-010.png",den:"quarter",mint:1985,found:"1988-09-20",raw:"9/20/88",dow:"Tuesday",finders:["Jack"],
    says:"9/20/88 · Jack · found Las Vegas · casino floor",loc:"The Las Vegas Strip",city:"Las Vegas",state:"NV",lat:36.1147,lng:-115.1728,conf:"approximate",yic:3,
@@ -221,10 +222,49 @@ const COINS = [
    ctx:"Jack's wife",
    place:{name:"Shoney's",where:"Nashville, Tennessee",status:"standing",
      story:"Chris — Jack's wife — found this penny in the parking lot of a Shoney's in Nashville. Shoney's, the Southern family restaurant chain headquartered right there in Nashville, was a road-trip and Sunday-lunch fixture across the South for decades. There's no telling which of the city's Shoney's this was, so the pin sits in Nashville itself."}},
+  {id:"coin-012",img:"photos/cutouts/coin-012.png",den:"penny",mint:1969,found:"1970-09-27",raw:"9/27/70",dow:"Sunday",finders:["Jack"],
+   says:"9/27/70 · J · McDonald's lot · Broadway",loc:"McDonald's, Broadway",city:"Knoxville",state:"TN",lat:36.0045,lng:-83.9215,conf:"inferred",yic:1,
+   ctx:"In the McDonald's lot on Broadway — the oldest find in the collection."},
+  {id:"coin-013",img:"photos/cutouts/coin-013.png",den:"penny",mint:1998,found:"1999-01-29",raw:"1/29/99",dow:"Friday",finders:["Chris"],
+   says:"1/29/99 · Chris · found front McDonald's · Valdosta, GA",loc:"McDonald's, Valdosta",city:"Valdosta",state:"GA",lat:30.8327,lng:-83.2785,conf:"approximate",yic:1,
+   ctx:"Jack's wife — out front of the McDonald's."},
+  {id:"coin-014",img:"photos/cutouts/coin-014.png",den:"nickel",mint:1964,found:"1973-07-06",raw:"7/6/73",dow:"Friday",finders:["Jack"],
+   says:"7/6/73 · J · Mail Box · Paula Dr",loc:"Home — Paula Drive",city:"Knoxville",state:"TN",lat:36.0397,lng:-83.9606,conf:"confirmed",yic:9,
+   ctx:"At his own mailbox.",
+   place:{name:"Home — Paula Drive",where:"Inskip, North Knoxville",status:"standing",
+     story:"Jack's own house on Paula Drive, in the Inskip neighborhood of North Knoxville. Over the years he found coins all over his own place — at the mailbox, in the driveway, around the yard — and saved each one. Those home finds all stack onto this single pin: the spot he was rooted."}},
+  {id:"coin-015",img:"photos/cutouts/coin-015.png",den:"penny",mint:1996,found:"2000-05-31",raw:"5/31/00",dow:"Wednesday",finders:["Jack"],
+   says:"J · found Proffitt's, Bra Dept. · 5/31/00",loc:"Proffitt's, West Town Mall",city:"Knoxville",state:"TN",lat:35.9206,lng:-84.0928,conf:"inferred",yic:4,
+   ctx:"In the bra department. Yes, really.",
+   place:{name:"Proffitt's",where:"West Town Mall, Knoxville",status:"gone",
+     story:"Jack found this penny in — of all places — the bra department at Proffitt's. Proffitt's was a Knoxville institution: a department store grown from a small-town Tennessee shop into a regional chain and an anchor at West Town Mall. The Proffitt's name is gone now, folded into Belk in the mid-2000s. The bra-department detail, though, is forever."}},
+  {id:"coin-016",img:"photos/cutouts/coin-016.png",den:"penny",mint:1987,found:"1987-10-20",raw:"10/20/87",dow:"Tuesday",finders:["Chris"],
+   says:"10/20/87 · Chris found · Viet Nam Memorial · Washington, DC",loc:"Vietnam Veterans Memorial, Washington, DC",city:"Washington",state:"DC",lat:38.8911,lng:-77.0476,conf:"confirmed",yic:0,
+   place:{name:"Vietnam Veterans Memorial",where:"National Mall, Washington, D.C.",status:"standing",
+     story:"This 1987 penny — brand new that year — came home from the Vietnam Veterans Memorial in Washington, D.C. Maya Lin's black granite wall, dedicated in 1982, carries the names of more than 58,000 Americans lost in the war, and visitors have always left things along it — flowers, letters, coins pressed into the seams. Chris brought one back."}},
+  {id:"coin-017",img:"photos/cutouts/coin-017.png",den:"penny",mint:1974,coins:[{den:"penny",mint:1974},{den:"nickel",mint:1981}],found:"1985-11-04",raw:"11/4/85",dow:"Monday",finders:["Chris"],
+   says:"11/4/85 · Chris found · McDonald's · Trenton, GA",loc:"McDonald's, Trenton",city:"Trenton",state:"GA",lat:34.8723,lng:-85.5161,conf:"approximate",yic:11,
+   ctx:"Two at once — a penny and a nickel."},
+  {id:"coin-018",img:"photos/cutouts/coin-018.png",den:"dime",mint:1982,found:"1987-06-11",raw:"6/11/87",dow:"Thursday",finders:["Chris"],
+   says:"6/11/87 · Chris found · in room · Bavarian Haus Motel · Frankenmuth, MI",loc:"Bavarian Haus Motel, Frankenmuth",city:"Frankenmuth",state:"MI",lat:43.3317,lng:-83.7380,conf:"approximate",yic:5,
+   ctx:"In the room.",
+   place:{name:"Bavarian Haus Motel",where:"Frankenmuth, Michigan",status:"standing",photo:"photos/bavarian-haus.jpg",credit:"Vintage Frankenmuth postcard",
+     story:"Chris found this dime right in the room at the Bavarian Haus Motel in Frankenmuth — Michigan's 'Little Bavaria,' a whole town done up in Alpine timber and gingerbread trim for the tourists who came for chicken dinners and Christmas shops. The motel was one of many that put them up, and it still turns up on Frankenmuth postcards from the 1970s."}},
+  {id:"coin-019",img:"photos/cutouts/coin-019.png",den:"penny",mint:1996,found:"1996-08-21",raw:"8/21/96",dow:"Wednesday",finders:["Jack"],
+   says:"Jack · found 8/21/96 · parking lot of Office Depot",loc:"Office Depot · 7111 Kingston Pike, Knoxville",city:"Knoxville",state:"TN",lat:35.9176,lng:-84.0010,conf:"confirmed",yic:0,
+   ctx:"In the Office Depot parking lot."},
 ];
 
-const DEN_LABEL={penny:"Penny",dime:"Dime",quarter:"Quarter"};
-const DEN_COLOR={penny:"#b5703a",dime:"#9a9a93",quarter:"#8f8f88"};
+const DEN_LABEL={penny:"Penny",nickel:"Nickel",dime:"Dime",quarter:"Quarter"};
+const DEN_COLOR={penny:"#b5703a",nickel:"#9a9a93",dime:"#9a9a93",quarter:"#8f8f88"};
+const VAL={penny:1,nickel:5,dime:10,quarter:25};
+function coinList(c){return c.coins?c.coins:[{den:c.den,mint:c.mint}];}
+function denList(c){return coinList(c).map(x=>x.den);}
+function centsOf(c){return coinList(c).reduce((s,x)=>s+(VAL[x.den]||0),0);}
+function sortMint(c){return Math.min(...coinList(c).map(x=>x.mint));}
+function coinLabel(c){return coinList(c).map(x=>`${x.mint} ${DEN_LABEL[x.den]}`).join(" + ");}
+function circLabel(c){const y=+c.found.slice(0,4);return coinList(c).map(x=>{const n=y-x.mint;return n+(n===1?' yr':' yrs');}).join(' / ');}
+function markerColor(c){return DEN_COLOR[denList(c)[0]]||"#b5703a";}
 const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
 function prettyDate(iso){const[y,m,d]=iso.split("-").map(Number);return `${MONTHS[m-1]} ${d}, ${y}`;}
 function tilt(i){const a=[-3,2,-1.5,2.5,-2,1.5,-2.5,1,3,-1];return a[i%a.length];}
@@ -233,9 +273,9 @@ let denFilter="all", sortMode="found";
 const wall=document.getElementById("wall");
 
 function visibleCoins(){
-  let arr=COINS.filter(c=>denFilter==="all"||c.den===denFilter);
+  let arr=COINS.filter(c=>denFilter==="all"||denList(c).includes(denFilter));
   if(sortMode==="found") arr.sort((a,b)=>a.found.localeCompare(b.found));
-  if(sortMode==="mint") arr.sort((a,b)=>a.mint-b.mint);
+  if(sortMode==="mint") arr.sort((a,b)=>sortMint(a)-sortMint(b));
   if(sortMode==="age") arr.sort((a,b)=>b.yic-a.yic);
   return arr;
 }
@@ -277,9 +317,9 @@ function openDetail(id){
       <h3 class="m-title">${c.loc.split(' · ')[0].split(',')[0]}</h3>
       <p class="m-where">${c.dow}, ${prettyDate(c.found)} · found by ${finders}${c.ctx?` · ${c.ctx}`:""}</p>
       <div class="facts">
-        <div class="fact"><span>The coin</span><b>${c.mint} ${DEN_LABEL[c.den]}</b></div>
+        <div class="fact"><span>${c.coins?'The coins':'The coin'}</span><b>${coinLabel(c)}</b></div>
         <div class="fact"><span>Found</span><b>${prettyDate(c.found)}</b></div>
-        <div class="fact"><span>In circulation</span><b>${c.yic} ${c.yic===1?'year':'years'}</b></div>
+        <div class="fact"><span>In circulation</span><b>${circLabel(c)}</b></div>
         <div class="fact"><span>Where</span><b>${c.city}, ${c.state}</b></div>
       </div>
       ${event}${place}${family}
@@ -304,7 +344,7 @@ document.getElementById("gone-note").textContent = COINS.filter(c=>c.place&&c.pl
 // landing sentence (auto-computed) + lid lift
 (function(){
   const yrs=Math.max(...COINS.map(c=>+c.found.slice(0,4)))-Math.min(...COINS.map(c=>+c.found.slice(0,4)));
-  const cents=COINS.reduce((s,c)=>s+({penny:1,dime:10,quarter:25}[c.den]),0);
+  const cents=COINS.reduce((s,c)=>s+centsOf(c),0);
   const val=cents>=100?'$'+(cents/100).toFixed(2):cents+'¢';
   const places=new Set(COINS.map(c=>c.loc.split(' · ')[0].split(',')[0])).size;
   const states=new Set(COINS.map(c=>c.state)).size;
@@ -323,7 +363,7 @@ const cluster=L.markerClusterGroup({
   iconCreateFunction:cl=>L.divIcon({html:`<div class="cl-dot"><span>${cl.getChildCount()}</span></div>`,className:'cl-wrap',iconSize:[44,44]})
 });
 COINS.forEach(c=>{
-  const icon=L.divIcon({className:'coin-pin',html:`<span class="pin-dot" style="background:${DEN_COLOR[c.den]}"></span>`,iconSize:[18,18]});
+  const icon=L.divIcon({className:'coin-pin',html:`<span class="pin-dot" style="background:${markerColor(c)}"></span>`,iconSize:[18,18]});
   const m=L.marker([c.lat,c.lng],{icon});
   m.bindPopup(`<div class="pop"><b>${c.loc.split(' · ')[0].split(',')[0]}</b><br><small>${prettyDate(c.found)} · ${c.mint} ${DEN_LABEL[c.den].toLowerCase()}</small></div>`);
   m.on('click',()=>openDetail(c.id));
