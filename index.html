@@ -190,12 +190,15 @@ const DEN_VAL={penny:1,nickel:5,dime:10,quarter:25};
 const FIND_COLOR={Jack:"#b5703a",Chris:"#5b7a8c",Adam:"#6a7b4a"};
 const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
 function placeOf(c){return PLACES[c.place]||{name:c.place,where:"",status:"standing"}}
-function coinList(c){return c.coins?c.coins:[{den:c.den,mint:c.mint}]}
+function coinList(c){return c.coins?c.coins:[{den:c.den,mint:c.mint,cur:c.cur}]}
 function denList(c){return coinList(c).map(x=>x.den)}
-function centsOf(c){return coinList(c).reduce((s,x)=>s+(DEN_VAL[x.den]||0),0)}
-function sortMint(c){return Math.min.apply(null,coinList(c).map(x=>x.mint))}
-function coinLabel(c){return coinList(c).map(x=>x.mint+" "+DEN_LABEL[x.den]).join(" + ")}
-function circLabel(c){const y=+c.found.slice(0,4);return coinList(c).map(x=>{const n=y-x.mint;return n+(n===1?" yr":" yrs")}).join(" / ")}
+function isForeign(x){return x.cur&&x.cur!=="USD"}
+function centsOf(c){return coinList(c).reduce((s,x)=>s+(isForeign(x)?0:(DEN_VAL[x.den]||0)),0)}
+function sortMint(c){const ms=coinList(c).map(x=>x.mint).filter(Boolean);return ms.length?Math.min.apply(null,ms):+c.found.slice(0,4)}
+function coinLabel(c){const L=coinList(c);
+  if(L.length>1&&L.every(x=>!x.mint&&!isForeign(x)&&x.den===L[0].den))return L.length+" "+DEN_LABEL[L[0].den]+"s";
+  return L.map(x=>{const d=(isForeign(x)?"Canadian ":"")+DEN_LABEL[x.den];return x.mint?(x.mint+" "+d):d}).join(" + ");}
+function circLabel(c){const y=+c.found.slice(0,4);const p=coinList(c).filter(x=>x.mint).map(x=>{const n=y-x.mint;return n+(n===1?" yr":" yrs")});return p.length?p.join(" / "):"—";}
 function finderColor(c){return FIND_COLOR[c.finders[0]]||"#b5703a"}
 function prettyDate(iso){const p=iso.split("-").map(Number);return MONTHS[p[1]-1]+" "+p[2]+", "+p[0]}
 function denImg(c){return c.img}

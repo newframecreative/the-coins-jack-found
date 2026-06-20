@@ -1045,8 +1045,8 @@
       "locationResolved": "Jack's home — in the yard, 5608 Paula Drive, Fountain City, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0397,
-      "lng": -83.9606,
+      "lat": 36.0265,
+      "lng": -83.9598,
       "locationConfidence": "confirmed",
       "placeKey": "home",
       "homeSeries": true,
@@ -1256,8 +1256,8 @@
       "locationResolved": "Jack's home — in the driveway, 5608 Paula Drive, Fountain City, Knoxville, TN",
       "city": "Knoxville",
       "state": "TN",
-      "lat": 36.0397,
-      "lng": -83.9606,
+      "lat": 36.0265,
+      "lng": -83.9598,
       "locationConfidence": "confirmed",
       "placeKey": "home",
       "homeSeries": true,
@@ -1294,8 +1294,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 6,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey arbys-broadway) on next publish"
+      "yearsInCirculation": 6
     },
     {
       "id": "coin-043",
@@ -1323,8 +1322,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 4,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey vegas-strip) on next publish"
+      "yearsInCirculation": 4
     },
     {
       "id": "coin-044",
@@ -1362,8 +1360,7 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 4,
-      "pending": "NEW queued — needs cutout + NEW PLACES entry (winn-dixie-clinton, status gone) + add to coins-data.js on next publish"
+      "yearsInCirculation": 4
     },
     {
       "id": "coin-045",
@@ -1405,8 +1402,367 @@
       "place": null,
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": null,
-      "pending": "NEW queued — needs cutout + add to coins-data.js (placeKey gary-house, multi-coin) on next publish"
+      "yearsInCirculation": null
+    },
+    {
+      "id": "coin-046",
+      "photo": "IMG_0173",
+      "denomination": "dime",
+      "mintYear": 1976,
+      "dateFound": "1992-12-16",
+      "dateFoundRaw": "12/16/92",
+      "dayOfWeek": "Wednesday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "Jack found 12/16/92 outside Dr. Hargrove office",
+      "say": "12/16/92 · Jack · outside Dr. Hargrove's office",
+      "locationRaw": "outside Dr. Hargrove's office",
+      "locationResolved": "Dr. (Raymond L.) Hargrove's office, 140 Dameron Ave, North Knoxville, TN 37917",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.9785,
+      "lng": -83.9276,
+      "locationConfidence": "confirmed",
+      "placeKey": "hargrove-office",
+      "microSpot": "outside the office",
+      "locationNote": "Dr. Raymond L. Hargrove, MD — North Knoxville internist/gastroenterologist (in practice since 1961). Office 140 Dameron Ave, Knoxville 37917 (Old North Knox, near downtown / Fort Sanders-St. Mary's). Census-geocoded 35.9785/-83.9276. CONFIRMED by Greg (2026-06-20) as the right Dr. Hargrove. NEW PLACE at publish: hargrove-office (status standing).",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 16
+    },
+    {
+      "id": "coin-047",
+      "photo": "IMG_0174",
+      "denomination": "dime",
+      "mintYear": 1967,
+      "dateFound": "1971-08-15",
+      "dateFoundRaw": "8/15/71",
+      "dayOfWeek": "Sunday",
+      "finders": [
+        "Chris"
+      ],
+      "cardText": "8/15/71 Chris Found A & P Clinton Highway",
+      "say": "8/15/71 · Chris · A&P · Clinton Highway",
+      "locationRaw": "A&P, Clinton Highway",
+      "locationResolved": "A&P grocery, Clinton Highway, North Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.042,
+      "lng": -83.985,
+      "locationConfidence": "best-guess",
+      "placeKey": "a-and-p-clinton",
+      "microSpot": null,
+      "locationNote": "NEW PLACE at publish: a-and-p-clinton — A&P (Great Atlantic & Pacific Tea Co.) grocery on Clinton Highway. A&P is long defunct → status 'gone'. Same Clinton Hwy corridor as White Store / Super X / Kmart / Winn-Dixie. Exact storefront unknown — best-guess pin ~36.042/-83.985. Finder = CHRIS (card). 1967 dime found 1971 = 4 yrs.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 4
+    },
+    {
+      "id": "coin-048",
+      "photo": "IMG_0175",
+      "denomination": "penny",
+      "mintYear": 1981,
+      "dateFound": "1992-10-10",
+      "dateFoundRaw": "10/10/92",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "10/10/92 Jack Found outside Stud. Ctr. UT-Ark game",
+      "say": "10/10/92 · Jack · outside the Student Center · UT–Arkansas game",
+      "locationRaw": "outside Student Center, UT campus",
+      "locationResolved": "University of Tennessee student center, Knoxville, TN — UT–Arkansas game day",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.954,
+      "lng": -83.929,
+      "locationConfidence": "inferred",
+      "placeKey": "ut-student-center",
+      "microSpot": "outside the student center",
+      "locationNote": "NEW PLACE at publish: ut-student-center — the University of Tennessee student center on campus, near Neyland. Jack found this on game day, 10/10/92. status standing.",
+      "place": null,
+      "event": {
+        "name": "Tennessee vs Arkansas football",
+        "score": "Arkansas 25, Tennessee 24",
+        "detail": "Oct 10, 1992 at Neyland Stadium. Arkansas — 1-4, interim coach, freshman QB — upset No. 4 Tennessee on Todd Wright's 41-yard field goal with 2 seconds left, after the Vols led 24-16 late."
+      },
+      "familyMemory": null,
+      "yearsInCirculation": 11
+    },
+    {
+      "id": "coin-049",
+      "photo": "IMG_0176",
+      "denomination": "dime",
+      "mintYear": 1979,
+      "dateFound": "1984-06-09",
+      "dateFoundRaw": "6/9/84",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Chris"
+      ],
+      "cardText": "Chris Found Rapid City, S.D. 6/9/84",
+      "say": "6/9/84 · Chris · Rapid City, South Dakota",
+      "locationRaw": "Rapid City, S.D.",
+      "locationResolved": "Rapid City, South Dakota",
+      "city": "Rapid City",
+      "state": "SD",
+      "lat": 44.0805,
+      "lng": -103.231,
+      "locationConfidence": "inferred",
+      "placeKey": "rapid-city-sd",
+      "microSpot": null,
+      "foreign": true,
+      "coinNote": "Canadian dime (1979) — the FIRST foreign coin in the collection (Canada 10¢, Bluenose schooner).",
+      "locationNote": "NEW PLACE at publish: rapid-city-sd — Rapid City, South Dakota (gateway to the Black Hills / Mount Rushmore). FIRST South Dakota pin AND first FOREIGN coin: a 1979 CANADIAN dime. Finder = CHRIS. Pin = Rapid City center 44.0805/-103.2310. PUBLISH TODO: flag as foreign in the UI; decide whether the Canadian 10¢ counts toward the US$ total (probably note separately). 1979 found 1984 = 5 yrs.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 5
+    },
+    {
+      "id": "coin-050",
+      "photo": "IMG_0177",
+      "denomination": "penny",
+      "mintYear": 1987,
+      "dateFound": "1987-11-07",
+      "dateFoundRaw": "11/7/87",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "Jack 11/7/87 UT-Louisville game in stadium",
+      "say": "11/7/87 · Jack · UT–Louisville game · in the stadium",
+      "locationRaw": "UT-Louisville game, in stadium",
+      "locationResolved": "Neyland Stadium, Knoxville, TN — UT vs Louisville, 11/7/87",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.9551,
+      "lng": -83.925,
+      "locationConfidence": "confirmed",
+      "placeKey": "neyland",
+      "microSpot": "in the stadium",
+      "locationNote": "FOURTH Neyland coin. RESEARCH (Greg asked re location): the 11/7/87 UT-Louisville game was at NEYLAND STADIUM, KNOXVILLE (box score 'Louisville at Tennessee', attendance 92,084), Tennessee won 41-10, on a SATURDAY — NOT a Thursday night at Louisville. So Greg's memory of a Thursday game at Louisville's old Fairgrounds/Cardinal Stadium where he saw Muhammad Ali does NOT match THIS date — likely a different UT-Louisville trip. Offered to find his Ali game separately. Ali familyMemory NOT attached here (doesn't fit).",
+      "place": null,
+      "event": {
+        "name": "Tennessee vs Louisville football",
+        "score": "Tennessee 41, Louisville 10",
+        "detail": "Nov 7, 1987 at Neyland Stadium, Knoxville; attendance 92,084."
+      },
+      "familyMemory": null,
+      "yearsInCirculation": 0
+    },
+    {
+      "id": "coin-051",
+      "photo": "IMG_0178",
+      "denomination": "nickel",
+      "mintYear": null,
+      "coins": [
+        {
+          "den": "nickel",
+          "mint": null
+        },
+        {
+          "den": "nickel",
+          "mint": null
+        },
+        {
+          "den": "nickel",
+          "mint": null
+        },
+        {
+          "den": "nickel",
+          "mint": null
+        }
+      ],
+      "dateFound": "1979-03-17",
+      "dateFoundRaw": "3/17/79",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "Found 3/17/79 Raking front yard. J",
+      "say": "3/17/79 · J · raking the front yard",
+      "locationRaw": "front yard, raking, Paula Drive",
+      "locationResolved": "Jack home — front yard while raking, 5608 Paula Drive, Fountain City, Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.0265,
+      "lng": -83.9598,
+      "locationConfidence": "confirmed",
+      "placeKey": "home",
+      "homeSeries": true,
+      "microSpot": "in the front yard, while raking",
+      "locationNote": "HOME SERIES — FOUR nickels (20c) Jack found raking the front yard at home, 3/17/79. Nickels taped face-DOWN (Monticello side up) so mint years are NOT visible/unknown. Multi-coin card.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": null
+    },
+    {
+      "id": "coin-052",
+      "photo": "IMG_0179",
+      "denomination": "penny",
+      "mintYear": 1989,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": 1989
+        },
+        {
+          "den": "penny",
+          "mint": 1989
+        },
+        {
+          "den": "penny",
+          "mint": 1989
+        },
+        {
+          "den": "penny",
+          "mint": 1989
+        }
+      ],
+      "dateFound": "1989-12-02",
+      "dateFoundRaw": "12/2/89",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "Jack found Cumberland Ave 12/2/89 - TN/Vandy game",
+      "say": "12/2/89 · Jack · Cumberland Ave · after the TN–Vandy game",
+      "locationRaw": "Cumberland Avenue, Knoxville",
+      "locationResolved": "Cumberland Avenue (the Strip), Knoxville, TN — after the TN–Vanderbilt game",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.96,
+      "lng": -83.928,
+      "locationConfidence": "inferred",
+      "placeKey": "cumberland-ave",
+      "microSpot": null,
+      "locationNote": "NEW PLACE at publish: cumberland-ave — Cumberland Avenue (the Strip) along the UT campus edge, Knoxville. Jack found FOUR 1989 pennies here after the 12/2/89 TN-Vandy game. status standing. Multi-coin card. Same campus/game-day flavor as coin-048 (student center, 1992 Ark game) but a distinct place.",
+      "place": null,
+      "event": {
+        "name": "Tennessee vs Vanderbilt football",
+        "score": "Tennessee 17, Vanderbilt 10",
+        "detail": "Dec 2, 1989 at Neyland Stadium, Knoxville. No. 8 Tennessee won its regular-season finale; the Vols finished 11-1 and beat Arkansas in the Cotton Bowl."
+      },
+      "familyMemory": null,
+      "yearsInCirculation": 0
+    },
+    {
+      "id": "coin-053",
+      "photo": "IMG_0180",
+      "denomination": "penny",
+      "mintYear": 1977,
+      "dateFound": "1987-06-20",
+      "dateFoundRaw": "6/20/87",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "6/20/87 Jack found Yellowstone Park Grant Village",
+      "say": "6/20/87 · Jack · Yellowstone — Grant Village",
+      "locationRaw": "Grant Village, Yellowstone National Park",
+      "locationResolved": "Grant Village, Yellowstone National Park, Wyoming",
+      "city": "Yellowstone National Park",
+      "state": "WY",
+      "lat": 44.393,
+      "lng": -110.5575,
+      "locationConfidence": "inferred",
+      "placeKey": "yellowstone-grant-village",
+      "microSpot": null,
+      "locationNote": "NEW PLACE at publish: yellowstone-grant-village — Grant Village, a developed area on the West Thumb of Yellowstone Lake, Yellowstone NP, WY. FIRST Wyoming pin / first national-park find. status standing. Pin = Grant Village 44.393/-110.5575. 1977 penny found 1987 = 10 yrs. POSSIBLE 1987 TRIP CLUSTER: coin-019 (Bavarian Haus, Frankenmuth MI) was Chris on 6/11/87; this is Jack in WY on 6/20/87 — maybe legs of a big summer-1987 trip. Flag for the timeline trip-bracket.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 10
+    },
+    {
+      "id": "coin-054",
+      "photo": "IMG_0181",
+      "denomination": "penny",
+      "mintYear": 2000,
+      "dateFound": "2006-06-26",
+      "dateFoundRaw": "6/26/06",
+      "dayOfWeek": "Monday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "J Found Walgreen's (Halls) Lot 6/26/06",
+      "say": "6/26/06 · J · Walgreen's lot · Halls",
+      "locationRaw": "Walgreens parking lot, Halls, TN",
+      "locationResolved": "Walgreens parking lot, Halls Crossroads, Knoxville (Halls), TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.0665,
+      "lng": -83.931,
+      "locationConfidence": "inferred",
+      "placeKey": "walgreens-halls",
+      "microSpot": "in the parking lot",
+      "locationNote": "NEW PLACE at publish: walgreens-halls — Walgreens in Halls (Halls Crossroads, North Knoxville, up Maynardville Hwy). DISTINCT from walgreens-broadway (coin-001). NEWEST find in the whole collection (6/26/2006) — extends the date range to 2006. status standing. Best-guess pin at Halls Crossroads ~36.0665/-83.9310 (Greg can correct). 2000 penny found 2006 = 6 yrs.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 6
+    },
+    {
+      "id": "coin-055",
+      "photo": "IMG_0182",
+      "denomination": "penny",
+      "mintYear": 1977,
+      "dateFound": "1986-03-11",
+      "dateFoundRaw": "3/11/86",
+      "dayOfWeek": "Tuesday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "Jack - 3/11/86 - Miller's Lot, E. Town",
+      "say": "3/11/86 · Jack · Miller's lot · East Towne Mall",
+      "locationRaw": "Miller's parking lot, East Towne Mall",
+      "locationResolved": "Miller's (East Towne Mall), East Knoxville, TN — parking lot",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.0274,
+      "lng": -83.852,
+      "locationConfidence": "confirmed",
+      "placeKey": "east-towne-mall",
+      "microSpot": "in Miller's parking lot",
+      "locationNote": "SECOND East Towne Mall coin (with coin-023, Chris 2003). Jack found this in MILLER'S parking lot — Miller's was the Knoxville department-store chain that anchored East Towne. placeKey east-towne-mall. 1977 penny found 1986 = 9 yrs.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 9
+    },
+    {
+      "id": "coin-056",
+      "photo": "IMG_0183",
+      "denomination": "penny",
+      "mintYear": 1982,
+      "dateFound": "1985-04-30",
+      "dateFoundRaw": "4/30/85",
+      "dayOfWeek": "Tuesday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "J 4-30-85 Little League Greg Played",
+      "say": "4/30/85 · J · Little League · Greg played",
+      "locationRaw": "West Hills Elementary School (Little League)",
+      "locationResolved": "West Hills Elementary School, Knoxville, TN — Greg's Little League game",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.922,
+      "lng": -84.014,
+      "locationConfidence": "best-guess",
+      "placeKey": "west-hills-elementary",
+      "microSpot": "at the Little League field",
+      "specialNote": "FAMILY-MEMORY COIN: Jack saved this watching his grandson Greg — the maker of this archive — play Little League. The card reads 'Greg played.'",
+      "locationNote": "NEW PLACE at publish: west-hills-elementary — West Hills Elementary School, West Knoxville. SPECIAL family coin: Jack found it watching GREG play Little League, 4/30/85. TODO at publish: pin is BEST-GUESS West Hills ~35.922/-84.014 — geocode the school precisely. 1982 penny found 1985 = 3 yrs.",
+      "place": null,
+      "event": null,
+      "familyMemory": "Jack came to watch me play Little League, and he came out to watch pretty regularly.",
+      "yearsInCirculation": 3
     }
   ]
 }
