@@ -132,10 +132,10 @@
     <h1>The Coins Jack Found</h1>
     <p class="lede">A diary of a life, told in pocket change.</p>
     <div class="stats">
-      <div class="stat"><b>10</b><span>coins</span></div>
-      <div class="stat"><b>52¢</b><span>in all</span></div>
-      <div class="stat"><b>1972&ndash;1999</b><span>27 years</span></div>
-      <div class="stat"><b>4</b><span>states</span></div>
+      <div class="stat"><b id="st-coins">10</b><span>coins</span></div>
+      <div class="stat"><b id="st-value">52¢</b><span>in all</span></div>
+      <div class="stat"><b id="st-range">1972&ndash;1999</b><span id="st-years">27 years</span></div>
+      <div class="stat"><b id="st-states">4</b><span>states</span></div>
     </div>
     <div class="rule"></div>
   </header>
@@ -350,6 +350,12 @@ document.getElementById("gone-note").textContent = COINS.filter(c=>c.place&&c.pl
   const states=new Set(COINS.map(c=>c.state)).size;
   document.getElementById('bigline').textContent=
     `Over ${yrs} years, Jack found ${COINS.length} coins — ${val} in all — at ${places} places across ${states} states. He wrote down every one.`;
+  const yrsArr=COINS.map(c=>+c.found.slice(0,4));
+  document.getElementById('st-coins').textContent=COINS.length;
+  document.getElementById('st-value').textContent=val;
+  document.getElementById('st-range').textContent=Math.min(...yrsArr)+'–'+Math.max(...yrsArr);
+  document.getElementById('st-years').textContent=yrs+' years';
+  document.getElementById('st-states').textContent=states;
 })();
 const landing=document.getElementById('landing');
 function enterBox(){landing.classList.add('lift'); document.body.classList.remove('locked'); setTimeout(()=>{landing.style.display='none'; map.invalidateSize();},900);}
