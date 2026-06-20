@@ -4,7 +4,8 @@
   "people": {
     "Jack": "Grandfather; the collector. Signs cards 'J' or 'Jack'.",
     "Greg": "Jack's grandson; creator of this project.",
-    "Adam": "Jack's grandson; Greg's brother."
+    "Adam": "Jack's grandson; Greg's brother.",
+    "Chris": "Jack's wife (Greg's grandmother)."
   },
   "coins": [
     {
@@ -295,6 +296,38 @@
       "event": null,
       "familyMemory": null,
       "yearsInCirculation": 3
+    },
+    {
+      "id": "coin-011",
+      "photo": "IMG_0141",
+      "denomination": "penny",
+      "mintYear": 1986,
+      "dateFound": "1992-10-02",
+      "dateFoundRaw": "10/2/92",
+      "dayOfWeek": "Friday",
+      "finders": ["Chris"],
+      "cardText": "10/2/92 Chris found Shoney's lot Nashville",
+      "locationRaw": "Shoney's parking lot, Nashville",
+      "locationResolved": "Shoney's, Nashville, TN (specific location unknown)",
+      "city": "Nashville",
+      "state": "TN",
+      "lat": 36.1627,
+      "lng": -86.7816,
+      "locationConfidence": "approximate",
+      "locationNote": "Found by Chris (Jack's wife) in a Shoney's parking lot; specific Nashville Shoney's unknown — pin placed in Nashville. First coin found by Chris, and first by someone other than Jack/grandkids.",
+      "place": {
+        "name": "Shoney's",
+        "where": "Nashville, Tennessee",
+        "status": "standing",
+        "story": "Chris — Jack's wife — found this penny in the parking lot of a Shoney's in Nashville. Shoney's, the Southern family restaurant chain headquartered in Nashville, was a road-trip and Sunday-lunch fixture across the South for decades.",
+        "photo": null,
+        "photoCredit": null,
+        "photoNeeded": true,
+        "sources": []
+      },
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 6
     }
   ]
 }
