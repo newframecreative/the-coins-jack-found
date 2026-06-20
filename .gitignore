@@ -1,0 +1,9 @@
+# build scripts & temp files — not part of the deployed site
+cutout.py
+batch_cutouts.py
+preview.jpg
+preview.b64
+contact_sheet.jpg
+*.b64
+__pycache__/
+.DS_Store

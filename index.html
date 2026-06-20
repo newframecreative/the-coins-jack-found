@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Coins Jack Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<style>
+  :root{
+    --ink:#2e2620; --ink-soft:#6b5f52; --paper:#efe6d2; --paper-2:#e7dcc2;
+    --accent:#874f2c; --rule:rgba(60,45,30,.18); --gone:#8a6a4a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Spectral',Georgia,serif; color:var(--ink);
+    background:
+      radial-gradient(120% 90% at 50% -10%, #f3ecdb 0%, #e9ddc6 55%, #e0d3b7 100%);
+    background-attachment:fixed; min-height:100vh;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.5; z-index:0;
+    background-image:
+      radial-gradient(rgba(120,90,55,.05) 1px, transparent 1.4px),
+      radial-gradient(rgba(120,90,55,.04) 1px, transparent 1.4px);
+    background-size:7px 7px, 11px 11px; background-position:0 0, 3px 4px;
+  }
+  .wrap{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 22px 80px}
+  header.hero{text-align:center; padding:64px 12px 26px}
+  .kicker{font-family:'Caveat',cursive; font-size:30px; color:var(--accent); margin:0 0 2px; transform:rotate(-2deg)}
+  h1{font-family:'Spectral',serif; font-weight:600; font-size:clamp(34px,6vw,62px); letter-spacing:.5px; margin:.1em 0 .18em}
+  .lede{font-size:clamp(16px,2.2vw,20px); color:var(--ink-soft); max-width:680px; margin:0 auto; line-height:1.6}
+  .stats{display:flex; gap:26px; justify-content:center; flex-wrap:wrap; margin:26px 0 6px}
+  .stat b{display:block; font-size:26px; font-weight:600; font-family:'Spectral'}
+  .stat span{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft)}
+  .rule{height:1px; background:linear-gradient(90deg,transparent,var(--rule),transparent); margin:30px 0 8px}
+
+  .controls{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:center; padding:6px 0 30px; font-family:'Spectral'}
+  .controls .grp{display:flex; gap:6px; align-items:center}
+  .controls label{font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em}
+  .chip{border:1px solid var(--rule); background:rgba(255,255,255,.35); color:var(--ink);
+    font-family:inherit; font-size:14px; padding:6px 13px; border-radius:999px; cursor:pointer; transition:.18s}
+  .chip:hover{background:rgba(255,255,255,.7)}
+  .chip.on{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+
+  .wall{display:flex; flex-wrap:wrap; gap:34px 30px; justify-content:center; align-items:flex-start; padding:8px 0 10px}
+  .card{width:300px; cursor:pointer; transition:transform .22s ease, filter .22s ease; will-change:transform;
+    filter:drop-shadow(0 10px 14px rgba(50,35,20,.28)); border-radius:2px}
+  .card img{width:100%; height:auto; display:block}
+  .card .cap{font-family:'Caveat',cursive; text-align:center; font-size:19px; color:var(--ink-soft); margin-top:7px; transition:.2s}
+  .card:hover{transform:rotate(0deg) scale(1.045) translateY(-4px); filter:drop-shadow(0 18px 22px rgba(50,35,20,.34))}
+  .card:hover .cap{color:var(--accent)}
+
+  .section-h{font-family:'Spectral'; font-weight:600; font-size:28px; text-align:center; margin:54px 0 6px}
+  .section-sub{text-align:center; color:var(--ink-soft); margin:0 auto 22px; max-width:620px; font-size:16px}
+  #map{height:460px; border-radius:10px; border:1px solid var(--rule); box-shadow:0 10px 26px rgba(50,35,20,.16)}
+  .leaflet-popup-content{font-family:'Spectral'; margin:10px 12px}
+  .pop b{font-size:15px}
+  .pop small{color:#6b5f52}
+
+  /* modal */
+  .scrim{position:fixed; inset:0; background:rgba(38,28,18,.62); backdrop-filter:blur(2px); display:none;
+    z-index:50; align-items:flex-start; justify-content:center; overflow:auto; padding:40px 16px}
+  .scrim.show{display:flex}
+  .modal{background:linear-gradient(180deg,#fbf5e8,#f3ead6); width:min(760px,100%); border-radius:12px;
+    box-shadow:0 30px 70px rgba(0,0,0,.5); overflow:hidden; position:relative; border:1px solid #d9c9a8}
+  .modal .x{position:absolute; top:12px; right:14px; z-index:2; border:none; background:rgba(0,0,0,.06);
+    width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:18px; color:#5a4a36}
+  .modal .x:hover{background:rgba(0,0,0,.12)}
+  .m-photo{padding:26px 26px 8px; text-align:center}
+  .m-photo img{max-width:100%; max-height:300px; filter:drop-shadow(0 12px 16px rgba(50,35,20,.3))}
+  .m-body{padding:6px 30px 30px}
+  .m-card-says{font-family:'Caveat',cursive; font-size:24px; color:var(--accent); text-align:center;
+    line-height:1.25; margin:6px auto 18px; max-width:560px}
+  .m-title{font-family:'Spectral'; font-weight:600; font-size:24px; margin:0 0 2px}
+  .m-where{color:var(--ink-soft); margin:0 0 16px; font-size:16px}
+  .facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; margin:14px 0 18px}
+  .fact{background:rgba(255,255,255,.5); border:1px solid var(--rule); border-radius:8px; padding:9px 12px}
+  .fact span{display:block; font-size:11px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft)}
+  .fact b{font-weight:600; font-size:16px}
+  .block{border-left:3px solid var(--accent); padding:6px 0 6px 15px; margin:16px 0}
+  .block.event{border-color:#9a5b2e}
+  .block.gone{border-color:var(--gone)}
+  .block.family{border-color:#6a7b4a}
+  .block h4{margin:0 0 4px; font-size:13px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft)}
+  .block .score{font-size:22px; font-weight:600; font-family:'Spectral'}
+  .block p{margin:4px 0 0; line-height:1.62}
+  .tag{display:inline-block; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    background:rgba(138,106,74,.15); color:var(--gone); padding:3px 9px; border-radius:999px; margin-left:8px; vertical-align:middle}
+  .m-place-photo{float:right; width:170px; margin:0 0 12px 16px}
+  .m-place-photo img{width:100%; border-radius:6px; display:block; filter:grayscale(.1)}
+  .m-place-photo small{display:block; font-size:10px; color:var(--ink-soft); margin-top:3px; text-align:center}
+  footer{text-align:center; color:var(--ink-soft); font-size:14px; margin-top:60px}
+  @media(max-width:520px){ .card{width:46vw} .m-place-photo{float:none; width:100%; margin:0 0 12px} }
+  body.locked{overflow:hidden}
+  .landing{position:fixed; inset:0; z-index:80; display:flex; align-items:center; justify-content:center; text-align:center;
+    cursor:pointer; transition:transform .9s cubic-bezier(.7,0,.2,1), opacity .9s ease;
+    background:radial-gradient(120% 90% at 50% 30%, #f4edda 0%, #e7dcc2 58%, #d6c6a6 100%)}
+  .landing.lift{transform:translateY(-106%); opacity:0}
+  .landing .lid{max-width:none; width:100%; padding:30px 24px}
+  .lid-kick{font-family:'Caveat',cursive; font-size:27px; color:var(--accent); margin:0 0 4px; transform:rotate(-1.5deg)}
+  .lid-title{font-family:'Spectral'; font-weight:600; font-size:min(8.5vw,80px); white-space:nowrap; margin:.04em 0 .18em; letter-spacing:.5px}
+  .lid-rule{width:92px; height:2px; background:var(--accent); opacity:.5; margin:2px auto 26px}
+  .lid-line{font-size:clamp(18px,2.6vw,25px); font-style:italic; color:var(--ink); line-height:1.6; max-width:660px; margin:0 auto 34px}
+  .lid-open{font-family:'Spectral'; font-size:16px; letter-spacing:.04em; background:var(--ink); color:var(--paper); border:none;
+    border-radius:999px; padding:12px 28px; cursor:pointer; transition:.2s}
+  .lid-open span{display:inline-block; margin-left:7px; font-size:20px; line-height:1}
+  .lid-open:hover{transform:translateY(-2px); box-shadow:0 10px 20px rgba(50,35,20,.3)}
+  .coin-pin .pin-dot{display:block; width:16px; height:16px; border-radius:50%; border:1.5px solid #3a2a18; box-shadow:0 1px 3px rgba(0,0,0,.45)}
+  .cl-wrap{background:none; border:none}
+  .cl-dot{width:44px; height:44px; border-radius:50%; background:rgba(135,79,44,.93); color:#f4ead3; display:flex; align-items:center;
+    justify-content:center; font-family:'Spectral'; font-weight:600; font-size:17px; border:2px solid #f4ead3; box-shadow:0 2px 8px rgba(50,35,20,.4)}
+</style>
+</head>
+<body class="locked">
+<div class="landing" id="landing">
+  <div class="lid">
+    <p class="lid-kick">a lifetime in pocket change</p>
+    <h1 class="lid-title">The Coins Jack Found</h1>
+    <div class="lid-rule"></div>
+    <p class="lid-line" id="bigline"></p>
+    <button class="lid-open">Open the box <span>&#8964;</span></button>
+  </div>
+</div>
+<div class="wrap">
+  <header class="hero">
+    <h1>The Coins Jack Found</h1>
+    <p class="lede">A diary of a life, told in pocket change.</p>
+    <div class="stats">
+      <div class="stat"><b>10</b><span>coins</span></div>
+      <div class="stat"><b>52¢</b><span>in all</span></div>
+      <div class="stat"><b>1972&ndash;1999</b><span>27 years</span></div>
+      <div class="stat"><b>4</b><span>states</span></div>
+    </div>
+    <div class="rule"></div>
+  </header>
+
+  <div class="controls">
+    <div class="grp"><label>Coin</label>
+      <button class="chip on" data-den="all">All</button>
+      <button class="chip" data-den="penny">Pennies</button>
+      <button class="chip" data-den="dime">Dimes</button>
+      <button class="chip" data-den="quarter">Quarter</button>
+    </div>
+    <div class="grp"><label>Sort</label>
+      <button class="chip on" data-sort="found">By date found</button>
+      <button class="chip" data-sort="mint">By coin's year</button>
+      <button class="chip" data-sort="age">By time in circulation</button>
+    </div>
+  </div>
+
+  <div class="wall" id="wall"></div>
+
+  <h2 class="section-h">Where Jack found them</h2>
+  <p class="section-sub">From his own neighborhood on Clinton Highway to Birmingham, Maui, and the Las Vegas Strip. Click a pin to open the coin.</p>
+  <div id="map"></div>
+
+  <footer>A pilot of Jack&rsquo;s collection · built for the family · <span id="gone-note"></span></footer>
+</div>
+
+<div class="scrim" id="scrim">
+  <div class="modal" id="modal">
+    <button class="x" id="closeX" aria-label="Close">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+const COINS = [
+  {id:"coin-001",img:"photos/cutouts/coin-001.png",den:"penny",mint:1994,found:"1999-11-22",raw:"11/22/99",dow:"Monday",finders:["Jack"],
+   says:"J — found outside Walgreen's",loc:"Walgreen's · 2400 N Broadway, Knoxville",city:"Knoxville",state:"TN",lat:36.0065,lng:-83.9210,conf:"best guess",yic:5,
+   ctx:"A Monday — three days before Thanksgiving."},
+  {id:"coin-002",img:"photos/cutouts/coin-002.png",den:"penny",mint:1981,found:"1983-10-15",raw:"10/15/83",dow:"Saturday",finders:["Jack"],
+   says:"Legion Field · 10/15/83 · Birmingham · T 41 – A 34",loc:"Legion Field, Birmingham",city:"Birmingham",state:"AL",lat:33.4717,lng:-86.8481,conf:"confirmed",yic:2,
+   event:{name:"Tennessee at Alabama",score:"Tennessee 41, Alabama 34",detail:"An upset of 14-point-favorite Alabama, won late on Johnnie Jones' 66-yard touchdown run."},
+   family:"Greg was at this game with Jack."},
+  {id:"coin-003",img:"photos/cutouts/coin-003.png",den:"penny",mint:1974,found:"1986-09-13",raw:"9/13/86",dow:"Saturday",finders:["Jack","Adam"],
+   says:"Jack — found UT Stadium · 9/13/86 · UT / Miss St football game · Jack & Adam",loc:"Neyland Stadium, Knoxville",city:"Knoxville",state:"TN",lat:35.9551,lng:-83.9250,conf:"confirmed",yic:12,
+   event:{name:"Tennessee vs Mississippi State",score:"Mississippi State 27, Tennessee 23",detail:"Mississippi State upset No. 8 Tennessee at Neyland in front of 89,897."},
+   place:{name:"Neyland Stadium",where:"On the Tennessee River, Knoxville",status:"standing",
+     story:"Neyland Stadium has stood on the bank of the Tennessee River since 1921, growing into one of the largest stadiums in America — a sea of orange that holds well over 100,000 on game day. Jack found coins here more than once."},
+   family:"Adam — Jack's grandson and Greg's brother — was at this game with Jack."},
+  {id:"coin-004",img:"photos/cutouts/coin-004.png",den:"penny",mint:1969,found:"1972-10-27",raw:"10/27/72",dow:"Friday",finders:["Jack"],
+   says:"10/27/72 · J · White Store · Clinton Highway",loc:"White Store · 5400 Clinton Hwy, Knoxville",city:"Knoxville",state:"TN",lat:36.0430,lng:-83.9870,conf:"confirmed",yic:3,
+   place:{name:"White Store",where:"5400 Clinton Highway, North Knoxville",status:"gone",
+     story:"White Stores was East Tennessee's biggest homegrown grocery chain — founded in 1922, sold to Food City's parent in 1989. The store at 5400 Clinton Highway was Jack's neighborhood grocery, a short drive from the house. It's gone now."}},
+  {id:"coin-005",img:"photos/cutouts/coin-005.png",den:"dime",mint:1995,found:"1998-01-23",raw:"1/23/98",dow:"Friday",finders:["Jack"],
+   says:"J — found Nixon Deli · 1/23/98",loc:"Nixon's Deli · 508 Merchants Dr, Knoxville",city:"Knoxville",state:"TN",lat:36.0185,lng:-83.9585,conf:"inferred",yic:3,
+   ctx:"A Friday lunch, minutes from home."},
+  {id:"coin-006",img:"photos/cutouts/coin-006.png",den:"dime",mint:1975,found:"1985-03-10",raw:"March 10, 1985",dow:"Sunday",finders:["Jack"],
+   says:"March 10, 1985 · Lahaina, Maui · Pioneer Inn · J",loc:"Pioneer Inn, Lahaina, Maui",city:"Lahaina",state:"HI",lat:20.8725,lng:-156.6777,conf:"confirmed",yic:10,
+   place:{name:"The Pioneer Inn",where:"Lahaina waterfront, Maui",status:"gone",photo:"photos/pioneer-inn.jpg",credit:"Historic American Buildings Survey, Library of Congress",
+     story:"The Pioneer Inn opened in 1901 on the Lahaina waterfront — the oldest hotel on Maui and the longest continuously operating hotel in Hawaii. When Jack found this dime out front in March 1985, it had already stood for 84 years. On August 8, 2023, the Lahaina wildfire burned it to the ground. The coin outlasted the building."}},
+  {id:"coin-007",img:"photos/cutouts/coin-007.png",den:"penny",mint:1987,found:"1991-11-02",raw:"11/2/91",dow:"Saturday",finders:["Jack"],
+   says:"J. found — 11/2/91 · UT / Mem. St game · outside stadium",loc:"Neyland Stadium, Knoxville",city:"Knoxville",state:"TN",lat:35.9557,lng:-83.9244,conf:"confirmed",yic:4,
+   event:{name:"Tennessee vs Memphis State",score:"Tennessee 52, Memphis State 24",detail:"Tennessee routed Memphis State at Neyland; 96,664 in attendance."},
+   place:{name:"Neyland Stadium",where:"On the Tennessee River, Knoxville",status:"standing",
+     story:"Neyland Stadium has anchored the Knoxville riverbank since 1921. Jack found coins here more than once — this one, and the 1986 Mississippi State game with Adam."}},
+  {id:"coin-008",img:"photos/cutouts/coin-008.png",den:"penny",mint:1984,found:"1985-10-15",raw:"10/15/85",dow:"Tuesday",finders:["Jack"],
+   says:"10/15/85 · Jack · found lot · Super X · Clinton Highway",loc:"Super X · Clinton Hwy, Knoxville",city:"Knoxville",state:"TN",lat:36.0405,lng:-83.9840,conf:"inferred",yic:1,
+   place:{name:"Super X (SupeRx)",where:"Clinton Highway, North Knoxville",status:"gone",
+     story:"Super X — properly SupeRx — was the Kroger company's drugstore chain. When Jack found this penny in its Clinton Highway parking lot in 1985, the chain was in its last years: Kroger sold it off in 1986, and the name was gone by 1994. Like the White Store down the road, it has vanished."}},
+  {id:"coin-009",img:"photos/cutouts/coin-009.png",den:"penny",mint:1985,found:"1986-05-24",raw:"5/24/86",dow:"Saturday",finders:["Jack"],
+   says:"5/24/86 · parking lot · K-Mart · Clinton Hwy",loc:"Kmart · 5094 Clinton Hwy, Knoxville",city:"Knoxville",state:"TN",lat:36.0390,lng:-83.9820,conf:"confirmed",yic:1,
+   ctx:"The Saturday of Memorial Day weekend.",
+   place:{name:"Kmart (Clinton Plaza)",where:"5094 Clinton Highway, North Knoxville",status:"gone",
+     story:"The Clinton Highway Kmart opened in 1973 at Clinton Plaza and ran for three decades before closing in 2003 — the everything-store for a North Knoxville family. Jack found this penny in its parking lot the Saturday of Memorial Day weekend, 1986."}},
+  {id:"coin-010",img:"photos/cutouts/coin-010.png",den:"quarter",mint:1985,found:"1988-09-20",raw:"9/20/88",dow:"Tuesday",finders:["Jack"],
+   says:"9/20/88 · Jack · found Las Vegas · casino floor",loc:"The Las Vegas Strip",city:"Las Vegas",state:"NV",lat:36.1147,lng:-115.1728,conf:"approximate",yic:3,
+   place:{name:"The Las Vegas Strip",where:"Las Vegas, Nevada",status:"standing",
+     story:"Somewhere on the Strip, on a casino floor, Jack spotted a quarter on the carpet. There's no telling which casino, so this pin sits in the middle of the Strip. September 1988 caught Las Vegas at the tail end of its old self — The Mirage would open a year later and remake the Strip for good."}},
+];
+
+const DEN_LABEL={penny:"Penny",dime:"Dime",quarter:"Quarter"};
+const DEN_COLOR={penny:"#b5703a",dime:"#9a9a93",quarter:"#8f8f88"};
+const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+function prettyDate(iso){const[y,m,d]=iso.split("-").map(Number);return `${MONTHS[m-1]} ${d}, ${y}`;}
+function tilt(i){const a=[-3,2,-1.5,2.5,-2,1.5,-2.5,1,3,-1];return a[i%a.length];}
+
+let denFilter="all", sortMode="found";
+const wall=document.getElementById("wall");
+
+function visibleCoins(){
+  let arr=COINS.filter(c=>denFilter==="all"||c.den===denFilter);
+  if(sortMode==="found") arr.sort((a,b)=>a.found.localeCompare(b.found));
+  if(sortMode==="mint") arr.sort((a,b)=>a.mint-b.mint);
+  if(sortMode==="age") arr.sort((a,b)=>b.yic-a.yic);
+  return arr;
+}
+function renderWall(){
+  wall.innerHTML="";
+  visibleCoins().forEach((c,i)=>{
+    const el=document.createElement("div");
+    el.className="card";
+    el.style.transform=`rotate(${tilt(i)}deg)`;
+    el.innerHTML=`<img src="${c.img}" alt="${c.loc}" loading="lazy"/>
+      <div class="cap">${c.city}, ${c.state} · ${c.found.slice(0,4)}</div>`;
+    el.onclick=()=>openDetail(c.id);
+    wall.appendChild(el);
+  });
+}
+
+function openDetail(id){
+  const c=COINS.find(x=>x.id===id);
+  const mc=document.getElementById("modalContent");
+  let placePhoto="";
+  if(c.place&&c.place.photo){
+    placePhoto=`<div class="m-place-photo"><img src="${c.place.photo}" alt="${c.place.name}"/><small>${c.place.credit||""}</small></div>`;
+  }
+  let event="";
+  if(c.event){event=`<div class="block event"><h4>${c.event.name}</h4><div class="score">${c.event.score}</div><p>${c.event.detail}</p></div>`;}
+  let place="";
+  if(c.place){
+    const tag=c.place.status==="gone"?'<span class="tag">No longer standing</span>':"";
+    place=`<div class="block ${c.place.status==='gone'?'gone':''}">${placePhoto}<h4>The place ${tag}</h4>
+      <p style="font-weight:600;margin-bottom:2px">${c.place.name}</p><p>${c.place.story}</p></div>`;
+  }
+  let family="";
+  if(c.family){family=`<div class="block family"><h4>From the family</h4><p>${c.family}</p></div>`;}
+  const finders=c.finders.join(" &amp; ");
+  mc.innerHTML=`
+    <div class="m-photo"><img src="${c.img}" alt="${c.loc}"/></div>
+    <div class="m-body">
+      <p class="m-card-says">“${c.says}”</p>
+      <h3 class="m-title">${c.loc.split(' · ')[0].split(',')[0]}</h3>
+      <p class="m-where">${c.dow}, ${prettyDate(c.found)} · found by ${finders}${c.ctx?` · ${c.ctx}`:""}</p>
+      <div class="facts">
+        <div class="fact"><span>The coin</span><b>${c.mint} ${DEN_LABEL[c.den]}</b></div>
+        <div class="fact"><span>Found</span><b>${prettyDate(c.found)}</b></div>
+        <div class="fact"><span>In circulation</span><b>${c.yic} ${c.yic===1?'year':'years'}</b></div>
+        <div class="fact"><span>Where</span><b>${c.city}, ${c.state}</b></div>
+      </div>
+      ${event}${place}${family}
+    </div>`;
+  document.getElementById("scrim").classList.add("show");
+}
+function closeDetail(){document.getElementById("scrim").classList.remove("show");}
+document.getElementById("closeX").onclick=closeDetail;
+document.getElementById("scrim").onclick=e=>{if(e.target.id==="scrim")closeDetail();};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDetail();});
+
+document.querySelectorAll('[data-den]').forEach(b=>b.onclick=()=>{
+  denFilter=b.dataset.den; document.querySelectorAll('[data-den]').forEach(x=>x.classList.toggle('on',x===b)); renderWall();
+});
+document.querySelectorAll('[data-sort]').forEach(b=>b.onclick=()=>{
+  sortMode=b.dataset.sort; document.querySelectorAll('[data-sort]').forEach(x=>x.classList.toggle('on',x===b)); renderWall();
+});
+
+renderWall();
+document.getElementById("gone-note").textContent = COINS.filter(c=>c.place&&c.place.status==="gone").length + " of these places no longer exist.";
+
+// landing sentence (auto-computed) + lid lift
+(function(){
+  const yrs=Math.max(...COINS.map(c=>+c.found.slice(0,4)))-Math.min(...COINS.map(c=>+c.found.slice(0,4)));
+  const cents=COINS.reduce((s,c)=>s+({penny:1,dime:10,quarter:25}[c.den]),0);
+  const val=cents>=100?'$'+(cents/100).toFixed(2):cents+'¢';
+  const places=new Set(COINS.map(c=>c.loc.split(' · ')[0].split(',')[0])).size;
+  const states=new Set(COINS.map(c=>c.state)).size;
+  document.getElementById('bigline').textContent=
+    `Over ${yrs} years, Jack found ${COINS.length} coins — ${val} in all — at ${places} places across ${states} states. He wrote down every one.`;
+})();
+const landing=document.getElementById('landing');
+function enterBox(){landing.classList.add('lift'); document.body.classList.remove('locked'); setTimeout(()=>{landing.style.display='none'; map.invalidateSize();},900);}
+landing.addEventListener('click',enterBox);
+
+// map with clustering (counts per area)
+const map=L.map('map',{scrollWheelZoom:false}).setView([34.5,-95],4);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
+const cluster=L.markerClusterGroup({
+  maxClusterRadius:48, showCoverageOnHover:false, spiderfyOnMaxZoom:true,
+  iconCreateFunction:cl=>L.divIcon({html:`<div class="cl-dot"><span>${cl.getChildCount()}</span></div>`,className:'cl-wrap',iconSize:[44,44]})
+});
+COINS.forEach(c=>{
+  const icon=L.divIcon({className:'coin-pin',html:`<span class="pin-dot" style="background:${DEN_COLOR[c.den]}"></span>`,iconSize:[18,18]});
+  const m=L.marker([c.lat,c.lng],{icon});
+  m.bindPopup(`<div class="pop"><b>${c.loc.split(' · ')[0].split(',')[0]}</b><br><small>${prettyDate(c.found)} · ${c.mint} ${DEN_LABEL[c.den].toLowerCase()}</small></div>`);
+  m.on('click',()=>openDetail(c.id));
+  cluster.addLayer(m);
+});
+map.addLayer(cluster);
+map.fitBounds(cluster.getBounds(),{padding:[50,50]});
+</script>
+</body>
+</html>
