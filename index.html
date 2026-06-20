@@ -61,8 +61,8 @@
   .tl-yr{position:absolute; bottom:0; transform:translateX(-50%); text-align:center; color:var(--ink-soft); pointer-events:none}
   .tl-yr i{display:block; width:1px; height:14px; background:var(--rule); margin:0 auto 4px}
   .tl-yr span{font-size:13px; font-family:'Spectral'}
-  .tl-coin{position:absolute; width:158px; transform:translateX(-50%) translateY(16px); cursor:pointer; opacity:0; transition:opacity .55s ease, transform .55s ease; z-index:2}
-  .tl-coin.in{opacity:1; transform:translateX(-50%) translateY(0)}
+  .tl-coin{position:absolute; width:158px; transform:translateX(-50%) translateY(10px); cursor:pointer; opacity:1; transition:transform .5s ease; z-index:2}
+  .tl-coin.in{transform:translateX(-50%) translateY(0)}
   .tl-coin .stem{position:absolute; left:50%; width:1px; background:var(--rule); z-index:1}
   .tl-coin .cardimg{width:100%; filter:drop-shadow(0 8px 12px rgba(50,35,20,.26)); border-radius:2px; transition:transform .2s}
   .tl-coin:hover .cardimg{transform:scale(1.05) translateY(-3px)}
