@@ -297,7 +297,7 @@ function openPlace(pk){
     const axisY=TOPPAD+imgH+METAH+AXGAP;
     const axis=document.createElement("div");axis.className="tl-axis";axis.style.left="0px";axis.style.width=W+"px";axis.style.top=axisY+"px";track.appendChild(axis);
     marks.forEach(function(m){const t=document.createElement("div");t.className="tl-yr";t.style.left=m.x+"px";t.style.top=(axisY+9)+"px";t.innerHTML='<i></i><span>'+m.yr+'</span>';track.appendChild(t)});
-    track.style.height=(axisY+58)+"px";
+    track.style.height=(axisY+68)+"px";
   }
   function activate(){
     function update(){const center=scroll.scrollLeft+scroll.clientWidth/2;let best=null,bd=1e9;nodes.forEach(function(el){const d=Math.abs(el._cx-center);if(d<bd){bd=d;best=el}});if(best)nowEl.textContent=best._yr;}
