@@ -1544,7 +1544,7 @@
       "locationConfidence": "confirmed",
       "placeKey": "neyland",
       "microSpot": "in the stadium",
-      "locationNote": "FOURTH Neyland coin. RESEARCH (Greg asked re location): the 11/7/87 UT-Louisville game was at NEYLAND STADIUM, KNOXVILLE (box score 'Louisville at Tennessee', attendance 92,084), Tennessee won 41-10, on a SATURDAY — NOT a Thursday night at Louisville. So Greg's memory of a Thursday game at Louisville's old Fairgrounds/Cardinal Stadium where he saw Muhammad Ali does NOT match THIS date — likely a different UT-Louisville trip. Offered to find his Ali game separately. Ali familyMemory NOT attached here (doesn't fit).",
+      "locationNote": "FOURTH Neyland coin. The 11/7/87 UT-Louisville game was at NEYLAND STADIUM, KNOXVILLE (box score Louisville at Tennessee, attendance 92,084), Tennessee won 41-10, on a Saturday. Greg did NOT attend. (His separate Thursday-at-Louisville/Muhammad-Ali memory is a different game with no coin in the collection — dropped, do not pursue.)",
       "place": null,
       "event": {
         "name": "Tennessee vs Louisville football",
@@ -1763,6 +1763,44 @@
       "event": null,
       "familyMemory": "Jack came to watch me play Little League, and he came out to watch pretty regularly.",
       "yearsInCirculation": 3
+    },
+    {
+      "id": "coin-057",
+      "photo": "IMG_0184",
+      "denomination": "penny",
+      "mintYear": 1997,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": 1997
+        },
+        {
+          "den": "nickel",
+          "mint": 1987
+        }
+      ],
+      "dateFound": "1998-02-01",
+      "dateFoundRaw": "2/1/98",
+      "dayOfWeek": "Sunday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "2/1/98 J Found at Luau Sea World",
+      "say": "2/1/98 · J · found at the luau · Sea World",
+      "locationRaw": "Luau, Sea World",
+      "locationResolved": "Sea World, Orlando, Florida — at the luau",
+      "city": "Orlando",
+      "state": "FL",
+      "lat": 28.4115,
+      "lng": -81.4615,
+      "locationConfidence": "inferred",
+      "placeKey": "sea-world-orlando",
+      "microSpot": "at the luau",
+      "locationNote": "NEW PLACE at publish: sea-world-orlando — Sea World Orlando, FL. Jack found a penny + a nickel at the luau (the park's Polynesian luau dinner show), 2/1/98. FIRST Florida pin. status standing. Greg assumed Orlando (Sea World's FL park). Multi-coin card. Pin ~28.4115/-81.4615.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": null
     }
   ]
 }

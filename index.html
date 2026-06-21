@@ -57,17 +57,18 @@
   .tl-ghost-year{position:sticky; left:50%; top:0; transform:translateX(-50%); width:0; height:0; z-index:0}
   .tl-ghost-year b{position:absolute; left:50%; top:150px; transform:translateX(-50%); font-family:'Spectral'; font-weight:600;
     font-size:clamp(110px,15vw,190px); color:rgba(120,79,44,.07); pointer-events:none; white-space:nowrap}
-  .tl-axis{position:absolute; left:0; right:0; bottom:42px; height:2px; background:var(--rule)}
-  .tl-yr{position:absolute; bottom:0; transform:translateX(-50%); text-align:center; color:var(--ink-soft); pointer-events:none}
-  .tl-yr i{display:block; width:1px; height:14px; background:var(--rule); margin:0 auto 4px}
+  .tl-now{font-family:'Spectral'; font-weight:600; font-size:21px; color:var(--accent); min-width:62px; text-align:center}
+  .tl-axis{position:absolute; height:2px; background:var(--rule)}
+  .tl-yr{position:absolute; transform:translateX(-50%); text-align:center; color:var(--ink-soft); pointer-events:none}
+  .tl-yr i{display:block; width:1px; height:9px; background:var(--rule); margin:0 auto 3px}
   .tl-yr span{font-size:13px; font-family:'Spectral'}
-  .tl-coin{position:absolute; width:158px; transform:translateX(-50%) translateY(10px); cursor:pointer; opacity:1; transition:transform .5s ease; z-index:2}
-  .tl-coin.in{transform:translateX(-50%) translateY(0)}
-  .tl-coin .stem{position:absolute; left:50%; width:1px; background:var(--rule); z-index:1}
-  .tl-coin .cardimg{width:100%; filter:drop-shadow(0 8px 12px rgba(50,35,20,.26)); border-radius:2px; transition:transform .2s}
-  .tl-coin:hover .cardimg{transform:scale(1.05) translateY(-3px)}
-  .tl-coin .meta{text-align:center; margin-top:5px; font-family:'Caveat',cursive; font-size:16px; color:var(--ink-soft); line-height:1.15}
-  .tl-coin .meta b{display:block; font-family:'Spectral'; font-weight:500; font-size:12px; letter-spacing:.04em; color:var(--accent)}
+  .tl-coin{position:absolute; cursor:pointer; z-index:2; text-align:center; transition:transform .18s}
+  .tl-coin:hover{z-index:6}
+  .tl-coin .cardimg{height:78px; width:auto; display:inline-block; filter:drop-shadow(0 6px 10px rgba(50,35,20,.24)); border-radius:2px; transition:transform .2s}
+  .tl-coin:hover .cardimg{transform:scale(1.07) translateY(-3px)}
+  .tl-coin .meta{margin-top:6px; font-family:'Caveat',cursive; font-size:15px; color:var(--ink-soft); line-height:1.12}
+  .map-reset{font-family:'Spectral'; font-size:13px; background:rgba(255,252,244,.96); border:1px solid var(--rule); color:var(--ink); border-radius:8px; padding:6px 11px; cursor:pointer; box-shadow:0 1px 4px rgba(50,35,20,.22)}
+  .map-reset:hover{background:#fff}
   .tag-trip{display:inline-block; white-space:nowrap; font-family:'Spectral'; font-size:10px; letter-spacing:.04em; text-transform:uppercase; background:rgba(135,79,44,.14); color:var(--accent); padding:1px 8px; border-radius:999px; margin-top:4px}
   .dot-fnd{display:inline-block; width:7px; height:7px; border-radius:50%; vertical-align:middle; margin-right:4px}
 
@@ -118,7 +119,7 @@
   .prow img{width:120px; flex:none; filter:drop-shadow(0 4px 7px rgba(50,35,20,.25)); border-radius:2px}
   .prow .pd b{font-family:'Spectral'; font-weight:500; font-size:15px} .prow .pd span{display:block; font-size:13px; color:var(--ink-soft)}
   footer{text-align:center; color:var(--ink-soft); font-size:14px; margin-top:54px}
-  @media(max-width:600px){ .tl-track{height:460px} .tl-coin{width:120px} .tl-ghost-year b{font-size:120px} .pcard{width:44vw} .m-place-photo{float:none;width:100%;margin:0 0 12px} .prow img{width:84px} }
+  @media(max-width:600px){ .tl-coin .cardimg{height:60px} .pcard{width:44vw} .m-place-photo{float:none;width:100%;margin:0 0 12px} .prow img{width:84px} }
 </style>
 </head>
 <body class="locked">
@@ -146,17 +147,15 @@
   </header>
 
   <h2 class="section-h">Through the years</h2>
-  <p class="section-sub">Every coin at the moment he found it, oldest to newest — scroll across, or press play and watch his life scroll by. Tap any one for its story.</p>
+  <p class="section-sub">Every coin at the moment he found it, oldest to newest — use the arrows (or drag sideways) to move through the years. Busy years spread out wider. Tap any one for its story.</p>
   <div class="tl-wrap">
     <div class="tl-controls">
-      <button class="tl-btn" id="playBtn"><span id="playIcon">&#9658;</span> <span id="playLbl">Play</span></button>
-      <span class="tl-hint">drag or scroll sideways, or press play</span>
+      <button class="tl-btn" id="tlPrev" aria-label="Scroll to earlier years">&#9664;&nbsp; Earlier</button>
+      <span class="tl-now" id="tlNow">—</span>
+      <button class="tl-btn" id="tlNext" aria-label="Scroll to later years">Later &nbsp;&#9654;</button>
     </div>
     <div class="tl-scroll" id="tlScroll">
-      <div class="tl-track" id="tlTrack">
-        <div class="tl-ghost-year"><b id="ghostYear"></b></div>
-        <div class="tl-axis"></div>
-      </div>
+      <div class="tl-track" id="tlTrack"></div>
     </div>
   </div>
 
@@ -265,50 +264,53 @@ function openPlace(pk){
   show();
 }
 
-/* ---- TIMELINE ---- */
+/* ---- TIMELINE (year-band filmstrip) ---- */
 (function(){
-  const scroll=document.getElementById("tlScroll"),track=document.getElementById("tlTrack"),ghost=document.getElementById("ghostYear"),axisEl=track.querySelector(".tl-axis");
+  const scroll=document.getElementById("tlScroll"),track=document.getElementById("tlTrack"),nowEl=document.getElementById("tlNow");
   const sorted=COINS.slice().sort(byDate);
-  const toMs=function(iso){return new Date(iso+"T00:00:00").getTime()};
-  const minMs=toMs(sorted[0].found), maxMs=toMs(sorted[sorted.length-1].found);
-  const y0=new Date(minMs).getFullYear(), y1=new Date(maxMs).getFullYear();
-  const PXY=420, pad=150, AX=46, topPad=16, GAPX=18, GAPY=24;
-  const W=((y1+1)-y0)*PXY+pad*2; track.style.width=W+"px";
-  const xOf=function(ms){const d=new Date(ms),yr=d.getFullYear(),s=new Date(yr,0,1).getTime(),e=new Date(yr+1,0,1).getTime();return pad+((yr-y0)+(ms-s)/(e-s))*PXY};
+  const MINSLOT=126, COLPAD=18, YEARGAP=26, TOPPAD=14, METAH=40, AXGAP=14;
   const nodes=[];
   sorted.forEach(function(c){
-    const x=xOf(toMs(c.found));
-    const el=document.createElement("div");el.className="tl-coin";el.style.left=x+"px";el.style.top="0px";
+    const el=document.createElement("div");el.className="tl-coin";
     el.innerHTML='<img class="cardimg" src="'+denImg(c)+'" alt=""/>'+
-      '<div class="meta"><b>'+c.found.slice(0,4)+'</b>'+placeOf(c).name+(c.trip?'<span class="tag-trip">&#10022; '+c.trip+'</span>':'')+'</div>';
+      '<div class="meta">'+placeOf(c).name+(c.trip?'<span class="tag-trip">&#10022; '+c.trip+'</span>':'')+'</div>';
     el.onclick=(function(id){return function(){openCoin(id)}})(c.id);
-    el._x=x; track.appendChild(el); nodes.push(el);
+    el._yr=+c.found.slice(0,4);
+    track.appendChild(el); nodes.push(el);
   });
   function layout(){
-    const rows=[]; let maxH=0;
-    nodes.forEach(function(el){const w=el.offsetWidth,h=el.offsetHeight;if(h>maxH)maxH=h;const L=el._x-w/2,R=el._x+w/2;let r=0;for(;r<rows.length;r++){if(L>rows[r]+GAPX)break}if(r===rows.length)rows.push(0);rows[r]=R;el._row=r});
-    const rowH=maxH+GAPY, trackH=topPad+rows.length*rowH+AX; track.style.height=trackH+"px";
-    ghost.style.top=Math.max(30,(trackH-AX)/2-90)+"px";
-    const axisY=trackH-AX+2; axisEl.style.bottom=(AX-2)+"px";
-    nodes.forEach(function(el){const top=topPad+el._row*rowH; el.style.top=top+"px"; const ih=el.querySelector(".cardimg").offsetHeight; const st=document.createElement("div");st.className="stem";st.style.top=ih+"px";st.style.height=Math.max(0,axisY-top-ih)+"px";el.appendChild(st)});
-    for(let y=y0;y<=y1+1;y++){const t=document.createElement("div");t.className="tl-yr";t.style.left=(pad+(y-y0)*PXY)+"px";t.innerHTML='<i></i><span>'+y+'</span>';track.appendChild(t)}
+    let cursor=COLPAD, curYr=null, groupStart=COLPAD; const marks=[];
+    const imgH=(nodes[0]&&nodes[0].querySelector("img").offsetHeight)||78;
+    nodes.forEach(function(el){
+      const w=el.querySelector(".cardimg").offsetWidth||MINSLOT;
+      const slot=Math.max(w+COLPAD,MINSLOT);
+      if(el._yr!==curYr){
+        if(curYr!==null){marks.push({yr:curYr,x:(groupStart+cursor)/2}); cursor+=YEARGAP;}
+        curYr=el._yr; groupStart=cursor;
+      }
+      el.style.left=cursor+"px"; el.style.top=TOPPAD+"px"; el.style.width=slot+"px";
+      el._cx=cursor+slot/2;
+      cursor+=slot;
+    });
+    if(curYr!==null)marks.push({yr:curYr,x:(groupStart+cursor)/2});
+    const W=cursor+COLPAD; track.style.width=W+"px";
+    const axisY=TOPPAD+imgH+METAH+AXGAP;
+    const axis=document.createElement("div");axis.className="tl-axis";axis.style.left="0px";axis.style.width=W+"px";axis.style.top=axisY+"px";track.appendChild(axis);
+    marks.forEach(function(m){const t=document.createElement("div");t.className="tl-yr";t.style.left=m.x+"px";t.style.top=(axisY+5)+"px";t.innerHTML='<i></i><span>'+m.yr+'</span>';track.appendChild(t)});
+    track.style.height=(axisY+34)+"px";
   }
   function activate(){
-    const io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in")})},{root:scroll,threshold:0.04});
-    nodes.forEach(function(el){io.observe(el)});
-    function update(){const center=scroll.scrollLeft+scroll.clientWidth/2;const f=Math.max(0,Math.min(1,(center-pad)/(W-pad*2)));ghost.textContent=new Date(minMs+(maxMs-minMs)*f).getFullYear()}
-    scroll.addEventListener("scroll",update);update();
-    let playing=false,raf=null;const btn=document.getElementById("playBtn"),icon=document.getElementById("playIcon"),lbl=document.getElementById("playLbl");
-    function stop(){playing=false;icon.innerHTML="&#9658;";lbl.textContent="Play";if(raf)cancelAnimationFrame(raf)}
-    function play(){playing=true;icon.innerHTML="&#10073;&#10073;";lbl.textContent="Pause";const max=scroll.scrollWidth-scroll.clientWidth;if(scroll.scrollLeft>=max-4)scroll.scrollLeft=0;const sp=max/52000;let last=null;function step(t){if(!playing)return;if(last===null)last=t;scroll.scrollLeft+=(t-last)*sp;last=t;update();if(scroll.scrollLeft>=max-2){stop();return}raf=requestAnimationFrame(step)}raf=requestAnimationFrame(step)}
-    btn.onclick=function(){playing?stop():play()};
-    scroll.addEventListener("wheel",function(){if(playing)stop()});scroll.addEventListener("touchstart",function(){if(playing)stop()});
+    function update(){const center=scroll.scrollLeft+scroll.clientWidth/2;let best=null,bd=1e9;nodes.forEach(function(el){const d=Math.abs(el._cx-center);if(d<bd){bd=d;best=el}});if(best)nowEl.textContent=best._yr;}
+    scroll.addEventListener("scroll",update); update();
+    const page=function(){return Math.max(220,scroll.clientWidth*0.8)};
+    document.getElementById("tlPrev").onclick=function(){scroll.scrollBy({left:-page(),behavior:"smooth"})};
+    document.getElementById("tlNext").onclick=function(){scroll.scrollBy({left:page(),behavior:"smooth"})};
   }
   const imgs=nodes.map(function(el){return el.querySelector("img")});let left=imgs.length,did=false;
   function go(){if(did)return;did=true;layout();activate()}
   function ready(){left--;if(left<=0)go()}
   imgs.forEach(function(im){if(im.complete&&im.naturalWidth)ready();else{im.addEventListener("load",ready);im.addEventListener("error",ready)}});
-  setTimeout(go,2200);
+  setTimeout(go,2500);
 })();
 
 /* ---- MAP ---- */
@@ -327,6 +329,12 @@ function openPlace(pk){
     cluster.addLayer(m);bounds.push([pl.lat,pl.lng]);
   });
   map.addLayer(cluster);map.fitBounds(bounds,{padding:[50,50]});
+  const ResetCtl=L.Control.extend({options:{position:"topright"},onAdd:function(){
+    const b=L.DomUtil.create("button","map-reset");b.type="button";b.innerHTML="&#10227; Show all";b.title="Zoom back out to all the coins";
+    L.DomEvent.disableClickPropagation(b);
+    L.DomEvent.on(b,"click",function(e){L.DomEvent.stop(e);map.fitBounds(bounds,{padding:[50,50]})});
+    return b;}});
+  map.addControl(new ResetCtl());
 })();
 
 /* ---- GRID (by place) ---- */
