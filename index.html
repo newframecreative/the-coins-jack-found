@@ -199,12 +199,12 @@ const DEN_VAL={penny:1,nickel:5,dime:10,quarter:25};
 const FIND_COLOR={Jack:"#b5703a",Chris:"#5b7a8c",Adam:"#6a7b4a"};
 const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
 function placeOf(c){return PLACES[c.place]||{name:c.place,where:"",status:"standing"}}
-function coinList(c){return c.coins?c.coins:[{den:c.den,mint:c.mint,cur:c.cur}]}
+function coinList(c){return c.kind==="bill"?[]:(c.coins?c.coins:[{den:c.den,mint:c.mint,cur:c.cur}])}
 function denList(c){return coinList(c).map(x=>x.den)}
 function isForeign(x){return x.cur&&x.cur!=="USD"}
 function centsOf(c){return coinList(c).reduce((s,x)=>s+(isForeign(x)?0:(DEN_VAL[x.den]||0)),0)}
 function sortMint(c){const ms=coinList(c).map(x=>x.mint).filter(Boolean);return ms.length?Math.min.apply(null,ms):+c.found.slice(0,4)}
-function coinLabel(c){const L=coinList(c);
+function coinLabel(c){if(c.kind==="bill")return "$"+(c.amountCents/100)+" bill";const L=coinList(c);
   if(L.length>1&&L.every(x=>!x.mint&&!isForeign(x)&&x.den===L[0].den))return L.length+" "+DEN_LABEL[L[0].den]+"s";
   return L.map(x=>{const d=(isForeign(x)?"Canadian ":"")+DEN_LABEL[x.den];return x.mint?(x.mint+" "+d):d}).join(" + ");}
 function circLabel(c){const y=+c.found.slice(0,4);const p=coinList(c).filter(x=>x.mint).map(x=>{const n=y-x.mint;return n+(n===1?" yr":" yrs")});return p.length?p.join(" / "):"—";}
@@ -220,11 +220,12 @@ const byDate=(a,b)=>a.found.localeCompare(b.found);
   const cents=COINS.reduce((s,c)=>s+centsOf(c),0);
   const val=cents>=100?"$"+(cents/100).toFixed(2):cents+"¢";
   const places=new Set(COINS.map(c=>c.place)).size;
+  const coinCount=COINS.filter(c=>c.kind!=="bill").length;
   const usStates=new Set(COINS.filter(c=>c.country!=="Canada").map(c=>c.state)).size;
   const hasCanada=COINS.some(c=>c.country==="Canada");
   const statesPhrase=usStates+" states"+(hasCanada?" and Canada":"");
-  document.getElementById("bigline").textContent="Over "+yrs+" years, Jack saved "+COINS.length+" coins — "+val+" in all — at "+places+" places across "+statesPhrase+". He wrote down every one.";
-  document.getElementById("st-coins").textContent=COINS.length;
+  document.getElementById("bigline").textContent="Over "+yrs+" years, Jack saved "+coinCount+" coins — "+val+" in all — at "+places+" places across "+statesPhrase+". He wrote down every one.";
+  document.getElementById("st-coins").textContent=coinCount;
   document.getElementById("st-value").textContent=val;
   document.getElementById("st-range").textContent=Math.min.apply(null,yrsArr)+"–"+Math.max.apply(null,yrsArr);
   document.getElementById("st-years").textContent=yrs+" years";
@@ -258,7 +259,7 @@ function openCoin(id){
     '<p class="m-says">“'+c.say+'”</p>'+
     '<h3 class="m-title">'+pl.name+'</h3>'+
     '<p class="m-where">'+c.dow+', '+prettyDate(c.found)+' · found by '+c.finders.join(" &amp; ")+(c.spot?' · '+c.spot:'')+' '+trip+'</p>'+
-    '<div class="facts"><div class="fact"><span>'+(c.coins?"The coins":"The coin")+'</span><b>'+coinLabel(c)+'</b></div>'+
+    '<div class="facts"><div class="fact"><span>'+(c.kind==="bill"?"The find":(c.coins?"The coins":"The coin"))+'</span><b>'+coinLabel(c)+'</b></div>'+
     '<div class="fact"><span>Found</span><b>'+prettyDate(c.found)+'</b></div>'+
     '<div class="fact"><span>In circulation</span><b>'+circLabel(c)+'</b></div>'+
     '<div class="fact"><span>Where</span><b>'+(pl.where||(c.city+", "+c.state))+'</b></div></div>'+
@@ -408,6 +409,8 @@ document.getElementById("gone-note").textContent=places().filter(function(pk){re
     {h:Object.keys(fc).length+" finders", d:"Jack found the most; his wife <b>Chris</b> found "+(fc.Chris||0)+"; and their grandson <b>Adam</b> found "+(fc.Adam||0)+", at a Tennessee game."},
     {h:goneN+" places", d:"Of the "+Object.keys(used).length+" spots in the collection, <b>"+goneN+" no longer exist</b> — vanished stores, malls, and a Maui inn that burned in 2023."}
   ];
+  const bill=COINS.find(c=>c.kind==="bill");
+  if(bill)facts.push({h:"$"+(bill.amountCents/100), d:"The <b>biggest single find</b> — a twenty-dollar bill (the only paper money in the box, kept out of the totals above), at a Florida safari park in "+(+bill.found.slice(0,4))+"."});
   el.innerHTML=facts.map(f=>'<div class="fact-card"><div class="fh">'+f.h+'</div><div class="fd">'+f.d+'</div></div>').join("");
 })();
 </script>
