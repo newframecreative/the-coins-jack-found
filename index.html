@@ -69,6 +69,12 @@
   .tl-coin .meta{margin-top:6px; font-family:'Caveat',cursive; font-size:15px; color:var(--ink-soft); line-height:1.12}
   .map-reset{font-family:'Spectral'; font-size:13px; background:rgba(255,252,244,.96); border:1px solid var(--rule); color:var(--ink); border-radius:8px; padding:6px 11px; cursor:pointer; box-shadow:0 1px 4px rgba(50,35,20,.22)}
   .map-reset:hover{background:#fff}
+  /* notable facts */
+  .facts-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(225px,1fr)); gap:16px; max-width:1000px; margin:8px auto 0; padding:0 4px}
+  .fact-card{background:linear-gradient(180deg, rgba(255,252,244,.72), rgba(244,236,220,.42)); border:1px solid var(--rule); border-radius:13px; padding:18px 20px; box-shadow:0 2px 9px rgba(50,35,20,.07)}
+  .fact-card .fh{font-family:'Spectral'; font-weight:600; font-size:31px; color:var(--accent); line-height:1.04; margin-bottom:7px}
+  .fact-card .fd{font-size:15px; color:var(--ink-soft); line-height:1.42}
+  .fact-card .fd b{color:var(--ink); font-weight:600}
   .tag-trip{display:inline-block; white-space:nowrap; font-family:'Spectral'; font-size:10px; letter-spacing:.04em; text-transform:uppercase; background:rgba(135,79,44,.14); color:var(--accent); padding:1px 8px; border-radius:999px; margin-top:4px}
   .dot-fnd{display:inline-block; width:7px; height:7px; border-radius:50%; vertical-align:middle; margin-right:4px}
 
@@ -174,6 +180,10 @@
     <button class="chip" data-den="quarter">Quarters</button>
   </div>
   <div class="grid" id="grid"></div>
+
+  <h2 class="section-h">A few things the box turned up</h2>
+  <p class="section-sub">Patterns and outliers from across the whole collection.</p>
+  <div class="facts-grid" id="facts"></div>
 
   <footer>A family archive of the coins Jack found &amp; saved · <span id="gone-note"></span></footer>
 </div>
@@ -364,6 +374,42 @@ function renderGrid(){
 document.querySelectorAll("[data-den]").forEach(function(b){b.onclick=function(){denFilter=b.dataset.den;document.querySelectorAll("[data-den]").forEach(function(x){x.classList.toggle("on",x===b)});renderGrid()}});
 renderGrid();
 document.getElementById("gone-note").textContent=places().filter(function(pk){return (PLACES[pk]||{}).status==="gone"}).length+" of these places no longer exist.";
+
+/* ---- NOTABLE FACTS (computed from the data) ---- */
+(function(){
+  const el=document.getElementById("facts"); if(!el) return;
+  const yrOf=c=>+c.found.slice(0,4);
+  let oldest=null;
+  COINS.forEach(c=>coinList(c).forEach(x=>{if(x.mint&&(!oldest||x.mint<oldest.mint))oldest={mint:x.mint,den:x.den,fy:yrOf(c)}}));
+  const yc={}; COINS.forEach(c=>yc[yrOf(c)]=(yc[yrOf(c)]||0)+1);
+  const busiest=Object.keys(yc).reduce((a,b)=>yc[b]>yc[a]?b:a);
+  const sorted=COINS.slice().sort(byDate);
+  let gap={days:0,a:null,b:null};
+  for(let i=1;i<sorted.length;i++){const dd=(new Date(sorted[i].found)-new Date(sorted[i-1].found))/864e5; if(dd>gap.days)gap={days:dd,a:sorted[i-1],b:sorted[i]}}
+  const gapYrs=Math.round(gap.days/365.25*10)/10;
+  const y0=yrOf(sorted[0]), y1=yrOf(sorted[sorted.length-1]);
+  const pcnt={}; COINS.forEach(c=>pcnt[c.place]=(pcnt[c.place]||0)+1);
+  const topPlace=Object.keys(pcnt).reduce((a,b)=>pcnt[b]>pcnt[a]?b:a);
+  const home=PLACES.home||{lat:36.0265,lng:-83.9598};
+  const mi=(la,lo)=>{const R=3959,p=Math.PI/180;const a=0.5-Math.cos((la-home.lat)*p)/2+Math.cos(home.lat*p)*Math.cos(la*p)*(1-Math.cos((lo-home.lng)*p))/2;return 2*R*Math.asin(Math.sqrt(a))};
+  let far=null;
+  Object.keys(PLACES).forEach(k=>{const pl=PLACES[k]; if(pl.lat!=null){const m=mi(pl.lat,pl.lng); if(!far||m>far.m)far={m:m,pl:pl}}});
+  const fc={}; COINS.forEach(c=>c.finders.forEach(f=>fc[f]=(fc[f]||0)+1));
+  const used={}; COINS.forEach(c=>used[c.place]=1);
+  const goneN=Object.keys(used).filter(k=>(PLACES[k]||{}).status==="gone").length;
+  const placeName=PLACES[topPlace]?PLACES[topPlace].name:topPlace;
+  const facts=[
+    {h:oldest.mint, d:"The <b>oldest coin</b> he saved — a "+oldest.den+" minted in "+oldest.mint+", already <b>"+(oldest.fy-oldest.mint)+" years old</b> by the time it turned up."},
+    {h:busiest, d:"His <b>busiest year</b> — "+yc[busiest]+" separate finds, more than any other."},
+    {h:gapYrs+" years", d:"The <b>longest quiet stretch</b> between finds — from "+yrOf(gap.a)+" to "+yrOf(gap.b)+", late in his life."},
+    {h:(y1-y0)+" years", d:"From his <b>first find</b> in "+y0+" to his <b>very last</b> in "+y1+"."},
+    {h:pcnt[topPlace]+" coins", d:"The most from any one place — <b>"+placeName+"</b>."},
+    {h:Math.round(far.m).toLocaleString()+" mi", d:"The <b>farthest from home</b> — "+far.pl.name+", "+(far.pl.where||"")+"."},
+    {h:Object.keys(fc).length+" finders", d:"Jack found the most; his wife <b>Chris</b> found "+(fc.Chris||0)+"; and their grandson <b>Adam</b> found "+(fc.Adam||0)+", at a Tennessee game."},
+    {h:goneN+" places", d:"Of the "+Object.keys(used).length+" spots in the collection, <b>"+goneN+" no longer exist</b> — vanished stores, malls, and a Maui inn that burned in 2023."}
+  ];
+  el.innerHTML=facts.map(f=>'<div class="fact-card"><div class="fh">'+f.h+'</div><div class="fd">'+f.d+'</div></div>').join("");
+})();
 </script>
 </body>
 </html>
