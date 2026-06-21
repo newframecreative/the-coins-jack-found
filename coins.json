@@ -2512,6 +2512,43 @@
       "event": null,
       "familyMemory": null,
       "yearsInCirculation": 1
+    },
+    {
+      "id": "coin-081",
+      "photo": "IMG_0211",
+      "denomination": "quarter",
+      "mintYear": 1966,
+      "dateFound": "1990-02-08",
+      "dateFoundRaw": "2/8/90",
+      "dayOfWeek": "Thursday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "MS Noordam Jack Casino 2/8/90",
+      "say": "2/8/90 · Jack · in the casino · MS Noordam",
+      "locationRaw": "casino, MS Noordam (cruise ship)",
+      "locationResolved": "Aboard the MS Noordam (Holland America), at St. Thomas, U.S. Virgin Islands — in the ship's casino",
+      "city": "at sea",
+      "state": null,
+      "country": "at sea",
+      "lat": 18.3419,
+      "lng": -64.9307,
+      "locationConfidence": "inferred",
+      "placeKey": "ms-noordam",
+      "microSpot": "in the ship's casino",
+      "locationNote": "RESOLVED (research agent + primary source). FIRST at-sea/cruise find. Jack found a 1966 quarter in the CASINO of the MS NOORDAM (1984 Holland America 'Noordam III') on Thu 2/8/1990. CONFIRMED via the St. Petersburg Times Cruise Guide of 2/18/1990: that winter the Noordam ran a 7-day EASTERN Caribbean loop round-trip from PORT EVERGLADES (Fort Lauderdale), every Saturday, ports San Juan / Tortola / St. Thomas / Nassau. Feb 8 = Day 6 of the cruise that embarked Sat Feb 3 1990 → in port, most likely ST. THOMAS (USVI), Tortola the alt — almost certainly NOT a sea day. Pin placed at St. Thomas (Charlotte Amalie 18.3419/-64.9307). STATS: state=null, country='at sea' so NOT a US state; at publish generalize usStates to filter (c.state && !c.country). Ask Greg if family recalls which island that day (would settle St. Thomas vs Tortola).",
+      "place": null,
+      "event": null,
+      "familyMemory": "Jack and Chris were on this cruise together. The day Jack found the quarter in the casino, the Noordam was calling at St. Thomas, in the U.S. Virgin Islands.",
+      "yearsInCirculation": 24,
+      "cruise": {
+        "ship": "MS Noordam (Holland America, 1984)",
+        "itinerary": "7-day Eastern Caribbean, round-trip Port Everglades (Fort Lauderdale)",
+        "ports": "San Juan, Tortola, St. Thomas, Nassau",
+        "embarked": "Saturday, Feb 3, 1990",
+        "onThisDay": "Day 6 (Thu Feb 8) — in port, most likely St. Thomas (or Tortola)",
+        "source": "St. Petersburg Times Cruise Guide, Feb 18, 1990 (primary, 10 days after)"
+      }
     }
   ]
 }

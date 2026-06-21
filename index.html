@@ -221,7 +221,7 @@ const byDate=(a,b)=>a.found.localeCompare(b.found);
   const val=cents>=100?"$"+(cents/100).toFixed(2):cents+"¢";
   const places=new Set(COINS.map(c=>c.place)).size;
   const coinCount=COINS.filter(c=>c.kind!=="bill").length;
-  const usStates=new Set(COINS.filter(c=>c.country!=="Canada").map(c=>c.state)).size;
+  const usStates=new Set(COINS.filter(c=>c.state && !c.country).map(c=>c.state)).size;
   const hasCanada=COINS.some(c=>c.country==="Canada");
   const statesPhrase=usStates+" states"+(hasCanada?" and Canada":"");
   document.getElementById("bigline").textContent="Over "+yrs+" years, Jack saved "+coinCount+" coins — "+val+" in all — at "+places+" places across "+statesPhrase+". He wrote down every one.";
@@ -411,6 +411,8 @@ document.getElementById("gone-note").textContent=places().filter(function(pk){re
   ];
   const bill=COINS.find(c=>c.kind==="bill");
   if(bill)facts.push({h:"$"+(bill.amountCents/100), d:"The <b>biggest single find</b> — a twenty-dollar bill (the only paper money in the box, kept out of the totals above), at a Florida safari park in "+(+bill.found.slice(0,4))+"."});
+  const atsea=COINS.find(c=>c.country==="at sea");
+  if(atsea)facts.push({h:"1 at sea", d:"The only coin found <b>offshore</b> — a quarter from the casino of the Noordam, a Caribbean cruise ship, off St. Thomas in "+(+atsea.found.slice(0,4))+"."});
   el.innerHTML=facts.map(f=>'<div class="fact-card"><div class="fh">'+f.h+'</div><div class="fd">'+f.d+'</div></div>').join("");
 })();
 </script>
