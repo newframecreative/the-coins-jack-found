@@ -210,13 +210,15 @@ const byDate=(a,b)=>a.found.localeCompare(b.found);
   const cents=COINS.reduce((s,c)=>s+centsOf(c),0);
   const val=cents>=100?"$"+(cents/100).toFixed(2):cents+"¢";
   const places=new Set(COINS.map(c=>c.place)).size;
-  const states=new Set(COINS.map(c=>c.state)).size;
-  document.getElementById("bigline").textContent="Over "+yrs+" years, Jack saved "+COINS.length+" coins — "+val+" in all — at "+places+" places across "+states+" states. He wrote down every one.";
+  const usStates=new Set(COINS.filter(c=>c.country!=="Canada").map(c=>c.state)).size;
+  const hasCanada=COINS.some(c=>c.country==="Canada");
+  const statesPhrase=usStates+" states"+(hasCanada?" and Canada":"");
+  document.getElementById("bigline").textContent="Over "+yrs+" years, Jack saved "+COINS.length+" coins — "+val+" in all — at "+places+" places across "+statesPhrase+". He wrote down every one.";
   document.getElementById("st-coins").textContent=COINS.length;
   document.getElementById("st-value").textContent=val;
   document.getElementById("st-range").textContent=Math.min.apply(null,yrsArr)+"–"+Math.max.apply(null,yrsArr);
   document.getElementById("st-years").textContent=yrs+" years";
-  document.getElementById("st-states").textContent=states;
+  document.getElementById("st-states").textContent=usStates+(hasCanada?"+":"");
 })();
 const landing=document.getElementById("landing");
 function enterBox(){landing.classList.add("lift");document.body.classList.remove("locked");setTimeout(function(){landing.style.display="none";if(window._map)window._map.invalidateSize()},900)}
