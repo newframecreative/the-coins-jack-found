@@ -205,7 +205,7 @@ function isForeign(x){return x.cur&&x.cur!=="USD"}
 function centsOf(c){return coinList(c).reduce((s,x)=>s+(isForeign(x)?0:(DEN_VAL[x.den]||0)),0)}
 function sortMint(c){const ms=coinList(c).map(x=>x.mint).filter(Boolean);return ms.length?Math.min.apply(null,ms):+c.found.slice(0,4)}
 function coinLabel(c){if(c.kind==="bill")return "$"+(c.amountCents/100)+" bill";const L=coinList(c);
-  if(L.length>1&&L.every(x=>!x.mint&&!isForeign(x)&&x.den===L[0].den))return L.length+" "+DEN_LABEL[L[0].den]+"s";
+  if(L.length>1&&L.every(x=>!x.mint&&!isForeign(x)&&x.den===L[0].den)){const lb=DEN_LABEL[L[0].den];return L.length+" "+(lb==="Penny"?"Pennies":lb+"s");}
   return L.map(x=>{const d=(isForeign(x)?"Canadian ":"")+DEN_LABEL[x.den];return x.mint?(x.mint+" "+d):d}).join(" + ");}
 function circLabel(c){const y=+c.found.slice(0,4);const p=coinList(c).filter(x=>x.mint).map(x=>{const n=y-x.mint;return n+(n===1?" yr":" yrs")});return p.length?p.join(" / "):"—";}
 function finderColor(c){return FIND_COLOR[c.finders[0]]||"#b5703a"}
