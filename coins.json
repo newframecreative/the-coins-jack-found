@@ -2987,6 +2987,202 @@
       "event": null,
       "familyMemory": null,
       "yearsInCirculation": 5
+    },
+    {
+      "id": "coin-096",
+      "photo": "IMG_0228",
+      "denomination": "penny",
+      "mintYear": 1980,
+      "dateFound": "2007-10-24",
+      "dateFoundRaw": "10/24/07",
+      "dayOfWeek": "Wednesday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "J Found Lot By Store Lottery Ticket Broadway 10/24/07",
+      "say": "10/24/07 · J · the lot by the lottery store · Broadway",
+      "locationRaw": "lot by a lottery-ticket store, Broadway",
+      "locationResolved": "A lottery-ticket store on Broadway, North Knoxville, TN — the parking lot",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.01,
+      "lng": -83.925,
+      "locationConfidence": "best-guess",
+      "placeKey": "lottery-store-broadway",
+      "microSpot": "in the lot by the store",
+      "locationNote": "NEW PLACE at publish: lottery-store-broadway — a store that sold lottery tickets on Broadway, N Knoxville (TN lottery began 2004). Jack, a 1980 penny, in the lot, 10/24/07. NO store name/address on the card and Greg doesn't know which — NOT researchable (generic). Best-guess pin on N Broadway ~36.010/-83.925. status standing. THE NEWEST FIND in the whole collection now (10/24/2007) — extends the span to 1969-2007 = 38 yrs (was ...-2006); the 'first find->last' fact updates to 2007. 1980 penny found 2007 = 27 yrs.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 27
+    },
+    {
+      "id": "coin-097",
+      "photo": "IMG_0229",
+      "denomination": "dime",
+      "mintYear": 1992,
+      "dateFound": "1993-08-20",
+      "dateFoundRaw": "8/20/93",
+      "dayOfWeek": "Friday",
+      "finders": [
+        "Chris"
+      ],
+      "cardText": "C Found Gary's 8/20/93",
+      "say": "8/20/93 · Chris · at Gary's house",
+      "locationRaw": "Gary's house, 1704 Waterview",
+      "locationResolved": "Gary's house, 1704 Waterview Trail, West Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.85856,
+      "lng": -84.0944,
+      "locationConfidence": "confirmed",
+      "placeKey": "gary-house",
+      "microSpot": null,
+      "locationNote": "FIFTH gary-house coin (with 040 trash, 045 driveway, 069 fireplace, 077 yard) — and ALL FIVE were found by CHRIS. Chris, a 1992 dime, at Gary's, 8/20/93 (1 yr). Gary = Greg's dad.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 1
+    },
+    {
+      "id": "coin-098",
+      "photo": "IMG_0230",
+      "denomination": "penny",
+      "mintYear": 1972,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": 1992
+        },
+        {
+          "den": "penny",
+          "mint": 1994
+        },
+        {
+          "den": "penny",
+          "mint": 1994
+        },
+        {
+          "den": "penny",
+          "mint": 1972
+        }
+      ],
+      "dateFound": "1994-01-29",
+      "dateFoundRaw": "1/29/94",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "J Found Cordele, GA Gas Station 1/29/94",
+      "say": "1/29/94 · J · gas station · Cordele, GA",
+      "locationRaw": "gas station, Cordele, GA",
+      "locationResolved": "Gas station, Cordele, Georgia",
+      "city": "Cordele",
+      "state": "GA",
+      "lat": 31.9635,
+      "lng": -83.7824,
+      "locationConfidence": "inferred",
+      "placeKey": "gas-station-cordele",
+      "microSpot": "at the gas station",
+      "locationNote": "NEW PLACE at publish: gas-station-cordele — a gas station in Cordele, GA (an I-75 town in south-central Georgia, the 'Watermelon Capital', a classic Florida-route stop). Jack, FOUR pennies (1992,1994,1994,1972), 1/29/94. Multi-coin card. status standing. Best-guess Cordele pin 31.9635/-83.7824 (no address). GA already a state.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": null
+    },
+    {
+      "id": "coin-099",
+      "photo": "IMG_0231",
+      "denomination": "penny",
+      "mintYear": 1991,
+      "dateFound": "1995-01-18",
+      "dateFoundRaw": "1/18/95",
+      "dayOfWeek": "Wednesday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "J Found Ftn City Post Office By Car 1/18/95",
+      "say": "1/18/95 · J · by the car · Fountain City Post Office",
+      "locationRaw": "by the car, Fountain City Post Office",
+      "locationResolved": "Fountain City Post Office, 131 Lynnwood Dr, Knoxville, TN — by the car",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.03568,
+      "lng": -83.93074,
+      "locationConfidence": "confirmed",
+      "placeKey": "fountain-city-post-office",
+      "microSpot": "by the car",
+      "locationNote": "NEW PLACE at publish: fountain-city-post-office — the Fountain City post office, 131 Lynnwood Dr, Knoxville (Census-geocoded 36.03568/-83.93074, in the Fountain City core near home). Jack, a 1991 penny, by the car, 1/18/95 (4 yrs). status standing.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 4
+    },
+    {
+      "id": "coin-100",
+      "photo": "IMG_0232",
+      "denomination": "penny",
+      "mintYear": 1987,
+      "dateFound": "1997-03-01",
+      "dateFoundRaw": "3/1/97",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "Jack Found Wal-Mart Halls 3/1/97",
+      "say": "3/1/97 · Jack · Wal-Mart · Halls",
+      "locationRaw": "Wal-Mart, Halls",
+      "locationResolved": "Walmart, 7340 Norris Freeway, Halls, Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.08268,
+      "lng": -83.93229,
+      "locationConfidence": "confirmed",
+      "placeKey": "walmart-halls",
+      "microSpot": null,
+      "locationNote": "NEW PLACE at publish: walmart-halls — the Walmart in Halls (Halls Crossroads / 7340 Norris Freeway, North Knoxville; Census-geocoded 36.08268/-83.93229, near walgreens-halls). Jack, a 1987 penny, 3/1/97 (10 yrs). status standing.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 10
+    },
+    {
+      "id": "coin-101",
+      "photo": "IMG_0233",
+      "denomination": "penny",
+      "mintYear": 1995,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": 1995
+        },
+        {
+          "den": "penny",
+          "mint": 1974
+        }
+      ],
+      "dateFound": "1998-09-25",
+      "dateFoundRaw": "9/25/98",
+      "dayOfWeek": "Friday",
+      "finders": [
+        "Chris"
+      ],
+      "cardText": "9/25/98 Chris Found o/s Ingles Cedar Ln",
+      "say": "9/25/98 · Chris · outside Ingles · Cedar Lane",
+      "locationRaw": "outside Ingles, Cedar Lane",
+      "locationResolved": "Ingles, 215 Cedar Lane, Knoxville — outside the store",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.01401,
+      "lng": -83.96815,
+      "locationConfidence": "confirmed",
+      "placeKey": "ingles",
+      "microSpot": "outside the store",
+      "locationNote": "SEVENTH Ingles coin (with 035, 038, 059, 066, 084, 089) — Cedar Lane Ingles near home, the collection's single biggest non-home hub. Chris, two pennies (1995, 1974), outside the store, 9/25/98. Multi-coin card. THIS IS THE 100TH COIN in the collection.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": null
     }
   ]
 }
