@@ -409,8 +409,11 @@ document.getElementById("gone-note").textContent=places().filter(function(pk){re
     {h:Object.keys(fc).length+" finders", d:"Jack found the most; his wife <b>Chris</b> found "+(fc.Chris||0)+"; and their grandson <b>Adam</b> found "+(fc.Adam||0)+", at a Tennessee game."},
     {h:goneN+" places", d:"Of the "+Object.keys(used).length+" spots in the collection, <b>"+goneN+" no longer exist</b> — vanished stores, malls, and a Maui inn that burned in 2023."}
   ];
-  const bill=COINS.find(c=>c.kind==="bill");
-  if(bill)facts.push({h:"$"+(bill.amountCents/100), d:"The <b>biggest single find</b> — a twenty-dollar bill (the only paper money in the box, kept out of the totals above), at a Florida safari park in "+(+bill.found.slice(0,4))+"."});
+  const bills=COINS.filter(c=>c.kind==="bill");
+  if(bills.length){const tot=bills.reduce(function(s,b){return s+(b.amountCents||0)},0)/100;
+    facts.push(bills.length===1
+      ? {h:"$"+tot, d:"The <b>biggest single find</b> — a twenty-dollar bill (the only paper money in the box, kept out of the totals above), at a Florida safari park in "+(+bills[0].found.slice(0,4))+"."}
+      : {h:"$"+tot, d:"The box's only <b>folding money</b> — "+bills.length+" twenty-dollar bills, kept out of the coin totals: one Jack found in a Nashville hotel in 1972, one Chris found at a Florida safari park in 1986."});}
   const atsea=COINS.find(c=>c.country==="at sea");
   if(atsea)facts.push({h:"1 at sea", d:"The only coin found <b>offshore</b> — a quarter from the casino of the Noordam, a Caribbean cruise ship, off St. Thomas in "+(+atsea.found.slice(0,4))+"."});
   el.innerHTML=facts.map(f=>'<div class="fact-card"><div class="fh">'+f.h+'</div><div class="fd">'+f.d+'</div></div>').join("");
