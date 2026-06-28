@@ -402,13 +402,32 @@ document.getElementById("gone-note").textContent=places().filter(function(pk){re
   const facts=[
     {h:oldest.mint, d:"The <b>oldest coin</b> he saved — a "+oldest.den+" minted in "+oldest.mint+", already <b>"+(oldest.fy-oldest.mint)+" years old</b> by the time it turned up."},
     {h:busiest, d:"His <b>busiest year</b> — "+yc[busiest]+" separate finds, more than any other."},
-    {h:gapYrs+" years", d:"The <b>longest quiet stretch</b> between finds — from "+yrOf(gap.a)+" to "+yrOf(gap.b)+", late in his life."},
+    {h:gapYrs+" years", d:"The <b>longest quiet stretch</b> between finds — from "+yrOf(gap.a)+" to "+yrOf(gap.b)+", with nothing saved in between."},
     {h:(y1-y0)+" years", d:"From his <b>first find</b> in "+y0+" to his <b>very last</b> in "+y1+"."},
     {h:pcnt[topPlace]+" coins", d:"The most from any one place — <b>"+placeName+"</b>."},
     {h:Math.round(far.m).toLocaleString()+" mi", d:"The <b>farthest from home</b> — "+far.pl.name+", "+(far.pl.where||"")+"."},
     {h:Object.keys(fc).length+" finders", d:"Jack found the most; his wife <b>Chris</b> found "+(fc.Chris||0)+"; and their grandson <b>Adam</b> found "+(fc.Adam||0)+", at a Tennessee game."},
     {h:goneN+" places", d:"Of the "+Object.keys(used).length+" spots in the collection, <b>"+goneN+" no longer exist</b> — vanished stores, malls, and a Maui inn that burned in 2023."}
   ];
+  /* ---- additional computed facts ---- */
+  const denC={penny:0,nickel:0,dime:0,quarter:0}; let foreignN=0;
+  COINS.forEach(c=>coinList(c).forEach(x=>{if(isForeign(x))foreignN++; if(denC[x.den]!=null)denC[x.den]++;}));
+  const fyset=new Set(COINS.map(yrOf)); const span=y1-y0+1; const missY=[]; for(let y=y0;y<=y1;y++)if(!fyset.has(y))missY.push(y);
+  let freshN=0; COINS.forEach(c=>coinList(c).forEach(x=>{if(x.mint&&x.mint===yrOf(c))freshN++}));
+  const bigC=COINS.filter(c=>c.kind!=="bill").reduce((a,c)=>coinList(c).length>coinList(a).length?c:a); const bigN=coinList(bigC).length;
+  const y12N=COINS.filter(c=>/^y12-/.test(c.place)).length;
+  const dowC={}; COINS.forEach(c=>{if(c.dow)dowC[c.dow]=(dowC[c.dow]||0)+1}); const topDay=Object.keys(dowC).reduce((a,b)=>dowC[b]>dowC[a]?b:a);
+  const decC={}; COINS.forEach(c=>{const d=Math.floor(yrOf(c)/10)*10; decC[d]=(decC[d]||0)+1}); const topDec=Object.keys(decC).reduce((a,b)=>decC[b]>decC[a]?b:a);
+  facts.push(
+    {h:fyset.size+" of "+span, d:"<b>Years with a find</b> — he saved at least one coin in "+fyset.size+" of "+span+" years"+(missY.length&&missY.length<=4?"; only "+missY.join(", ")+" came up empty":"")+"."},
+    {h:denC.penny+" pennies", d:"<b>Pennies, mostly</b> — "+denC.penny+" of them, against "+denC.dime+" dimes, "+denC.nickel+" nickels and "+denC.quarter+" quarters."},
+    {h:freshN+" coins", d:"<b>Fresh from the mint</b> — "+freshN+" coins he found the very year they were struck."},
+    {h:bigN+" at once", d:"His <b>biggest single find</b> — "+coinLabel(bigC).toLowerCase()+(bigC.spot?" "+bigC.spot:"")+", all on one card."},
+    {h:topDec+"s", d:"<b>His richest decade</b> — "+decC[topDec]+" finds in the "+topDec+"s, more than any other ten-year stretch."},
+    {h:topDay+"s", d:"<b>His luckiest day</b> — more coins turned up on a "+topDay+" ("+dowC[topDay]+") than any other day of the week."}
+  );
+  if(y12N)facts.push({h:y12N+" coins", d:"<b>Behind the fence</b> — "+y12N+" coins found inside the Y-12 plant at Oak Ridge, where Jack worked through the Cold War — including the 1944 warehouse that has long stored the nation's bomb-grade uranium."});
+  if(foreignN)facts.push({h:foreignN+" Canadian", d:"<b>From across the border</b> — "+foreignN+" Canadian coins, picked up on trips north and saved right alongside the rest."});
   const bills=COINS.filter(c=>c.kind==="bill");
   if(bills.length){const tot=bills.reduce(function(s,b){return s+(b.amountCents||0)},0)/100;
     facts.push(bills.length===1
