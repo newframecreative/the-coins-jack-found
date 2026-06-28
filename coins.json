@@ -4316,15 +4316,14 @@
       "state": "TN",
       "lat": null,
       "lng": null,
-      "locationConfidence": "UNRESOLVED — believed 'Dr. Page' office parking lot, Knoxville. Could not confirm online (2002 is a gap for digitized directories). Needs Greg input: first name? specialty? part of town? whose doctor?",
-      "placeKey": null,
+      "locationConfidence": "LOCATION UNKNOWN (Greg's call) — believed a Dr. Page's office, Knoxville; exact spot unrecoverable. Published with NO map pin (place dr-page, lat/lng null, status unknown).",
+      "placeKey": "dr-page",
       "microSpot": "in the parking lot",
-      "locationNote": "HOLD — do NOT publish until location resolved. Nickel 2001, quarter 1979. Jack, 5/10/02.",
-      "place": null,
+      "locationNote": "Dr. Page parking lot, 5/10/02. Nickel 2001 + quarter 1979, Jack. Location unknown designation — appears in timeline/grid/gallery with a 'Location unknown' tag, no map pin.",
+      "place": "dr-page",
       "event": null,
       "familyMemory": null,
-      "yearsInCirculation": 23,
-      "pending": "HOLD — location unresolved, no pin yet"
+      "yearsInCirculation": 23
     },
     {
       "id": "coin-139",

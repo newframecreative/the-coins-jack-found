@@ -249,7 +249,7 @@ function openCoin(id){
   let placeBlock="";
   if(pl.story||pl.photo){
     let ph=pl.photo?'<div class="m-place-photo"><img src="'+pl.photo+'" alt="'+pl.name+'"/><small>'+(pl.credit||"")+'</small></div>':"";
-    let tag=pl.status==="gone"?'<span class="tag">No longer standing</span>':"";
+    let tag=pl.status==="gone"?'<span class="tag">No longer standing</span>':pl.status==="unknown"?'<span class="tag">Location unknown</span>':"";
     let others=coinsAt(c.place).length>1?'<p style="margin-top:8px"><a href="#" onclick="openPlace(\''+c.place+'\');return false" style="color:var(--accent)">See all '+coinsAt(c.place).length+' coins found here →</a></p>':"";
     placeBlock='<div class="block '+(pl.status==="gone"?"gone":"")+'">'+ph+'<h4>The place '+tag+'</h4><p style="font-weight:600;margin-bottom:2px">'+pl.name+'</p>'+(pl.story?'<p>'+pl.story+'</p>':'')+others+'</div>';
   }
@@ -270,7 +270,7 @@ function coinsAt(pk){return COINS.filter(c=>c.place===pk).sort(byDate)}
 function openPlace(pk){
   const pl=PLACES[pk]||{name:pk,where:""};const list=coinsAt(pk);
   let ph=pl.photo?'<div class="m-place-photo"><img src="'+pl.photo+'" alt="'+pl.name+'"/><small>'+(pl.credit||"")+'</small></div>':"";
-  let tag=pl.status==="gone"?'<span class="tag">No longer standing</span>':"";
+  let tag=pl.status==="gone"?'<span class="tag">No longer standing</span>':pl.status==="unknown"?'<span class="tag">Location unknown</span>':"";
   let rows=list.map(function(c){return '<div class="prow" onclick="openCoin(\''+c.id+'\')"><img src="'+denImg(c)+'"/><div class="pd"><b>'+prettyDate(c.found)+'</b><span>'+coinLabel(c)+' · found by '+c.finders.join(" & ")+(c.spot?' · '+c.spot:'')+'</span></div></div>'}).join("");
   mc.innerHTML='<div class="m-body" style="padding-top:30px">'+ph+'<h3 class="m-title">'+pl.name+' '+tag+'</h3><p class="m-where">'+(pl.where||"")+' · '+list.length+(list.length===1?' coin':' coins')+'</p>'+
     (pl.story?'<p style="line-height:1.6">'+pl.story+'</p>':'')+'<div class="plist">'+rows+'</div></div>';
@@ -367,7 +367,7 @@ function renderGrid(){
     stack+='<img style="position:relative;transform:rotate(-1.5deg)" src="'+denImg(list[0])+'"/>';
     if(n>1)stack+='<span class="count">'+n+'</span>';
     stack+='</div>';
-    el.innerHTML=stack+'<div class="pcap"><b>'+pl.name+'</b><span>'+(pl.where||(list[0].city+", "+list[0].state))+(pl.status==="gone"?' · <em>gone</em>':'')+'</span></div>';
+    el.innerHTML=stack+'<div class="pcap"><b>'+pl.name+'</b><span>'+(pl.where||(list[0].city+", "+list[0].state))+(pl.status==="gone"?' · <em>gone</em>':pl.status==="unknown"?' · <em>location unknown</em>':'')+'</span></div>';
     el.onclick=function(){openPlace(pk)};
     grid.appendChild(el);
   });
