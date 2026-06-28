@@ -4037,6 +4037,213 @@
       "event": null,
       "familyMemory": null,
       "yearsInCirculation": 16
+    },
+    {
+      "id": "coin-131",
+      "photo": "IMG_0277",
+      "denomination": "penny",
+      "mintYear": null,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": null
+        },
+        {
+          "den": "penny",
+          "mint": null
+        },
+        {
+          "den": "penny",
+          "mint": null
+        },
+        {
+          "den": "penny",
+          "mint": null
+        },
+        {
+          "den": "penny",
+          "mint": null
+        },
+        {
+          "den": "penny",
+          "mint": null
+        },
+        {
+          "den": "penny",
+          "mint": null
+        }
+      ],
+      "dateFound": "1996-06-05",
+      "dateFoundRaw": "6/5/96",
+      "dayOfWeek": "Wednesday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "J Found 'n Street (Paula Dr. + Cedar Lane) 6/5/96",
+      "say": "6/5/96 · J · in the street · Paula Drive at Cedar Lane",
+      "locationRaw": "in the street, Paula Drive at Cedar Lane",
+      "locationResolved": "Jack home — in the street at Paula Drive & Cedar Lane, Fountain City, Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.0265,
+      "lng": -83.9598,
+      "locationConfidence": "confirmed",
+      "placeKey": "home",
+      "homeSeries": true,
+      "microSpot": "in the street, at Paula Drive and Cedar Lane",
+      "locationNote": "HOME SERIES — SEVEN pennies (the most on any single card), mint years UNKNOWN (mint:null x7, worn), Jack found in the STREET at the corner of Paula Drive & Cedar Lane, 6/5/96. Multi-coin card.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": null
+    },
+    {
+      "id": "coin-132",
+      "photo": "IMG_0276",
+      "denomination": "penny",
+      "mintYear": 1984,
+      "dateFound": "2000-03-12",
+      "dateFoundRaw": "3/12/00",
+      "dayOfWeek": "Sunday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "J Found 3/12/00 McDonalds (Merchant Rd)",
+      "say": "3/12/00 · J · McDonald's on Merchants Road",
+      "locationRaw": "McDonald's, Merchants Road",
+      "locationResolved": "McDonald's, Merchants Road, Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "locationConfidence": "confirmed",
+      "placeKey": "mcdonalds-merchants",
+      "microSpot": "at McDonald's on Merchants Road",
+      "locationNote": "2nd find at the Merchants Road McDonald's. 1984 penny, Jack, 3/12/00.",
+      "place": "mcdonalds-merchants",
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 16
+    },
+    {
+      "id": "coin-133",
+      "photo": "IMG_0275",
+      "denomination": "penny",
+      "mintYear": 1992,
+      "dateFound": "1998-11-12",
+      "dateFoundRaw": "11/12/98",
+      "dayOfWeek": "Thursday",
+      "finders": [
+        "Chris"
+      ],
+      "cardText": "Chris Found o/s Dr Muse office 11/12/98",
+      "say": "11/12/98 · Chris · outside Dr. Muse's office",
+      "locationRaw": "outside Dr. Muse's office",
+      "locationResolved": "Outside Dr. Muse's office (Newland Professional Building, 2001 Laurel Ave), Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "locationConfidence": "confirmed",
+      "placeKey": "dr-muse-office",
+      "microSpot": "outside the office",
+      "locationNote": "2nd find at Dr. Muse's office. Chris found OUTSIDE ('o/s') the office, 11/12/98. 1992 penny.",
+      "place": "dr-muse-office",
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 6
+    },
+    {
+      "id": "coin-134",
+      "photo": "IMG_0274",
+      "denomination": "penny",
+      "mintYear": 1991,
+      "dateFound": "1991-11-30",
+      "dateFoundRaw": "11/30/91",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Chris"
+      ],
+      "cardText": "11/30/91 Chris Found in chair living room",
+      "say": "11/30/91 · Chris · in a chair · living room at home",
+      "locationRaw": "in a chair in the living room at home",
+      "locationResolved": "Jack home — in a chair in the living room, Paula Drive, Fountain City, Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.0265,
+      "lng": -83.9598,
+      "locationConfidence": "confirmed",
+      "placeKey": "home",
+      "homeSeries": true,
+      "microSpot": "in a chair in the living room",
+      "locationNote": "HOME SERIES — Chris found it in a chair in the living room, 11/30/91. 1991 penny (minted the same year).",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 0
+    },
+    {
+      "id": "coin-135",
+      "photo": "IMG_0273",
+      "denomination": "nickel",
+      "mintYear": 1973,
+      "dateFound": "1987-01-03",
+      "dateFoundRaw": "1/3/87",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "1/3/87 Found in driveway Home J",
+      "say": "1/3/87 · J · in the driveway at home",
+      "locationRaw": "in the driveway at home",
+      "locationResolved": "Jack home — in the driveway, Paula Drive, Fountain City, Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.0265,
+      "lng": -83.9598,
+      "locationConfidence": "confirmed",
+      "placeKey": "home",
+      "homeSeries": true,
+      "microSpot": "in the driveway",
+      "locationNote": "HOME SERIES — Jack found a 1973 nickel in his own driveway on Paula Drive, 1/3/87.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 14
+    },
+    {
+      "id": "coin-136",
+      "photo": "IMG_0272",
+      "denomination": "penny",
+      "mintYear": 1999,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": 1999
+        },
+        {
+          "den": "penny",
+          "mint": 1999
+        }
+      ],
+      "dateFound": "2006-10-25",
+      "dateFoundRaw": "10/25/06",
+      "dayOfWeek": "Wednesday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "J Found Ftn City Auto Clinic 10/25/06",
+      "say": "10/25/06 · J · Fountain City Auto Clinic",
+      "locationRaw": "Fountain City Auto Clinic",
+      "locationResolved": "Fountain City Auto Clinic, 2823 Woodrow Dr, Knoxville, TN 37918",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.028664586769,
+      "lng": -83.927866963087,
+      "locationConfidence": "confirmed",
+      "placeKey": "fountain-city-auto-clinic",
+      "microSpot": "at the Fountain City Auto Clinic",
+      "locationNote": "NEW PLACE — Fountain City Auto Clinic, 2823 Woodrow Dr (Census-geocoded). Two 1999 pennies, Jack, 10/25/06.",
+      "place": "fountain-city-auto-clinic",
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 7
     }
   ]
 }
