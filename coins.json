@@ -3788,6 +3788,255 @@
       "event": null,
       "familyMemory": null,
       "yearsInCirculation": 7
+    },
+    {
+      "id": "coin-123",
+      "photo": "IMG_0271",
+      "denomination": "quarter",
+      "mintYear": 1991,
+      "dateFound": "1997-05-30",
+      "dateFoundRaw": "5/30/97",
+      "dayOfWeek": "Friday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "5/30/97 J Found Farragut Christian Church Greg Play (Jesus Christ Superstar)",
+      "say": "5/30/97 · J · Farragut Christian Church · Greg in Jesus Christ Superstar",
+      "locationRaw": "Farragut Christian Church, Greg's performance",
+      "locationResolved": "Farragut Christian Church, 138 Admiral Rd, Farragut, Knoxville, TN — at Greg's Jesus Christ Superstar performance",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.8904,
+      "lng": -84.15051,
+      "locationConfidence": "confirmed",
+      "placeKey": "farragut-christian-church",
+      "microSpot": null,
+      "familyMemory": "Jack came out to Farragut Christian Church to watch Greg — the maker of this archive — perform in Jesus Christ Superstar, and found a quarter while he was there. The second coin in the box tied to one of Greg's own performances, after the Little League penny.",
+      "locationNote": "NEW PLACE at publish: farragut-christian-church — Farragut Christian Church, 138 Admiral Rd, Farragut (far West Knox; Census-geocoded 35.89040/-84.15051). FAMILY-MEMORY coin: Jack found a 1991 quarter here on 5/30/97 at GREG's performance of Jesus Christ Superstar. Mirrors coin-056 (Jack at Greg's Little League). status standing.",
+      "place": null,
+      "event": null,
+      "yearsInCirculation": 6
+    },
+    {
+      "id": "coin-124",
+      "photo": "IMG_0270",
+      "denomination": "dime",
+      "mintYear": 1994,
+      "dateFound": "1994-10-18",
+      "dateFoundRaw": "10/18/94",
+      "dayOfWeek": "Tuesday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "Jack 10/18/94 Paper Mach. Lancaster Hampton Inn",
+      "say": "10/18/94 · Jack · newspaper machine · Hampton Inn · Lancaster",
+      "locationRaw": "newspaper machine, Hampton Inn, Lancaster",
+      "locationResolved": "Hampton Inn, Lancaster, Pennsylvania — at the newspaper machine",
+      "city": "Lancaster",
+      "state": "PA",
+      "lat": 40.0379,
+      "lng": -76.3055,
+      "locationConfidence": "best-guess",
+      "placeKey": "hampton-lancaster",
+      "microSpot": "at the newspaper machine",
+      "locationNote": "NEW PLACE at publish: hampton-lancaster — a Hampton Inn in Lancaster. The card gives NO state, just 'Lancaster'. REASONED BEST-GUESS = Lancaster, PENNSYLVANIA: the family's documented trips traced the Northeast/Mid-Atlantic (Niagara, Utica, Atlantic City, DC, Fredericksburg VA) and Lancaster PA (Pennsylvania Dutch country) is a classic tourist stop in that corridor; Greg's own hunch is PA too. PA would be a NEW state IF correct (provisional — could be Lancaster OH/SC/etc). Jack, a 1994 dime at the newspaper machine, 10/18/94. status standing. Pin = Lancaster PA city 40.0379/-76.3055.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 0
+    },
+    {
+      "id": "coin-125",
+      "photo": "IMG_0269",
+      "denomination": "penny",
+      "mintYear": 1988,
+      "dateFound": "1992-02-03",
+      "dateFoundRaw": "2/3/92",
+      "dayOfWeek": "Monday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "J Found Lot Merita Bakery Central 2/3/92",
+      "say": "2/3/92 · J · Merita Bakery lot · Central",
+      "locationRaw": "Merita Bakery parking lot, Central",
+      "locationResolved": "Merita Bakery, 1218 N Central St, Knoxville, TN — parking lot",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.98185,
+      "lng": -83.92951,
+      "locationConfidence": "confirmed",
+      "placeKey": "merita-bakery",
+      "microSpot": "in the parking lot",
+      "locationNote": "NEW PLACE at publish: merita-bakery — Merita Bakery, 1218 N Central St, North Knoxville (Census-geocoded 35.98185/-83.92951; the longtime Knoxville bread bakery on Central, est. as Highland Bakery 1901, Merita brand still around). Jack, a 1988 penny, in the lot, 2/3/92 (4 yrs). status standing.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 4
+    },
+    {
+      "id": "coin-126",
+      "photo": "IMG_0268",
+      "denomination": "penny",
+      "mintYear": 1983,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": 1983
+        },
+        {
+          "den": "dime",
+          "mint": 1978
+        }
+      ],
+      "dateFound": "1983-11-18",
+      "dateFoundRaw": "11/18/83",
+      "dayOfWeek": "Friday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "11/18/83 J K-Mart Park Lot Kingston Pk",
+      "say": "11/18/83 · J · K-Mart lot · Kingston Pike",
+      "locationRaw": "K-Mart parking lot, Kingston Pike",
+      "locationResolved": "Kmart, 7428 Kingston Pike, West Knoxville, TN — parking lot",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 35.92953,
+      "lng": -84.0329,
+      "locationConfidence": "confirmed",
+      "placeKey": "kmart-kingston",
+      "microSpot": "in the parking lot",
+      "locationNote": "THIRD kmart-kingston coin (with coin-068 the 1969 earliest find + Gary tapes, coin-085 1994 dime). Jack, a 1983 penny + a 1978 dime, in the lot, 11/18/83. Multi-coin card. Same Kingston Pike Kmart (7428, gone).",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": null
+    },
+    {
+      "id": "coin-127",
+      "photo": "IMG_0267",
+      "denomination": "penny",
+      "mintYear": 1983,
+      "dateFound": "1986-01-21",
+      "dateFoundRaw": "1/21/86",
+      "dayOfWeek": "Tuesday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "Found J 1/21/86 Check Out Lane White Store",
+      "say": "1/21/86 · J · the checkout lane · White Store",
+      "locationRaw": "checkout lane, White Store",
+      "locationResolved": "White Store, 5400 Clinton Highway, North Knoxville, TN — the checkout lane",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.00419,
+      "lng": -83.98156,
+      "locationConfidence": "inferred",
+      "placeKey": "white-store",
+      "microSpot": "in the checkout lane",
+      "locationNote": "SECOND white-store coin (with coin-004, the 1972 penny). Jack, a 1983 penny, in the CHECKOUT LANE, 1/21/86 (3 yrs). Card just says 'White Store' (no location) — assigned to the CLINTON HWY White Store (white-store, 5400 Clinton Hwy, gone — Jack's neighborhood grocery, the default), NOT the Fountain City one. Move if Greg says it was Fountain City.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 3
+    },
+    {
+      "id": "coin-128",
+      "photo": "IMG_0265",
+      "denomination": "quarter",
+      "mintYear": 1992,
+      "dateFound": "1995-01-26",
+      "dateFoundRaw": "1/26/95",
+      "dayOfWeek": "Thursday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "1/26/95 Jack Found at Mail Box",
+      "say": "1/26/95 · Jack · at the mailbox · 5608 Paula",
+      "locationRaw": "at the mailbox, Paula Drive",
+      "locationResolved": "Jack home — at the mailbox, 5608 Paula Drive, Fountain City, Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.0265,
+      "lng": -83.9598,
+      "locationConfidence": "confirmed",
+      "placeKey": "home",
+      "homeSeries": true,
+      "microSpot": "at the mailbox",
+      "locationNote": "HOME SERIES — Jack, a 1992 quarter, at the MAILBOX at home, 1/26/95 (3 yrs). The SECOND mailbox find (with coin-014, the 1964 nickel at the mailbox, 7/6/73 — a nice bookend across 22 years at the same mailbox).",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 3
+    },
+    {
+      "id": "coin-129",
+      "photo": "IMG_0264",
+      "denomination": "penny",
+      "mintYear": 1985,
+      "coins": [
+        {
+          "den": "penny",
+          "mint": 1985
+        },
+        {
+          "den": "penny",
+          "mint": 1990
+        },
+        {
+          "den": "penny",
+          "mint": 1995
+        }
+      ],
+      "dateFound": "1999-01-19",
+      "dateFoundRaw": "1/19/99",
+      "dayOfWeek": "Tuesday",
+      "finders": [
+        "Chris"
+      ],
+      "cardText": "1/19/99 Chris Found K-Mart Broadway",
+      "say": "1/19/99 · Chris · K-Mart · Broadway",
+      "locationRaw": "K-Mart, Broadway",
+      "locationResolved": "Kmart — Northgate Plaza, 4434 N Broadway, Fountain City, Knoxville, TN",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.01362,
+      "lng": -83.92366,
+      "locationConfidence": "confirmed",
+      "placeKey": "kmart-broadway",
+      "microSpot": null,
+      "locationNote": "SECOND kmart-broadway coin (with coin-030, 1997) — the Northgate Plaza Kmart at 4434 N Broadway (gone). Chris, three pennies (1985, 1990, 1995), 1/19/99. Multi-coin card.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": null
+    },
+    {
+      "id": "coin-130",
+      "photo": "IMG_0263",
+      "denomination": "penny",
+      "mintYear": 1975,
+      "dateFound": "1991-01-19",
+      "dateFoundRaw": "1/19/91",
+      "dayOfWeek": "Saturday",
+      "finders": [
+        "Jack"
+      ],
+      "cardText": "1/19/91 Jack Found Front Home Depot East",
+      "say": "1/19/91 · Jack · out front · Home Depot · East",
+      "locationRaw": "front of Home Depot, by East Towne Mall",
+      "locationResolved": "Home Depot (Centerline), 4710 Centerline Dr, East Knoxville, TN — out front",
+      "city": "Knoxville",
+      "state": "TN",
+      "lat": 36.02921,
+      "lng": -83.88444,
+      "locationConfidence": "confirmed",
+      "placeKey": "home-depot-east",
+      "microSpot": "out front",
+      "locationNote": "NEW PLACE at publish: home-depot-east — the 'Centerline' Home Depot at 4710 Centerline Dr, East Knoxville, by East Towne Mall (corner Millertown/Washington Pike; Census-geocoded 36.02921/-83.88444). Jack, a 1975 penny, out front, 1/19/91 (16 yrs). status standing.",
+      "place": null,
+      "event": null,
+      "familyMemory": null,
+      "yearsInCirculation": 16
     }
   ]
 }
