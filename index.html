@@ -291,12 +291,21 @@ function openPlace(pk){
     el._yr=+c.found.slice(0,4);
     track.appendChild(el); nodes.push(el);
   });
+  function slotWidth(el,imgH){
+    // width derived from the image's natural aspect ratio at the rendered height —
+    // robust to load timing (offsetWidth is 0 until the image actually loads).
+    const im=el.querySelector(".cardimg");
+    let w;
+    if(im.naturalWidth&&im.naturalHeight) w=Math.round(im.naturalWidth*imgH/im.naturalHeight);
+    else w=im.offsetWidth||(MINSLOT-COLPAD);
+    return Math.max(w+COLPAD,MINSLOT);
+  }
   function layout(){
-    let cursor=COLPAD, curYr=null, groupStart=COLPAD; const marks=[];
+    track.querySelectorAll(".tl-axis,.tl-yr").forEach(function(n){n.remove()}); // idempotent: clear prior axis/ticks
     const imgH=(nodes[0]&&nodes[0].querySelector("img").offsetHeight)||86;
+    let cursor=COLPAD, curYr=null, groupStart=COLPAD; const marks=[];
     nodes.forEach(function(el){
-      const w=el.querySelector(".cardimg").offsetWidth||MINSLOT;
-      const slot=Math.max(w+COLPAD,MINSLOT);
+      const slot=slotWidth(el,imgH);
       if(el._yr!==curYr){
         if(curYr!==null){marks.push({yr:curYr,x:(groupStart+cursor)/2}); cursor+=YEARGAP;}
         curYr=el._yr; groupStart=cursor;
@@ -311,19 +320,19 @@ function openPlace(pk){
     const axis=document.createElement("div");axis.className="tl-axis";axis.style.left="0px";axis.style.width=W+"px";axis.style.top=axisY+"px";track.appendChild(axis);
     marks.forEach(function(m){const t=document.createElement("div");t.className="tl-yr";t.style.left=m.x+"px";t.style.top=(axisY+9)+"px";t.innerHTML='<i></i><span>'+m.yr+'</span>';track.appendChild(t)});
     track.style.height=(axisY+68)+"px";
+    updateNow();
   }
-  function activate(){
-    function update(){const center=scroll.scrollLeft+scroll.clientWidth/2;let best=null,bd=1e9;nodes.forEach(function(el){const d=Math.abs(el._cx-center);if(d<bd){bd=d;best=el}});if(best)nowEl.textContent=best._yr;}
-    scroll.addEventListener("scroll",update); update();
-    const page=function(){return Math.max(220,scroll.clientWidth*0.8)};
-    document.getElementById("tlPrev").onclick=function(){scroll.scrollBy({left:-page(),behavior:"smooth"})};
-    document.getElementById("tlNext").onclick=function(){scroll.scrollBy({left:page(),behavior:"smooth"})};
-  }
-  const imgs=nodes.map(function(el){return el.querySelector("img")});let left=imgs.length,did=false;
-  function go(){if(did)return;did=true;layout();activate()}
-  function ready(){left--;if(left<=0)go()}
-  imgs.forEach(function(im){if(im.complete&&im.naturalWidth)ready();else{im.addEventListener("load",ready);im.addEventListener("error",ready)}});
-  setTimeout(go,2500);
+  function updateNow(){const center=scroll.scrollLeft+scroll.clientWidth/2;let best=null,bd=1e9;nodes.forEach(function(el){const d=Math.abs(el._cx-center);if(d<bd){bd=d;best=el}});if(best)nowEl.textContent=best._yr;}
+  scroll.addEventListener("scroll",updateNow);
+  const page=function(){return Math.max(220,scroll.clientWidth*0.8)};
+  document.getElementById("tlPrev").onclick=function(){scroll.scrollBy({left:-page(),behavior:"smooth"})};
+  document.getElementById("tlNext").onclick=function(){scroll.scrollBy({left:page(),behavior:"smooth"})};
+  // lay out immediately, then re-lay-out as each image's real size arrives, once everything's loaded, and on resize
+  let raf=null; function relayout(){if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(layout)}
+  layout();
+  nodes.forEach(function(el){const im=el.querySelector("img");if(!(im.complete&&im.naturalWidth)){im.addEventListener("load",relayout);im.addEventListener("error",relayout)}});
+  window.addEventListener("load",relayout);
+  let rt=null; window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(relayout,150)});
 })();
 
 /* ---- MAP ---- */
